@@ -52,7 +52,7 @@
 #define TIMER_RB_STATUS_ BIT(4)
 #define TIMER_RB_SEL(n)  BIT((n) + 1)
 
-#define BIT(n) 0x01 << n //macro that gets us a number with only the n-th bit active
+//#define BIT(n) (1 << n) //macro that gets us a number with only the n-th bit active
 
 /**@}*/
 
