@@ -12,9 +12,9 @@
 
 void *(init)(uint16_t mode, vbe_mode_info_t *info);
 
-int R_first(int first, vbe_mode_info_t *info);
-int G_first(int first, vbe_mode_info_t *info);
-int B_first(int first, vbe_mode_info_t *info);
+int R_first(int first);
+int G_first(int first);
+int B_first(int first);
 
 void (vg_pattern)(vbe_mode_info_t *info, uint16_t mode,  uint8_t no_rectangles, int first, uint8_t step);
 

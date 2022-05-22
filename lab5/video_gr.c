@@ -19,6 +19,15 @@ static uint16_t h_res;	        // Horizontal resolution in pixels
 static uint16_t v_res;	        // Vertical resolution in pixels 
 static int bytes_per_pixel;  //Number of VRAM bits per pixel 
 
+/* Global variables for patterns */
+static uint16_t RED_MASK_SIZE;
+static uint16_t GREEN_MASK_SIZE;
+static uint16_t BLUE_MASK_SIZE;
+static uint16_t RED_FIELD_POS;
+static uint16_t GREEN_FIELD_POS;
+static uint16_t BLUE_FIELD_POS;
+
+
 extern uint8_t scancode;
 extern uint8_t stat;
 extern uint32_t counter;
@@ -42,6 +51,13 @@ int (vg_init_vals)(uint16_t mode, vbe_mode_info_t info){
     h_res = info.XResolution;
     v_res = info.YResolution;
     bytes_per_pixel = ceil(info.BitsPerPixel/(double)8);
+
+    RED_MASK_SIZE = info.RedMaskSize;
+    GREEN_MASK_SIZE = info.GreenMaskSize;
+    BLUE_MASK_SIZE = info.BlueMaskSize;
+    RED_FIELD_POS = info.RedFieldPosition;
+    GREEN_FIELD_POS = info.GreenFieldPosition;
+    BLUE_FIELD_POS = info.BlueFieldPosition;
 
     //buf
     video_phys = info.PhysBasePtr;
@@ -127,16 +143,16 @@ int (vg_draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height,
     return 0;
 }
 
-int R_first(int first, vbe_mode_info_t *info){
-    return first >> info->RedFieldPosition & (BIT(info->RedMaskSize)-1);
+int R_first(int first){
+    return first >> RED_FIELD_POS & (BIT(RED_MASK_SIZE)-1);
 }
 
-int G_first(int first, vbe_mode_info_t *info){
-    return first >> info->GreenFieldPosition & (BIT(info->GreenMaskSize)-1);
+int G_first(int first){
+    return first >> GREEN_FIELD_POS & (BIT(GREEN_MASK_SIZE)-1);
 }
 
-int B_first(int first, vbe_mode_info_t *info){
-    return first >> info->BlueFieldPosition & (BIT(info->BlueMaskSize)-1);
+int B_first(int first){
+    return first >> BLUE_FIELD_POS & (BIT(BLUE_MASK_SIZE)-1);
 }
 
 void (vg_pattern)(vbe_mode_info_t *info, uint16_t mode,  uint8_t no_rectangles, int first, uint8_t step){
@@ -157,18 +173,16 @@ void (vg_pattern)(vbe_mode_info_t *info, uint16_t mode,  uint8_t no_rectangles, 
                 int green;
                 int blue;
                 if(i == 0 && j == 0){
-                    printf("no");
-                    red = R_first(first, info);
-                    green = G_first(first, info);
-                    blue = B_first(first, info);
+                    red = R_first(first);
+                    green = G_first(first);
+                    blue = B_first(first);
                 }
                 else{
-                    printf("Hey");
-                    red = (R_first(first, info) + i * step) % (1 << info->RedMaskSize);
-                    green = (G_first(first, info) + j * step) % (1 << info->GreenMaskSize);
-                    blue = (B_first(first, info) + (i + j) * step) % (1 << info->BlueMaskSize);
+                    red = (R_first(first) + i * step) % (1 << RED_MASK_SIZE);
+                    green = (G_first(first) + j * step) % (1 << GREEN_MASK_SIZE);
+                    blue = (B_first(first) + (i + j) * step) % (1 << BLUE_MASK_SIZE);
                 }
-                color = (red << info->RedFieldPosition | green << info->GreenFieldPosition | blue << info->BlueFieldPosition);
+                color = (red << RED_FIELD_POS | green << GREEN_FIELD_POS | blue << BLUE_FIELD_POS);
             }
 
             vg_draw_rectangle(i * width, j * height, width, height, color);
