@@ -77,7 +77,7 @@ int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y){
     uint8_t *map;
     vbe_mode_info_t info;
     
-    init(0x105,&info);
+    init(0x105,&info); // Initialize in mode 0x105(Indexed mode)
     
                 // get the pixmap from the XPM
     map =  xpm_load(xpm, XPM_INDEXED, &img);
@@ -100,7 +100,7 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
     uint8_t *map;
     vbe_mode_info_t info;
     
-    init(0x105,&info);
+    init(0x105,&info); // Initialize in mode 0x105(Indexed mode)
     
                 // get the pixmap from the XPM
     map =  xpm_load(xpm, XPM_INDEXED, &img);
@@ -110,6 +110,7 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
     move_xpm(img, xi, yi, xf, yf, speed, fr_rate);
     keyboard_scan_stop_key(ESC_BEAKCODE);
     vg_exit();
+
     printf("%s(%8p, %u, %u, %u, %u, %d, %u): under construction\n",
            __func__, xpm, xi, yi, xf, yf, speed, fr_rate);
 
