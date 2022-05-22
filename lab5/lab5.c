@@ -3,6 +3,7 @@
 #include "../lab3/keyboard.h"
 #include <lcom/lab5.h>
 #include <stdint.h>
+#include "video_gr.h"
 #include <stdio.h>
 
 
@@ -40,7 +41,9 @@ int(video_test_init)(uint16_t mode, uint8_t delay) {
 
     //chamadada modo grafico
 
-    vg_init(mode);
+    vbe_mode_info_t info;
+    
+    init(mode,&info);
     sleep(delay);
     vg_exit();
 
@@ -49,7 +52,9 @@ int(video_test_init)(uint16_t mode, uint8_t delay) {
 
 int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
                           uint16_t width, uint16_t height, uint32_t color) {
-    vg_init(mode);
+    vbe_mode_info_t info;
+    
+    init(mode,&info);
     vg_draw_rectangle(x,y,width,height,color);
     keyboard_scan_stop_key(ESC_BEAKCODE);
     vg_exit();
@@ -57,19 +62,29 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
 }
 
 int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, uint8_t step) {
-    vg_init(mode);
+    vbe_mode_info_t info;
+    
+    init(mode,&info);
     // TO-DO
+    vg_pattern(&info, mode, no_rectangles, first, step);
     keyboard_scan_stop_key(ESC_BEAKCODE);
     vg_exit();
     return 0;
 }
 
 int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y){
-        xpm_image_t img;
-        uint8_t *map;
+    xpm_image_t img;
+    uint8_t *map;
+    vbe_mode_info_t info;
+    
+    init(0x105,&info);
+    
                 // get the pixmap from the XPM
-        map =  xpm_load(xpm, XPM_INDEXED, &img);
+    map =  xpm_load(xpm, XPM_INDEXED, &img);
                 // copy it to graphics memory
+    draw_xpm(img, x, y);
+    keyboard_scan_stop_key(ESC_BEAKCODE);
+    vg_exit();
 
     return 0;
     /* To be completed */
@@ -81,6 +96,20 @@ int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y){
 int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint16_t yf,
                      int16_t speed, uint8_t fr_rate) {
     /* To be completed */
+    xpm_image_t img;
+    uint8_t *map;
+    vbe_mode_info_t info;
+    
+    init(0x105,&info);
+    
+                // get the pixmap from the XPM
+    map =  xpm_load(xpm, XPM_INDEXED, &img);
+                // copy it to graphics memory
+    draw_xpm(img, xi, xi);
+    /* function to move xpm */
+    move_xpm(img, xi, yi, xf, yf, speed, fr_rate);
+    keyboard_scan_stop_key(ESC_BEAKCODE);
+    vg_exit();
     printf("%s(%8p, %u, %u, %u, %u, %d, %u): under construction\n",
            __func__, xpm, xi, yi, xf, yf, speed, fr_rate);
 

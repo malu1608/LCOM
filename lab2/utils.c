@@ -1,30 +1,33 @@
 #include <lcom/lcf.h>
-
 #include <stdint.h>
+#include <lcom/utils.h>
+
+uint8_t keyboard_counter=0;
 
 int(util_get_LSB)(uint16_t val, uint8_t *lsb) {
-  /* To be implemented by the students */
-  //printf("%s is not yet implemented!\n", __func__);
-  *lsb = (uint8_t)(val & (0xFF));
-  return 0;
+    //Podia ser implementado tambem da seguinte forma -> *lsb = val & 0x00FF;
+    *lsb = (uint8_t) val;
+    return 0;   //ALL OK
 }
 
 int(util_get_MSB)(uint16_t val, uint8_t *msb) {
-  /* To be implemented by the students */
-  *msb = (uint8_t)(val >> 8);
-  return 0;
+    //Podia serimplementado tambem da seguinte forma -> *msb = val & 0xFF00;
+    *msb = (uint8_t)(val >> 8);
+    return 0;   //ALL OK
 }
 
+
+
 int (util_sys_inb)(int port, uint8_t *value) {
-  /* To be implemented by the students */
-  //we have info on the port (32-bit) and bring it to a known reference (&var), then cast info (var) and store in value
-  uint32_t var = 0x00;
-  if (sys_inb(port, &var) != 0) { //var is updated here
-      printf("Error");
-      return 1;
-  }
-  *value = (uint8_t) var;
-
-  return 0;
-
+    // Variavel onde irá ficar o valor no formato uint de 32 bit
+    // necessario para chamada de função sys_inb dado que o valor
+    // é retornado em 32 bits e a função util_sys_inb retorna em 8 bit
+    uint32_t value32;
+    #define LAB3
+    if(sys_inb(port, &value32)) return 1; //ERROR 1
+    *value = value32;
+    #ifdef LAB3
+    keyboard_counter++;
+    #endif
+    return 0;   //ALL OK
 }

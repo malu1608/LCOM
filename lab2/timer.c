@@ -5,160 +5,142 @@
 
 #include "i8254.h"
 
-int hook_id;
-extern int counter_tic;
+//GLOBAL HooK_ID
+int hook_id = TIMER0_IRQ;
+//GLOBAL Counter
+int counter = 0;
 
 int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
-  /* To be implemented by the students */
-  //printf("%s is not yet implemented!\n", __func__);
-  if (!(timer == 0 || timer == 1 || timer == 2)) {
-     return 1;
-  }
-  if (freq <= 0)
-    return 1;
-  
-  uint8_t st;
-  timer_get_conf(timer, &st); //ler os valores do timer
+    //Variavel da command word
+    uint8_t cmd=0;
+    //Variavel de status para utilizar no REED_BACK
+    uint8_t  st;
+    //Variavel para guardar o enfdereço do timer
+    int port;
+    // Set de st utilizando a chamada de reed_back command
+    if (timer_get_conf(timer, &st)) return 1;
+    //Case para verificar qual o timer indicado e atribuir à
+    // comand word e ao port o valor correspondente
+    switch(timer) {
+        case 0: {
+            cmd |= TIMER_SEL0;
+            port = TIMER_0;
+            break;
+        }
+        case 1: {
+            cmd |= TIMER_SEL1;
+            port = TIMER_1;
+            break;
+        }
+        case 2: {
+            cmd |= TIMER_SEL2;
+            port = TIMER_2;
+            break;
+        }
+        default: return 2;
+    }
+    // Formar a command word com o LSB antes de MSB
+    cmd |= (TIMER_LSB_MSB);
+    cmd |= (st & (TIMER_M_MASK | TIMER_BCD));
 
-  uint8_t ctrlwrd = st & (BIT(3)|BIT(2)|BIT(1)|BIT(0));
-  ctrlwrd |= (BIT(5)|BIT(4));//st & (BIT(5)|BIT(4));
-  if (timer == 1) {
-    ctrlwrd |= BIT(6);
-  } else if (timer == 2) {
-      ctrlwrd |= BIT(7);
-  }
+    //
+    if(sys_outb(TIMER_CTRL, (uint32_t) cmd)) return 3;
 
-  if (sys_outb(TIMER_CTRL, ctrlwrd) != 0) {
-    return 1;
-  }
-  
-  uint16_t div =  TIMER_FREQ / freq;
-  uint8_t lsb, msb;
+    //Calculo da nova frequencia
+    int n_freq =  TIMER_FREQ / freq;
 
+    uint8_t  lsb;
+    uint8_t  msb;
+    //Obter o LSB depois de aplicar a nova frequencia
+    util_get_LSB(n_freq, &lsb);
+    //Obter o MSB depois de aplicar a nova frequencia
+    util_get_MSB(n_freq, &msb);
+    //Enviar os novos LSB e MSB
+    sys_outb(port, lsb);
+    sys_outb(port, msb);
 
-  util_get_LSB(div, &lsb);
-  sys_outb(TIMER_0 + timer, lsb);
-  util_get_MSB(div, &msb);
-  sys_outb(TIMER_0 + timer, msb);
-  /*switch ((st & (BIT(5)|BIT(4))) >> 4) {
-    case 1:
-      util_get_LSB(div, &lsb);
-      sys_outb(TIMER_0 + timer, lsb);
-      break;
-    case 2:
-      util_get_MSB(div, &msb);
-      sys_outb(TIMER_0 + timer, msb);
-      break;
-    case 3:
-      util_get_LSB(div, &lsb);
-      sys_outb(TIMER_0 + timer, lsb);
-      util_get_MSB(div, &msb);
-      sys_outb(TIMER_0 + timer, msb);
-      break;
-    default:
-      return 1;
-  }*/
-  
-  return 0;
+    return 0;   //ALL OK
 }
 
 int (timer_subscribe_int)(uint8_t *bit_no) {
-  /* To be implemented by the students */
-  //printf("%s is not yet implemented!\n", __func__);
-  hook_id = (int)*bit_no;
-  sys_irqsetpolicy(TIMER0_IRQ,IRQ_REENABLE,&hook_id);
-  return 0;
+    //inicializar com IRQ0
+    * bit_no = hook_id;
+
+    if (sys_irqsetpolicy(TIMER0_IRQ, IRQ_REENABLE, &hook_id) != 0) return 1;
+    return 0;    //ALL OK
 }
 
 int (timer_unsubscribe_int)() {
-  /* To be implemented by the students */
-  //printf("%s is not yet implemented!\n", __func__);
-  sys_irqrmpolicy(&hook_id);
-  return 0;
+
+    if (sys_irqrmpolicy(&hook_id) != 0) return 1;
+    return 0;   //ALL OK
 }
 
 void (timer_int_handler)() {
-  /* To be implemented by the students */
-  //printf("%s is not yet implemented!\n", __func__);
-  counter_tic++;
-
+    //Incrementar a variavel global counter
+    counter++;
 }
 
+
+//!
 int (timer_get_conf)(uint8_t timer, uint8_t *st) {
-  /* To be implemented by the students */
-  uint8_t rbcm = (TIMER_RB_CMD | TIMER_RB_COUNT_ | TIMER_RB_SEL(timer)); //Read-Back Command with status configuration depending on timer
-  
-  if (sys_outb(TIMER_CTRL, rbcm) != 0) {
-    return 1;
-  }
+    uint8_t cmd=0;
+    int port;
 
-  switch (timer) {
-    case 0:
-    {
-      if (util_sys_inb(TIMER_0, st) != 0) {return 1;}
-      break;
-    }
-    case 1: 
-    {
-      if (util_sys_inb(TIMER_1, st) != 0) {return 1;}
-      break;
-    }
-    case 2:
-    {
-      if (util_sys_inb(TIMER_2, st) != 0) {return 1;}
-      break;
-    }
-    default:
-      return 1;
-    }
+    cmd |= TIMER_RB_CMD | TIMER_RB_COUNT_ | TIMER_RB_SEL(timer);
 
-  return 0;
+    if(sys_outb(TIMER_CTRL, (uint32_t) cmd)) return 1;
+    // Switch timer
+    switch (timer) {
+        case 0 : {port = TIMER_0; break;} //00
+        case 1 : {port = TIMER_1; break;} //01
+        case 2 : {port = TIMER_2; break;} //11
+        default: return 2;
+    }
+    if(util_sys_inb(port, st)) return 3;
+    return 0;   //ALL OK
 }
 
 int (timer_display_conf)(uint8_t timer, uint8_t st,
                         enum timer_status_field field) {
-  /* To be implemented by the students */
-  union timer_status_field_val config;
+    // Declaration of conf CLassGuide 7.1 info at end
+    union timer_status_field_val conf;
+    uint8_t in_mode;
 
-  switch (field) {
-
-    case tsf_all:
-      config.byte = st;
-      break;
-
-    case tsf_initial:
-    //the & logic gets the st values in 5th and 4th bit, and all the other bits have 0 value
-      config.in_mode = (st & TIMER_LSB_MSB) >> 4;
-      if (config.in_mode == 1) {
-        config.in_mode = LSB_only;
-      }
-      else if (config.in_mode == 2) {
-        config.in_mode = MSB_only;
-      }
-      else if (config.in_mode == 3) {
-        config.in_mode = MSB_after_LSB;
-      } else {
-        config.in_mode = INVAL_val;
-      }
-      break;
-
-    case tsf_mode:
-
-      config.count_mode = (st & (BIT(3)|BIT(2)|BIT(1))) >> 1;
-      if (config.count_mode == 6) {
-          config.count_mode = 2;
-      } else if (config.count_mode == 7) {
-          config.count_mode = 3;
-      }
-      break;
-
-    case tsf_base:
-
-      config.bcd = (st & BIT(0));
-      break;
-  }
-  
-  timer_print_config(timer, field, config);
-
-  return 0;
+    //  Case to check field type CLassGuide 7.1 info at begin
+    // Defined at timer.h
+     switch(field){
+        case tsf_all: {
+            conf.byte = st;
+            break;
+        }
+        case tsf_initial: {
+            in_mode = (st & TIMER_IN_MASK) >> TIMER_POS_IN_MASK;
+            switch (in_mode) {
+                case 0 : { conf.in_mode = INVAL_val;
+                    break;}
+                case 1 : { conf.in_mode = LSB_only;
+                    break;}
+                case 2 : { conf.in_mode = MSB_only;
+                    break;}
+                case 3 : { conf.in_mode = MSB_after_LSB;
+                    break;}
+                default: return 2;      // If ERROR exit code 2
+            }
+            break;
+        }
+        case tsf_mode: {
+            conf.count_mode = (st & TIMER_M_MASK) >> TIMER_POS_M_MASK;
+            // verificação do valor 110 ou 111 que deve ser igual a 010 ou 011 dado que x10 ou x11 para count mode 2 ou 3
+            if(conf.count_mode == 6 || conf.count_mode == 7 ) conf.count_mode -= 4;
+            break;
+        }
+        case tsf_base: {
+            conf.byte = st & TIMER_BCD;
+            break;
+        }
+        default: return 1;      // If ERROR exit code 1
+    }
+    if(timer_print_config(timer, field, conf)) return 3;       // If ERROR exit code 3
+    return 0;   //ALL OK
 }
