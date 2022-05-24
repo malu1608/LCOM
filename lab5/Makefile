@@ -12,9 +12,9 @@ CPPFLAGS += -pedantic -D LAB5
 # list of library dependencies (for Lab 5, only LCF library)
 DPADD += ${LIBLCF}
 LDADD += -llcf
-LDADD += /home/lcom/labs/lab2/timer.o
-LDADD += /home/lcom/labs/lab2/utils.o
-LDADD += /home/lcom/labs/lab3/kbc.o
-LDADD += /home/lcom/labs/lab3/keyboard.o
+LDADD += /home/lcom/labs/g02/lab2/timer.o
+LDADD += /home/lcom/labs/g02/lab2/utils.o
+LDADD += /home/lcom/labs/g02/lab3/kbc.o
+LDADD += /home/lcom/labs/g02/lab3/keyboard.o
 # include LCOM's makefile that does all the "heavy lifting"
 .include <minix.lcom.mk>

@@ -4,7 +4,8 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-int counter_tic = 0;
+extern int counter;
+
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -31,62 +32,55 @@ int main(int argc, char *argv[]) {
 }
 
 int(timer_test_read_config)(uint8_t timer, enum timer_status_field field) {
-  /* To be implemented by the students */
-  //printf("%s is not yet implemented!\n", __func__);
-  uint8_t st;
-  timer_get_conf(timer, &st);
-  timer_display_conf(timer, st, field);
-  return 0;
+    uint8_t st;
+    if(timer_get_conf(timer, &st)) return 1; //ERROR handller 1
+    if(timer_display_conf(timer, st, field)) return 2; //ERROR handler 2
+    return 0;   //ALL OK
 }
 
 int(timer_test_time_base)(uint8_t timer, uint32_t freq) {
-  /* To be implemented by the students */
-  //printf("%s is not yet implemented!\n", __func__);
-  timer_set_frequency(timer, freq);
-  return 0;
+    if(timer_set_frequency(timer,freq)) return 1;
+    return 0;   //ALL OK
 }
 
+
 int(timer_test_int)(uint8_t time) {
-  /* To be implemented by the students */
-  //printf("%s is not yet implemented!\n", __func__);
-  int ipc_status;
-  message msg;
-  uint8_t irq_set = 0;
-  
-  timer_subscribe_int(&irq_set);
+    uint8_t irq_set;
+    //faz set do
+    timer_subscribe_int(&irq_set);
 
-  int counter_sec = 0;
+    // Variaveis do excerto de código dado pelo enunciado
+    int ipc_status;
+    message msg;
+    int r;
 
-  while(counter_sec != time) { /* You may want to use a different condition */
-    /* Get a request message. */
-    int r=0;
-    if( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
-      printf("driver_receive failed with: %d", r);
-      continue;
-    }
-
-    if (is_ipc_notify(ipc_status)) { /* received notification */
-      switch (_ENDPOINT_P(msg.m_source)) {
-        case HARDWARE: /* hardware interrupt notification */
-          if (msg.m_notify.interrupts & (BIT(irq_set))) { /* subscri14: ... */
-          /* process it */
-            timer_int_handler();
-            if (counter_tic % 60 == 0) {
-              counter_sec++;
-              timer_print_elapsed_time();  
+    //Ciclo dado no enunciado
+    while( counter < time * 60 ) {
+        /* Get a request message. */
+        if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
+            printf("driver_receive failed with: %d", r);
+            continue;
+        }
+        if (is_ipc_notify(ipc_status)) { /* received notification */
+            switch (_ENDPOINT_P(msg.m_source)) {
+                case HARDWARE: /* hardware interrupt notification */
+                    if (msg.m_notify.interrupts & BIT(irq_set)) { /* subscribed interrupt */
+                        //Incrementa a variavel global counter em 1
+                        timer_int_handler();
+                        //Quando passar 1 segundo isto é 60hz faz a função timer_print_elapsed_time()
+                        if(counter % 60 == 0){
+                            timer_print_elapsed_time();
+                        }
+                    }
+                    break;
+                default:
+                    break; /* no other notifications expected: do nothing */
             }
-          }
-          break;
-        default:
-          break; /* no other notifications expected: do nothi19: */
-      }
-    } else { 
-      /* received a standard message, not a notification21: */
-      /* no standard messages expected: do nothing */
+        } else {
+            /* received a standard message, not a notification */
+            /* no standard messages expected: do nothing */
+        }
     }
-  }
-
-  timer_unsubscribe_int();
-
-  return 0;
+    if (timer_unsubscribe_int())  return 1;
+    return 0;   //ALL OK
 }

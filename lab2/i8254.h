@@ -52,7 +52,14 @@
 #define TIMER_RB_STATUS_ BIT(4)
 #define TIMER_RB_SEL(n)  BIT((n) + 1)
 
-//#define BIT(n) (1 << n) //macro that gets us a number with only the n-th bit active
+/* Own definerd Constants*/
+//E because bit 0 equal 0 Reserved
+
+#define TIMER_M_MASK 0x0E
+#define TIMER_POS_M_MASK 1
+#define TIMER_IN_MASK 0x30
+#define TIMER_POS_IN_MASK 4
+#define TIMER0_IRQ_SET_MASK 0x00000001
 
 /**@}*/
 
