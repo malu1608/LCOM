@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
 
 int(video_test_init)(uint16_t mode, uint8_t delay) {
 
-    //chamadada modo grafico
+    //chamada do modo grafico
 
     vbe_mode_info_t info;
     
@@ -87,10 +87,6 @@ int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y){
     vg_exit();
 
     return 0;
-    /* To be completed */
-    //printf("%s(%8p, %u, %u): under construction\n", __func__, xpm, x, y);
-
-    //return 1;
 }
 
 int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint16_t yf,

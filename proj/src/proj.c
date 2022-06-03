@@ -2,6 +2,9 @@
 #include <stdio.h>
 
 #include "timer.h"
+#include "graphics.h"
+#include "player.h"
+#include "physicObj.h"
 
 
 int main(int argc, char *argv[]) {
@@ -27,6 +30,10 @@ int(proj_main_loop)(int argc, char* argv[])
         return 1;
     }
 
+    if (initialize_graphics() == NULL) {
+        vg_exit();
+    }
+
     int r;
     int ipc;
     message msg;
@@ -35,6 +42,10 @@ int(proj_main_loop)(int argc, char* argv[])
     int time = 400; //variável temporária!
 
     bool playing = true;
+
+    initializeObject();
+
+    struct Player* player = PlayerCreate(200, 50);
 
     //main loop
     while(playing) {
@@ -52,11 +63,22 @@ int(proj_main_loop)(int argc, char* argv[])
                     
                     --time;
 
-                    printf("%d \n", time);
-
                     if (time <= 0) playing = false;
+                    
 
-                    //graphics_handling();
+                    graphics_handling();
+
+                    //draw_rectangle((uint16_t) time + 201, 200, 40, 80, 0x000000);
+
+                    draw_rectangle((uint16_t) time + 200, 200, 40, 80, 0x000003);
+
+                    PlayerMove(player, 1, 0);
+                    
+                    //draw_rectangle(PlayerGetX(player), PlayerGetY(player), PlayerGetWidth(player), PlayerGetHeight(player), 0x000005);
+
+                    //draw_xpm(PlayerGetSprite(player), PlayerGetX(player), PlayerGetY(player)); NOT WORKING YET, CANT LOAD XPM
+
+                    //drawPlayer(player);
                     
                 }
                 break;
@@ -66,11 +88,12 @@ int(proj_main_loop)(int argc, char* argv[])
         }
     }
 
+    vg_exit();
+
     if (timer_unsubscribe(&timer_hook)) {
         printf("ERROR: Failed to unsubscribe to Timer0 \n");
         return 1;
     }
-
 
     printf("Program terminated");
     return 0;
