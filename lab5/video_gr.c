@@ -195,7 +195,7 @@ void draw_xpm(xpm_image_t img, uint16_t x, uint16_t y){
 
     for(uint16_t i = y; i < y + img.height; i++){
         for(uint16_t j = x; j < x + img.width; j++){
-            vg_draw_pixel(j, i, img.bytes[color_index]);
+            
             color_index++;
         }
     }

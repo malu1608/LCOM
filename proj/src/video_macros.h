@@ -1,5 +1,4 @@
-#ifndef _LCOM_VIDEO_MACROS_H_
-#define _LCOM_VIDEO_MACROS_H_
+#pragma once
 
 #define BASE_PHYS_ADDRESS 0
 #define MiB BIT(20)
@@ -53,5 +52,4 @@
 #define VBE_SET_GET_PALLETE_DATA 0x4F09
 #define VBE_SET_GET_PROT_INTERFACE 0x4F0A
 
-#endif
 

@@ -1,10 +1,10 @@
 #include <lcom/lcf.h>
 #include <stdio.h>
-
-#include "timer.h"
 #include "graphics.h"
+#include "timer.h"
 #include "player.h"
 #include "physicObj.h"
+#include "sprites.h"
 
 
 int main(int argc, char *argv[]) {
@@ -30,7 +30,7 @@ int(proj_main_loop)(int argc, char* argv[])
         return 1;
     }
 
-    if (initialize_graphics() == NULL) {
+    if (initialize_graphics() == 0) {
         vg_exit();
     }
 
@@ -65,14 +65,19 @@ int(proj_main_loop)(int argc, char* argv[])
 
                     if (time <= 0) playing = false;
                     
+                    xpm_image_t img;
+                    u_int8_t *map;
+                    map = xpm_load((xpm_map_t)playerSprite1, XPM_5_6_5, &img);
+                    draw_xpm(img, PlayerGetX(player), PlayerGetY(player), map);
 
-                    graphics_handling();
+                    //graphics_handling();
 
                     //draw_rectangle((uint16_t) time + 201, 200, 40, 80, 0x000000);
 
-                    draw_rectangle((uint16_t) time + 200, 200, 40, 80, 0x000003);
+                    //draw_rectangle((uint16_t) time + 200, 200, 40, 80, 0x000003);
 
                     PlayerMove(player, 1, 0);
+
                     
                     //draw_rectangle(PlayerGetX(player), PlayerGetY(player), PlayerGetWidth(player), PlayerGetHeight(player), 0x000005);
 
