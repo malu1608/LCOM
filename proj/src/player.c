@@ -11,7 +11,7 @@ struct Player {
     struct Vector position;
     uint16_t width;
     uint16_t height;
-
+    int intent;
     struct Vector momentum;
 
     bool jumping;
@@ -31,6 +31,7 @@ void PlayerInit(struct Player *self, uint16_t x, uint16_t y) {
     self->height = 200;
     self->charge = 0;
     self->jumping = false;
+    self->intent = 0;
 
     xpm_load(playerSprite1, 0, &self->frames[0]);
     self->frame = 0;
@@ -57,10 +58,8 @@ void PlayerDestroy(struct Player* player) {
 }
 
 void PlayerMove(struct Player* self, uint16_t diff_x, uint16_t diff_y) {
-    if (!self->jumping) {
-        self->position.x += diff_x;
-        self->position.y += diff_y;
-    }
+    self->position.x += diff_x;
+    self->position.y += diff_y;
 }
 
 void PlayerChargeJump(struct Player* self) {
@@ -73,6 +72,13 @@ void PlayerJump(struct Player* self) {
     self->charge = 0;
 }
 
+void PlayerIntent(struct Player* self, int x) {
+    self->intent = x;
+}
+
+void PlayerResetIntent(struct Player* self) {
+    self->intent = 0;
+}
 
 int PlayerGetWidth(struct Player* self) {
     return self->width;

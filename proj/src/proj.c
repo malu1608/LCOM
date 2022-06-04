@@ -2,10 +2,9 @@
 #include <stdio.h>
 #include "graphics.h"
 #include "timer.h"
-#include "player.h"
-#include "physicObj.h"
 #include "sprites.h"
 #include "keyboard.h"
+#include "gameManager.h"
 
 
 int main(int argc, char *argv[]) {
@@ -58,6 +57,8 @@ int(proj_main_loop)(int argc, char* argv[])
 
     struct Player* player = PlayerCreate(200, 50);
 
+    struct Manager* manager = GameManagerCreate(player);
+
 
 
     //main loop
@@ -78,7 +79,6 @@ int(proj_main_loop)(int argc, char* argv[])
                         if (tickdelay(micros_to_ticks(KBC_WAIT))) {
                             return 1;
                         }
-                        continue;
                     }
 
                     analyse_scancode();
@@ -103,15 +103,17 @@ int(proj_main_loop)(int argc, char* argv[])
                     }
 
                     if (scancode == A_MAKECODE || scancode == A_MAKECODE)
-                        PlayerMove(player, -5, 0);
+                        PlayerIntent(player, -1);
                     if (scancode == D_MAKECODE || scancode == D_MAKECODE)
-                        PlayerMove(player, 5, 0);
+                        PlayerIntent(player, 1);
                     
                     //draw_rectangle(PlayerGetX(player), PlayerGetY(player), PlayerGetWidth(player), PlayerGetHeight(player), 0x000005);
 
                     //draw_xpm(PlayerGetSprite(player), PlayerGetX(player), PlayerGetY(player)); //NOT WORKING YET, CANT LOAD XPM
 
                     //drawPlayer(player);
+
+                    PhysicsLoop(manager);
 
                     
                     

@@ -2,6 +2,7 @@
   "files.associations": {
     "keyboard.h": "c",
     "player.h": "c",
-    "i8042.h": "c"
+    "i8042.h": "c",
+    "gamemanager.h": "c"
   }
 }
