@@ -36,6 +36,7 @@ int(proj_main_loop)(int argc, char* argv[])
     }
     
     
+    
 
     int kbd_hook = KBD_IRQ;
 
@@ -57,7 +58,8 @@ int(proj_main_loop)(int argc, char* argv[])
 
     struct Player* player = PlayerCreate(200, 50);
 
-    struct Manager* manager = GameManagerCreate(player);
+    struct Manager* manager = GameManagerCreate(player, vg_info.x_res, vg_info.y_res);
+
 
 
 
@@ -94,6 +96,8 @@ int(proj_main_loop)(int argc, char* argv[])
                     //drawing a temporary player
                     
                     draw_rectangle(PlayerGetX(player), PlayerGetY(player), 96, 96, 0x000002);
+
+                    //draw_rectangle(-10, 700, 40, 40, 0x000003);
 
                     if (scancode == SPACE_MAKECODE) {
                         PlayerChargeJump(player);
@@ -142,6 +146,7 @@ int(proj_main_loop)(int argc, char* argv[])
     }
 
     sys_irqrmpolicy(&kbd_hook);
+
 
     printf("Program terminated");
     return 0;

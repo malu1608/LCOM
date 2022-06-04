@@ -101,9 +101,14 @@ int draw_hline(uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
 	return 0;
 }
 
-int draw_rectangle(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color) {
-	if (x > vg_info.x_res || y > vg_info.y_res)
+int draw_rectangle(int16_t x, int16_t y, uint16_t width, uint16_t height, uint32_t color) {
+	if (x < 0 || y < 0) {
 		return 0;
+	}
+	if (x > vg_info.x_res || y > vg_info.y_res) {
+		return 0;
+	}
+
 
 	if (x + width >= vg_info.x_res) {
 		width = vg_info.x_res - x;
@@ -126,7 +131,6 @@ void draw_xpm(xpm_image_t img, uint16_t x, uint16_t y) {//, uint8_t *map){
         for(uint16_t j = x; j < x + img.width; j++){
             uint8_t *ptr = (uint8_t*) buffer_base + j*vg_info.bytes_per_pixel + i*vg_info.x_res*vg_info.bytes_per_pixel;
             memcpy(ptr, map+(j-x)*vg_info.bytes_per_pixel + (i-j)*img.width*vg_info.bytes_per_pixel, vg_info.bytes_per_pixel); 
-        
         }
     }
 }

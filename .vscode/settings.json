@@ -3,6 +3,8 @@
     "keyboard.h": "c",
     "player.h": "c",
     "i8042.h": "c",
-    "gamemanager.h": "c"
+    "gamemanager.h": "c",
+    "graphics.h": "c",
+    "lcf.h": "c"
   }
 }
