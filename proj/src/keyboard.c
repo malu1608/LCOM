@@ -1,10 +1,8 @@
-
-#include <keyboard.h>
+#include "keyboard.h"
 #include "lcom/timer.h"
 #include <stdbool.h>
 #include <stdint.h>
 
-//GLOBAL HooK_ID
 int key_hook_id = KEYBOARD_IRQ;
 
 extern uint8_t scancode;

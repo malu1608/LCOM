@@ -1,6 +1,4 @@
-#ifndef KEYBOARD_H
-#define KEYBOARD_H
-
+#pragma once
 #include <stdbool.h>
 #include <stdint.h>
 #include "kbc.h"
@@ -11,4 +9,3 @@ int(keyboard_unsubscribe_int)();
 int(keyboard_scan_stop_key)( uint8_t stopkey);
 int(keyboard_poll_stop_key)( uint8_t stopkey);
 int(keyboard_timed_stop_key)( uint8_t stopkey, uint8_t time);
-#endif //KEYBOARD_H

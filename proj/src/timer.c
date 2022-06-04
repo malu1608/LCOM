@@ -1,5 +1,6 @@
 #include <lcom/lcf.h>
 #include <lcom/timer.h>
+#include "util.h"
 
 #include <stdint.h>
 
@@ -144,3 +145,4 @@ int (timer_display_conf)(uint8_t timer, uint8_t st,
     if(timer_print_config(timer, field, conf)) return 3;       // If ERROR exit code 3
     return 0;   //ALL OK
 }
+

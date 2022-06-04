@@ -1,4 +1,5 @@
 #include "kbc.h"
+#include "utils.h"
 
 //GLOBAL Status Register
 uint8_t stat;

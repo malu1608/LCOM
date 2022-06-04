@@ -16,8 +16,6 @@ int(util_get_MSB)(uint16_t val, uint8_t *msb) {
     return 0;   //ALL OK
 }
 
-
-
 int (util_sys_inb)(int port, uint8_t *value) {
     // Variavel onde irá ficar o valor no formato uint de 32 bit
     // necessario para chamada de função sys_inb dado que o valor
