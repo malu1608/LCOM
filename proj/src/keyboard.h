@@ -2,5 +2,17 @@
 #include <lcom/lcf.h>
 #include "i8042.h"
 
-int(keyboard_subscribe_int)(uint8_t *bit_no);
-int(keyboard_unsubscribe_int)();
+#include <stdbool.h>
+#include <stdint.h>
+
+extern uint8_t scancode;
+extern uint8_t is_scancode_complete;
+
+int (get_scancode)();
+
+void (analyse_scancode)();
+
+int kbc_reenable_default_int();
+
+int kbc_print_scancode_wrapper();
+

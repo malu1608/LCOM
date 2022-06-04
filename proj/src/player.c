@@ -2,11 +2,21 @@
 #include "sprites.h"
 
 
-struct Player {
+struct Vector {
     uint16_t x;
     uint16_t y;
+};
+
+struct Player {
+    struct Vector position;
     uint16_t width;
     uint16_t height;
+
+    struct Vector momentum;
+
+    bool jumping;
+
+    int charge;
 
     xpm_image_t frames[13];
 
@@ -15,10 +25,12 @@ struct Player {
 
 // Constructor (without allocation)
 void PlayerInit(struct Player *self, uint16_t x, uint16_t y) {
-    self->x = 50;
-    self->y = 50;
+    self->position.x = 50;
+    self->position.y = 50;
     self->width = 200;
     self->height = 200;
+    self->charge = 0;
+    self->jumping = false;
 
     xpm_load(playerSprite1, 0, &self->frames[0]);
     self->frame = 0;
@@ -45,8 +57,20 @@ void PlayerDestroy(struct Player* player) {
 }
 
 void PlayerMove(struct Player* self, uint16_t diff_x, uint16_t diff_y) {
-    self->x += diff_x;
-    self->y += diff_y;
+    if (!self->jumping) {
+        self->position.x += diff_x;
+        self->position.y += diff_y;
+    }
+}
+
+void PlayerChargeJump(struct Player* self) {
+    self->jumping = true;
+    self->charge++;
+}
+
+void PlayerJump(struct Player* self) {
+    self->jumping = true;
+    self->charge = 0;
 }
 
 
@@ -59,11 +83,11 @@ int PlayerGetHeight(struct Player* self) {
 }
 
 int PlayerGetX(struct Player* self) {
-    return self->x;
+    return self->position.x;
 }
 
 int PlayerGetY(struct Player* self) {
-    return self->y;
+    return self->position.y;
 }
 
 xpm_image_t PlayerGetSprite(struct Player* self) {

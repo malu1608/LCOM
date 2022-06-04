@@ -101,7 +101,7 @@ int draw_hline(uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
 	return 0;
 }
 
-int draw_rectangle(uint16_t x, uint16_t y, uint16_t height, uint16_t width, uint32_t color) {
+int draw_rectangle(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color) {
 	if (x > vg_info.x_res || y > vg_info.y_res)
 		return 0;
 
@@ -120,8 +120,8 @@ int draw_rectangle(uint16_t x, uint16_t y, uint16_t height, uint16_t width, uint
   	return 0;
 }
 
-void draw_xpm(xpm_image_t img, uint16_t x, uint16_t y, uint8_t *map){
-
+void draw_xpm(xpm_image_t img, uint16_t x, uint16_t y) {//, uint8_t *map){
+	uint8_t *map = 0;
     for(uint16_t i = y; i < y + img.height; i++){
         for(uint16_t j = x; j < x + img.width; j++){
             uint8_t *ptr = (uint8_t*) buffer_base + j*vg_info.bytes_per_pixel + i*vg_info.x_res*vg_info.bytes_per_pixel;
@@ -143,6 +143,6 @@ void erase_xpm(xpm_image_t img, uint16_t x, uint16_t y){
 }
 
 void graphics_handling() {
-	//draw_rectangle(0, 0, vg_info.x_res, vg_info.y_res, 0x000000);
+	draw_rectangle(0, 0, vg_info.x_res, vg_info.y_res, 0x000000);
     return;
 }

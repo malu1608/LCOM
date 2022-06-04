@@ -1,17 +1,18 @@
 #include "physicObj.h"
 
 
-uint16_t x;
+struct Platform {
+    uint16_t x;
+    uint16_t y;
 
-uint16_t y;
+    uint16_t width;
+    uint16_t height;
+};
 
-uint16_t width;
 
-uint16_t height;
-
-void initializeObject() {
-    x = 50;
-    y = 50;
-    width = 60;
-    height = 100;
+void PlatformInit(struct Platform *self, uint16_t x, uint16_t y, uint16_t width, uint16_t height) {
+    self->x = x;
+    self->y = y;
+    self->width = width;
+    self->height = height;
 }

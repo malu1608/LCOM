@@ -21,4 +21,9 @@ int PlayerGetX(struct Player* self);
 
 int PlayerGetY(struct Player* self);
 
+void PlayerChargeJump(struct Player* self);
+
+void PlayerJump(struct Player* self);
+
+
 xpm_image_t PlayerGetSprite(struct Player* self);

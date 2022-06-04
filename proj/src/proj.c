@@ -5,6 +5,7 @@
 #include "player.h"
 #include "physicObj.h"
 #include "sprites.h"
+#include "keyboard.h"
 
 
 int main(int argc, char *argv[]) {
@@ -30,25 +31,40 @@ int(proj_main_loop)(int argc, char* argv[])
         return 1;
     }
 
+    
     if (initialize_graphics() == 0) {
         vg_exit();
     }
+    
+    
+
+    int kbd_hook = KBD_IRQ;
+
+    int kbd_mask = BIT(kbd_hook);
+
+    if (sys_irqsetpolicy(KBD_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE, &kbd_hook) != OK) {
+        printf("Failed to subscribe to keyboard. \n");
+        return 1;
+    }
+
 
     int r;
     int ipc;
     message msg;
 
-    //Por si, o timer já está a 60Hz, portanto, num segundo vai interromper 60 vezes;
-    int time = 400; //variável temporária!
 
-    bool playing = true;
+    //bool playing = true;
 
-    initializeObject();
 
     struct Player* player = PlayerCreate(200, 50);
 
+
+
     //main loop
-    while(playing) {
+    while(scancode != ESC_BREAKCODE) {
+        //printf("ON LOOP");
+        if (is_scancode_complete)
+            kbc_print_scancode_wrapper();
 
         if ( (r = driver_receive(ANY, &msg, &ipc)) != 0) {
             printf("Function driver_receive fails with: %d \n", r);
@@ -58,33 +74,56 @@ int(proj_main_loop)(int argc, char* argv[])
             switch(_ENDPOINT_P(msg.m_source)) {
                 case HARDWARE:
                 if (msg.m_notify.interrupts & timer_mask) {
-                    
-                    //timer_int_handler();
-                    
-                    --time;
+                    if (get_scancode()) {
+                        if (tickdelay(micros_to_ticks(KBC_WAIT))) {
+                            return 1;
+                        }
+                        continue;
+                    }
 
-                    if (time <= 0) playing = false;
+                    analyse_scancode();
                     
-                    xpm_image_t img;
-                    u_int8_t *map;
-                    map = xpm_load((xpm_map_t)playerSprite1, XPM_5_6_5, &img);
-                    draw_xpm(img, PlayerGetX(player), PlayerGetY(player), map);
 
-                    //graphics_handling();
+
+                    graphics_handling();
 
                     //draw_rectangle((uint16_t) time + 201, 200, 40, 80, 0x000000);
 
                     //draw_rectangle((uint16_t) time + 200, 200, 40, 80, 0x000003);
 
-                    PlayerMove(player, 1, 0);
+                    //drawing a temporary player
+                    
+                    draw_rectangle(PlayerGetX(player), PlayerGetY(player), 96, 96, 0x000002);
 
+                    if (scancode == SPACE_MAKECODE) {
+                        PlayerChargeJump(player);
+                    }
+                    if (scancode == SPACE_BREAKCODE) {
+                        PlayerJump(player);
+                    }
+
+                    if (scancode == A_MAKECODE || scancode == A_MAKECODE)
+                        PlayerMove(player, -5, 0);
+                    if (scancode == D_MAKECODE || scancode == D_MAKECODE)
+                        PlayerMove(player, 5, 0);
                     
                     //draw_rectangle(PlayerGetX(player), PlayerGetY(player), PlayerGetWidth(player), PlayerGetHeight(player), 0x000005);
 
-                    //draw_xpm(PlayerGetSprite(player), PlayerGetX(player), PlayerGetY(player)); NOT WORKING YET, CANT LOAD XPM
+                    //draw_xpm(PlayerGetSprite(player), PlayerGetX(player), PlayerGetY(player)); //NOT WORKING YET, CANT LOAD XPM
 
                     //drawPlayer(player);
+
                     
+                    
+                }
+                if (msg.m_notify.interrupts & kbd_mask) {
+                    get_scancode();
+                    analyse_scancode();
+                    if (is_scancode_complete) {
+                        if (kbc_print_scancode_wrapper()) {
+                            return 1;
+                        }
+                    }
                 }
                 break;
                 default:
@@ -99,6 +138,8 @@ int(proj_main_loop)(int argc, char* argv[])
         printf("ERROR: Failed to unsubscribe to Timer0 \n");
         return 1;
     }
+
+    sys_irqrmpolicy(&kbd_hook);
 
     printf("Program terminated");
     return 0;
