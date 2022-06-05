@@ -18,8 +18,6 @@ struct Player {
 
     int charge;
 
-    xpm_image_t frames[13];
-
     int frame;
 };
 
@@ -27,13 +25,12 @@ struct Player {
 void PlayerInit(struct Player *self, int16_t x, int16_t y) {
     self->position.x = 50;
     self->position.y = 50;
-    self->width = 200;
-    self->height = 200;
+    self->width = 96;
+    self->height = 96;
     self->charge = 0;
     self->jumping = false;
     self->intent = 0;
 
-    xpm_load(playerSprite1, 0, &self->frames[0]);
     self->frame = 0;
 
 }
@@ -105,6 +102,10 @@ int16_t PlayerGetY(struct Player* self) {
     return self->position.y;
 }
 
-xpm_image_t PlayerGetSprite(struct Player* self) {
-    return self->frames[0];
+xpm_map_t PlayerGetSprite(struct Player* self) {
+    switch (self->frame) {
+        case 0: return (xpm_map_t)playerSprite1;
+    }
+    //return self->frames[0];
+    return (xpm_map_t)playerSprite1;
 }

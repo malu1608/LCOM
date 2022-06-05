@@ -33,4 +33,4 @@ void PlayerChargeJump(struct Player* self);
 
 void PlayerJump(struct Player* self);
 
-xpm_image_t PlayerGetSprite(struct Player* self);
+xpm_map_t PlayerGetSprite(struct Player* self);

@@ -6,7 +6,6 @@
 #include "keyboard.h"
 #include "gameManager.h"
 
-
 int main(int argc, char *argv[]) {
 
     if (lcf_start(argc, argv))
@@ -88,6 +87,7 @@ int(proj_main_loop)(int argc, char* argv[])
 
 
                     graphics_handling();
+                    
 
                     //draw_rectangle((uint16_t) time + 201, 200, 40, 80, 0x000000);
 
@@ -95,7 +95,7 @@ int(proj_main_loop)(int argc, char* argv[])
 
                     //drawing a temporary player
                     
-                    draw_rectangle(PlayerGetX(player), PlayerGetY(player), 96, 96, 0x000002);
+                    //draw_rectangle(PlayerGetX(player), PlayerGetY(player), 96, 96, 0xff2222);
 
                     //draw_rectangle(-10, 700, 40, 40, 0x000003);
 
@@ -116,6 +116,14 @@ int(proj_main_loop)(int argc, char* argv[])
                     //draw_xpm(PlayerGetSprite(player), PlayerGetX(player), PlayerGetY(player)); //NOT WORKING YET, CANT LOAD XPM
 
                     //drawPlayer(player);
+
+                    u_int8_t *map;
+                    xpm_image_t img;
+                    map = xpm_load(PlayerGetSprite(player), XPM_8_8_8_8, &img);
+                    
+                    
+                    draw_xpm(img, PlayerGetX(player), PlayerGetY(player), map);
+
 
                     PhysicsLoop(manager);
 

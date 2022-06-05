@@ -7,7 +7,7 @@ vbe_mode_info_summary_t vg_info;
 
 void *initialize_graphics() {
     vbe_mode_info_t vbe_info;
-    if (vbe_get_mode_info(0x105, &vbe_info) != 0) {
+    if (vbe_get_mode_info(0x14C, &vbe_info) != 0) {
         printf("Failed to obtain vbe_mode_info \n");
         return NULL;
     }
@@ -65,7 +65,7 @@ void *initialize_graphics() {
 
 	reg.ah = VBE_AH_FUNCTION_INDICATOR;
 	reg.al = VBE_AL_SET_MODE;
-	reg.bx = VBE_BX_SET_MODE_ARGUMENT | 0x105; 
+	reg.bx = VBE_BX_SET_MODE_ARGUMENT | 0x14C; 
 	reg.intno = VBE_INTERRUPT_NUMBER;
 
 	if(sys_int86(&reg) != 0 ) {
@@ -125,15 +125,39 @@ int draw_rectangle(int16_t x, int16_t y, uint16_t width, uint16_t height, uint32
   	return 0;
 }
 
-void draw_xpm(xpm_image_t img, uint16_t x, uint16_t y) {//, uint8_t *map){
-	uint8_t *map = 0;
-    for(uint16_t i = y; i < y + img.height; i++){
+void draw_xpm(xpm_image_t img, int16_t x, int16_t y, uint8_t *map){
+
+	if (x < 0) {
+		return;
+	}
+
+	if (y < 0 && y + img.height < 0) {
+		return;
+	}
+	if (x > vg_info.x_res || y > vg_info.y_res) {
+		return;
+	}
+
+	uint16_t offset = 0;
+
+	if (y < 0 ) {
+		offset = -y;
+	}
+
+	uint16_t height = img.height;
+	if (y + height >= vg_info.y_res) {
+		height = vg_info.y_res - y;
+	}
+
+    for(uint16_t i = y + offset; i < y + height; i++){
         for(uint16_t j = x; j < x + img.width; j++){
             uint8_t *ptr = (uint8_t*) buffer_base + j*vg_info.bytes_per_pixel + i*vg_info.x_res*vg_info.bytes_per_pixel;
-            memcpy(ptr, map+(j-x)*vg_info.bytes_per_pixel + (i-j)*img.width*vg_info.bytes_per_pixel, vg_info.bytes_per_pixel); 
+            memcpy(ptr, map+(j-x)*vg_info.bytes_per_pixel + (i-y)*img.width*vg_info.bytes_per_pixel, vg_info.bytes_per_pixel); 
+        
         }
     }
 }
+
 
 void erase_xpm(xpm_image_t img, uint16_t x, uint16_t y){
     int color = xpm_transparency_color(XPM_INDEXED);
