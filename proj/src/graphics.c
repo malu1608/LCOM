@@ -3,7 +3,10 @@
 
 void *buffer_base = NULL;
 
+static uint8_t *second_buffer;
+
 vbe_mode_info_summary_t vg_info;
+
 
 void *initialize_graphics() {
     vbe_mode_info_t vbe_info;
@@ -56,6 +59,8 @@ void *initialize_graphics() {
 		
 
 	buffer_base = vm_map_phys(SELF, (void *) vbe_info.PhysBasePtr, space_size);
+
+	second_buffer = malloc(space_size);
 	
 	if (buffer_base == MAP_FAILED)
 		printf("Mapping failed\n");
@@ -84,7 +89,7 @@ void *initialize_graphics() {
 
 
 int draw_pixel(uint16_t x, uint16_t y, uint32_t color) {
-	uint8_t *base = (uint8_t *) buffer_base + (y * vg_info.x_res + x) * vg_info.bytes_per_pixel;
+	uint8_t *base = (uint8_t *) second_buffer + (y * vg_info.x_res + x) * vg_info.bytes_per_pixel;
 	for (uint8_t j = 0; j < vg_info.bytes_per_pixel; ++j) {
 		*base = color >> (j * 8);
 		++base;
@@ -151,13 +156,20 @@ void draw_xpm(xpm_image_t img, int16_t x, int16_t y, uint8_t *map){
 
     for(uint16_t i = y + offset; i < y + height; i++){
         for(uint16_t j = x; j < x + img.width; j++){
-            uint8_t *ptr = (uint8_t*) buffer_base + j*vg_info.bytes_per_pixel + i*vg_info.x_res*vg_info.bytes_per_pixel;
+            uint8_t *ptr = (uint8_t*) second_buffer + j*vg_info.bytes_per_pixel + i*vg_info.x_res*vg_info.bytes_per_pixel;
             memcpy(ptr, map+(j-x)*vg_info.bytes_per_pixel + (i-y)*img.width*vg_info.bytes_per_pixel, vg_info.bytes_per_pixel); 
-        
         }
     }
 }
 
+
+void (destroy_second_buffer)(){
+  free(second_buffer);
+}
+
+void (refresh_screen)(){
+  memcpy(buffer_base, second_buffer, vg_info.x_res * vg_info.y_res * vg_info.bytes_per_pixel);
+}
 
 void erase_xpm(xpm_image_t img, uint16_t x, uint16_t y){
     int color = xpm_transparency_color(XPM_INDEXED);
@@ -165,7 +177,6 @@ void erase_xpm(xpm_image_t img, uint16_t x, uint16_t y){
     for(uint16_t i = y; i < y + img.height; i++){
         for(uint16_t j = x; j < x + img.width; j++){
             draw_pixel(j, i, color);
-						printf("%d", color);
         }
     }
 }

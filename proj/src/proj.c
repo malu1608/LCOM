@@ -111,6 +111,8 @@ int(proj_main_loop)(int argc, char* argv[])
 
 
                     PhysicsLoop(manager);
+
+                    refresh_screen();
                     
                 }
                 if (msg.m_notify.interrupts & kbd_mask) {

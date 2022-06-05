@@ -25,5 +25,8 @@ void draw_xpm(xpm_image_t img, int16_t x, int16_t y, uint8_t *map);
 
 void erase_xpm(xpm_image_t img, uint16_t x, uint16_t y);
 
+void (destroy_second_buffer)();
+
+void (refresh_screen)();
 
 void graphics_handling();
