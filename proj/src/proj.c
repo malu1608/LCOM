@@ -51,15 +51,9 @@ int(proj_main_loop)(int argc, char* argv[])
     int ipc;
     message msg;
 
-
-    //bool playing = true;
-
-
     struct Player* player = PlayerCreate(200, 50);
 
     struct Manager* manager = GameManagerCreate(player, vg_info.x_res, vg_info.y_res);
-
-
 
 
     //main loop
@@ -84,20 +78,8 @@ int(proj_main_loop)(int argc, char* argv[])
 
                     analyse_scancode();
                     
-
-
                     graphics_handling();
                     
-
-                    //draw_rectangle((uint16_t) time + 201, 200, 40, 80, 0x000000);
-
-                    //draw_rectangle((uint16_t) time + 200, 200, 40, 80, 0x000003);
-
-                    //drawing a temporary player
-                    
-                    //draw_rectangle(PlayerGetX(player), PlayerGetY(player), 96, 96, 0xff2222);
-
-                    //draw_rectangle(-10, 700, 40, 40, 0x000003);
 
                     if (scancode == SPACE_MAKECODE) {
                         PlayerChargeJump(player);
@@ -111,11 +93,14 @@ int(proj_main_loop)(int argc, char* argv[])
                     if (scancode == D_MAKECODE || scancode == D_MAKECODE)
                         PlayerIntent(player, 1);
                     
-                    //draw_rectangle(PlayerGetX(player), PlayerGetY(player), PlayerGetWidth(player), PlayerGetHeight(player), 0x000005);
+                    //draw_rectangle(plat->x, plat->y, plat->width, plat->height, 0x000005);
 
                     //draw_xpm(PlayerGetSprite(player), PlayerGetX(player), PlayerGetY(player)); //NOT WORKING YET, CANT LOAD XPM
 
                     //drawPlayer(player);
+
+                    
+                    DrawLevel(manager);
 
                     u_int8_t *map;
                     xpm_image_t img;
@@ -126,8 +111,6 @@ int(proj_main_loop)(int argc, char* argv[])
 
 
                     PhysicsLoop(manager);
-
-                    
                     
                 }
                 if (msg.m_notify.interrupts & kbd_mask) {

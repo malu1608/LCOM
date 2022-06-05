@@ -5,6 +5,7 @@
     "i8042.h": "c",
     "gamemanager.h": "c",
     "graphics.h": "c",
-    "lcf.h": "c"
+    "lcf.h": "c",
+    "physicobj.h": "c"
   }
 }

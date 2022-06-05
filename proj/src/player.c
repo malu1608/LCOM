@@ -16,6 +16,8 @@ struct Player {
 
     bool jumping;
 
+    bool flipped;
+
     int charge;
 
     int frame;
@@ -30,6 +32,7 @@ void PlayerInit(struct Player *self, int16_t x, int16_t y) {
     self->charge = 0;
     self->jumping = false;
     self->intent = 0;
+    self->flipped = false;
 
     self->frame = 0;
 
@@ -60,6 +63,10 @@ void PlayerSetPosition(struct Player* self, int16_t x, int16_t y) {
 }
 
 void PlayerMove(struct Player* self, int16_t diff_x, int16_t diff_y) {
+    if (diff_x > 0)
+        self->flipped = false;
+    if (diff_x < 0)
+        self->flipped = true;
     self->position.x += diff_x;
     self->position.y += diff_y;
 }
@@ -104,7 +111,7 @@ int16_t PlayerGetY(struct Player* self) {
 
 xpm_map_t PlayerGetSprite(struct Player* self) {
     switch (self->frame) {
-        case 0: return (xpm_map_t)playerSprite1;
+        case 0: return (self->flipped)? (xpm_map_t)playerSprite1Flipped : (xpm_map_t)playerSprite1;
     }
     //return self->frames[0];
     return (xpm_map_t)playerSprite1;

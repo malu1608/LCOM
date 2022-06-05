@@ -1,11 +1,17 @@
-#pragma once
 #include <lcom/lcf.h>
 
 #include "player.h"
-#include "physicObj.h"
 
 
 #define GRAVITY 2
+
+struct Platform;
+
+struct Platform* PlatformCreate(int16_t x, int16_t y, uint16_t width, uint16_t height);
+
+void PlatformInit(struct Platform *self, int16_t x, int16_t y, uint16_t width, uint16_t height);
+
+struct Level;
 
 struct Manager* GameManagerCreate(struct Player *player, uint16_t x_res, uint16_t y_res);
 
@@ -15,3 +21,6 @@ bool checkCollisions(struct Player *player);
 
 void PhysicsLoop(struct Manager *self);
 
+void loadLevel1(struct Level *level, struct Manager *manager);
+
+void DrawLevel(struct Manager *self);
