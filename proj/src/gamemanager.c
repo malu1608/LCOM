@@ -121,14 +121,39 @@ void PhysicsLoop(struct Manager *self) {
 
     if (diff_x != 0) {
         if (diff_x > 0) {
-
+            for (int i = 0; i < 5; i++) {
+                if (p_y > self->levels[0]->platforms[i]->y + self->levels[0]->platforms[i]->height || self->levels[0]->platforms[i]->y > p_y + p_height)
+                    continue;
+                if (p_x + p_width == self->levels[0]->platforms[i]->x) {
+                    PlayerSetMomentumX(self->player, -PlayerGetMomentumX(self->player));
+                    diff_x = 0;
+                    break;
+                }
+                if (p_x + p_width + p_movement + p_momentum_x + 1 > self->levels[0]->platforms[i]->x && p_x + p_width <= self->levels[0]->platforms[i]->x){
+                    if (self->levels[0]->platforms[i]->x - p_x - p_width < diff_x)
+                        diff_x = self->levels[0]->platforms[i]->x - p_x - p_width;
+                } 
+            }
         } else {
-
+            for (int i = 0; i < 5; i++) {
+                if (p_y > self->levels[0]->platforms[i]->y + self->levels[0]->platforms[i]->height || self->levels[0]->platforms[i]->y > p_y + p_height)
+                    continue;
+                if (p_x == self->levels[0]->platforms[i]->x + self->levels[0]->platforms[i]->width) {
+                    PlayerSetMomentumX(self->player, -PlayerGetMomentumX(self->player));
+                    diff_x = 0;
+                    break;
+                }
+                if (p_x + p_movement + p_momentum_x - 1 < self->levels[0]->platforms[i]->x + self->levels[0]->platforms[i]->width && p_x >= self->levels[0]->platforms[i]->x + self->levels[0]->platforms[i]->width){
+                    if (p_x - self->levels[0]->platforms[i]->x - self->levels[0]->platforms[i]->width > diff_x)
+                        diff_x = self->levels[0]->platforms[i]->x + self->levels[0]->platforms[i]->width - p_x;
+                } 
+            }
         }
     }
 
-    PlayerMove(self->player, PlayerGetMovement(self->player), 0);
-    PlayerMove(self->player, PlayerGetMomentumX(self->player), 0);
+    // PlayerMove(self->player, PlayerGetMovement(self->player), 0);
+    // PlayerMove(self->player, PlayerGetMomentumX(self->player), 0);
+    PlayerMove(self->player, diff_x, 0);
 
     //if not floored move down
     if (!PlayerGetFloored(self->player)){
@@ -209,10 +234,10 @@ void loadLevel1(struct Level *level, struct Manager *manager) {
     level->platforms[2]->width = 80;
     level->platforms[2]->height = 40;
 
-    level->platforms[3]->x = 10;
-    level->platforms[3]->y = 60;
+    level->platforms[3]->x = 150;
+    level->platforms[3]->y = 700;
     level->platforms[3]->width = 10;
-    level->platforms[3]->height = 40;
+    level->platforms[3]->height = 100;
 
     level->platforms[4]->x = 0;
     level->platforms[4]->y = 0;
