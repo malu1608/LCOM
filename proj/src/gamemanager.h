@@ -3,7 +3,7 @@
 #include "player.h"
 
 
-#define GRAVITY 2
+#define GRAVITY 12
 
 struct Platform;
 

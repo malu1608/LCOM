@@ -58,9 +58,99 @@ bool checkCollisions(struct Player *player) {
 
 void PhysicsLoop(struct Manager *self) {
 
-    PlayerMove(self->player, PlayerGetIntent(self->player) * 5, 0);
+    //PlayerMove(self->player, PlayerGetIntent(self->player) * 5, 0);
 
-    PlayerResetIntent(self->player);
+
+    int16_t p_x = PlayerGetX(self->player);
+    int16_t p_y = PlayerGetY(self->player);
+    uint16_t p_width = PlayerGetWidth(self->player);
+    uint16_t p_height = PlayerGetHeight(self->player);
+    int16_t p_momentum_x = PlayerGetMomentumX(self->player);
+    int16_t p_momentum_y = PlayerGetMomentumY(self->player);
+    int16_t p_movement = PlayerGetMovement(self->player);
+    //int16_t p_momentum_y = PlayerGetMomentumY(self->player);
+
+
+    int16_t diff_y = GRAVITY + p_momentum_y;
+    int16_t diff_x = p_momentum_x + p_movement;
+    PlayerSetFloored(self->player, false);
+
+    draw_rectangle(30, 30, 10, 10, 0xff0000);
+    draw_rectangle(10, 30, 10, 10, 0xff0000);
+    draw_rectangle(20, 40, 10, 10, 0xff0000);
+    draw_rectangle(20, 20, 10, 10, 0xff0000);
+    if (diff_x > 0) {
+        draw_rectangle(30, 30, 10, 10, 0x00ff00);
+    } else if (diff_x < 0) {
+        draw_rectangle(10, 30, 10, 10, 0x00ff00);
+    }
+    if (diff_y > 0) {
+        draw_rectangle(20, 40, 10, 10, 0x00ff00);
+    } else if(diff_y < 0){
+        draw_rectangle(20, 20, 10, 10, 0x00ff00);
+    }
+
+    if (diff_y > 0) { //going down
+        for (int i = 0; i < 5; i++) {
+            if (p_x > self->levels[0]->platforms[i]->x + self->levels[0]->platforms[i]->width || self->levels[0]->platforms[i]->x > p_x + p_width)
+                continue;
+            if (p_y + p_height == self->levels[0]->platforms[i]->y) {
+                PlayerSetFloored(self->player, true);
+                break;
+            }
+            if (p_y + p_height + GRAVITY + p_momentum_y + 1 > self->levels[0]->platforms[i]->y && p_y + p_height  <= self->levels[0]->platforms[i]->y){
+                if (self->levels[0]->platforms[i]->y - (p_y + p_height)< diff_y)
+                    diff_y = self->levels[0]->platforms[i]->y - (p_y + p_height);
+            } 
+        }
+    } else if (diff_y < 0) { //going up
+        for (int i = 0; i < 5; i++) {
+            if (p_x > self->levels[0]->platforms[i]->x + self->levels[0]->platforms[i]->width || self->levels[0]->platforms[i]->x > p_x + p_width)
+                continue;
+            if (p_y == self->levels[0]->platforms[i]->y + self->levels[0]->platforms[i]->height) {
+                PlayerSetMomentumY(self->player, -PlayerGetMomentumY(self->player));
+                diff_y = 0;
+                break;
+            }
+            if (p_y + GRAVITY + p_momentum_y - 1 < self->levels[0]->platforms[i]->y + self->levels[0]->platforms[i]->height && p_y >= self->levels[0]->platforms[i]->y + self->levels[0]->platforms[i]->height){
+                if (self->levels[0]->platforms[i]->y + self->levels[0]->platforms[i]->height - p_y > diff_y)
+                    diff_y = self->levels[0]->platforms[i]->y + self->levels[0]->platforms[i]->height - p_y;
+            } 
+        }
+    }
+
+    if (diff_x != 0) {
+        if (diff_x > 0) {
+
+        } else {
+
+        }
+    }
+
+    PlayerMove(self->player, PlayerGetMovement(self->player), 0);
+    PlayerMove(self->player, PlayerGetMomentumX(self->player), 0);
+
+    //if not floored move down
+    if (!PlayerGetFloored(self->player)){
+        //if there is movement turn it to momentum
+        if (PlayerGetMovement(self->player) != 0) {
+            PlayerSetMomentumX(self->player, PlayerGetMovement(self->player) / 1.5);
+            PlayerSetMovement(self->player, 0);
+        }
+        PlayerMove(self->player, 0, diff_y);
+        draw_rectangle(10, 10, 10, 10, 0xff0000); // A little signal to tell if its floored (GREEN is floored, RED isnt)
+        //PRECESS MOMENTUM
+    }
+    else{
+        draw_rectangle(10, 10, 10, 10, 0x00ff00); // A little signal to tell if its floored (GREEN is floored, RED isnt)
+        //PlayerMove(self->player, PlayerGetIntent(self->player) * 5, 0);
+        //When floored the player shall not move;
+        PlayerResetMomentum(self->player);
+        //turn intent into movement
+        //TODO: only if not jumping
+        PlayerSetMovement(self->player, PlayerGetIntent(self->player) * PlayerGetSpeed(self->player));
+        PlayerResetIntent(self->player);
+    }
     
     
     /*
@@ -77,16 +167,17 @@ void PhysicsLoop(struct Manager *self) {
     if ((PlayerGetY(self->player) > self->y_limit + 20)) {
         PlayerSetPosition(self->player, PlayerGetX(self->player), 0-PlayerGetHeight(self->player));
         if (self->level == 0){
-            PlayerSetPosition(self->player, PlayerGetX(self->player), 700);
+            PlayerSetPosition(self->player, PlayerGetX(self->player), 600);
         }
-        self->level--;
+        else {
+            self->level--;
+        }
     }
     else if ((PlayerGetY(self->player) + PlayerGetHeight(self->player) < -20)) {
         PlayerSetPosition(self->player, PlayerGetX(self->player), self->y_limit);
         self->level++;
     }
 
-    PlayerMove(self->player, 0, GRAVITY);
 }
 
 void DrawLevel(struct Manager *self) {
@@ -108,10 +199,10 @@ void loadLevel1(struct Level *level, struct Manager *manager) {
     level->platforms[0]->width = 1152;
     level->platforms[0]->height = 64;
 
-    level->platforms[1]->x = 600;
-    level->platforms[1]->y = 60;
+    level->platforms[1]->x = 800;
+    level->platforms[1]->y = 0;
     level->platforms[1]->width = 80;
-    level->platforms[1]->height = 40;
+    level->platforms[1]->height = 800;
 
     level->platforms[2]->x = 200;
     level->platforms[2]->y = 600;
@@ -123,9 +214,8 @@ void loadLevel1(struct Level *level, struct Manager *manager) {
     level->platforms[3]->width = 10;
     level->platforms[3]->height = 40;
 
-    level->platforms[4]->x = 30;
-    level->platforms[4]->y = 200;
-    level->platforms[4]->width = 40;
-    level->platforms[4]->height = 40;
+    level->platforms[4]->x = 0;
+    level->platforms[4]->y = 0;
+    level->platforms[4]->width = 1152;
+    level->platforms[4]->height = 20;
 }
-

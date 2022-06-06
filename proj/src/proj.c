@@ -35,7 +35,7 @@ int(proj_main_loop)(int argc, char* argv[])
     }
     
     
-    
+    //bool draw = true;
 
     int kbd_hook = KBD_IRQ;
 
@@ -86,6 +86,7 @@ int(proj_main_loop)(int argc, char* argv[])
                     }
                     if (scancode == SPACE_BREAKCODE) {
                         PlayerJump(player);
+                        draw_rectangle(40, 30, 10, 10, 0x0000ff);
                     }
 
                     if (scancode == A_MAKECODE || scancode == A_MAKECODE)
@@ -100,19 +101,26 @@ int(proj_main_loop)(int argc, char* argv[])
                     //drawPlayer(player);
 
                     
-                    DrawLevel(manager);
 
                     u_int8_t *map;
                     xpm_image_t img;
                     map = xpm_load(PlayerGetSprite(player), XPM_8_8_8_8, &img);
                     
-                    
+                    //if (draw) {
+                    DrawLevel(manager);
                     draw_xpm(img, PlayerGetX(player), PlayerGetY(player), map);
+                    //} 
 
 
                     PhysicsLoop(manager);
 
+                    
+                    //if (draw) {
                     refresh_screen();
+                    //     draw = false;
+                    // } else {
+                    //     draw = true;
+                    // }
                     
                 }
                 if (msg.m_notify.interrupts & kbd_mask) {
@@ -140,6 +148,9 @@ int(proj_main_loop)(int argc, char* argv[])
 
     sys_irqrmpolicy(&kbd_hook);
 
+    uint32_t value;
+    //This sys_inb to the DATA_PORT will make sure our program doesn't leave anything there making it never finish.
+    sys_inb(0x60, &value);
 
     printf("Program terminated");
     return 0;

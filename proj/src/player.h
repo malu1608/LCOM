@@ -29,8 +29,28 @@ int16_t PlayerGetX(struct Player* self);
 
 int16_t PlayerGetY(struct Player* self);
 
+int16_t PlayerGetMomentumX(struct Player* self);
+
+int16_t PlayerGetMomentumY(struct Player* self);
+
+void PlayerSetMomentumX(struct Player* self, int16_t new_mom);
+
+void PlayerSetMomentumY(struct Player* self, int16_t new_mom);
+
+void PlayerResetMomentum(struct Player* self);
+
+int16_t PlayerGetMovement(struct Player* self);
+
+void PlayerSetMovement(struct Player* self, int16_t new_move);
+
 void PlayerChargeJump(struct Player* self);
 
 void PlayerJump(struct Player* self);
+
+bool PlayerGetFloored(struct Player* self);
+
+void PlayerSetFloored(struct Player* self, bool floored);
+
+uint16_t PlayerGetSpeed(struct Player* self);
 
 xpm_map_t PlayerGetSprite(struct Player* self);

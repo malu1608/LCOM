@@ -6,6 +6,7 @@
     "gamemanager.h": "c",
     "graphics.h": "c",
     "lcf.h": "c",
-    "physicobj.h": "c"
+    "physicobj.h": "c",
+    "sprites.h": "c"
   }
 }
