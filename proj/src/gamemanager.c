@@ -11,7 +11,9 @@ struct Platform {
 
 
 struct Level {
-    struct Platform *platforms[5];
+    struct Platform *platforms[7];
+
+    int size;
 };
 
 
@@ -91,7 +93,7 @@ void PhysicsLoop(struct Manager *self) {
     }
 
     if (diff_y > 0) { //going down
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < self->levels[0]->size; i++) {
             if (p_x > self->levels[0]->platforms[i]->x + self->levels[0]->platforms[i]->width || self->levels[0]->platforms[i]->x > p_x + p_width)
                 continue;
             if (p_y + p_height == self->levels[0]->platforms[i]->y) {
@@ -104,11 +106,14 @@ void PhysicsLoop(struct Manager *self) {
             } 
         }
     } else if (diff_y < 0) { //going up
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < self->levels[0]->size; i++) {
             if (p_x > self->levels[0]->platforms[i]->x + self->levels[0]->platforms[i]->width || self->levels[0]->platforms[i]->x > p_x + p_width)
                 continue;
             if (p_y == self->levels[0]->platforms[i]->y + self->levels[0]->platforms[i]->height) {
-                PlayerSetMomentumY(self->player, -PlayerGetMomentumY(self->player));
+                PlayerSetMomentumY(self->player, 0); // PROBLEM: THIS IS NOT RESETTING!
+                if (!PlayerGetFloored(self->player))
+                    PlayerSetBounce(self->player, true);
+                draw_rectangle(50, 40, 10, 10, 0xff00ff);
                 diff_y = 0;
                 break;
             }
@@ -120,12 +125,14 @@ void PhysicsLoop(struct Manager *self) {
     }
 
     if (diff_x != 0) {
-        if (diff_x > 0) {
-            for (int i = 0; i < 5; i++) {
+        if (diff_x > 0) { //going right
+            for (int i = 0; i < self->levels[0]->size; i++) {
                 if (p_y > self->levels[0]->platforms[i]->y + self->levels[0]->platforms[i]->height || self->levels[0]->platforms[i]->y > p_y + p_height)
                     continue;
                 if (p_x + p_width == self->levels[0]->platforms[i]->x) {
-                    PlayerSetMomentumX(self->player, -PlayerGetMomentumX(self->player));
+                    PlayerSetMomentumX(self->player, -PlayerGetMomentumX(self->player) / 2);
+                    if (!PlayerGetFloored(self->player))
+                        PlayerSetBounce(self->player, true);
                     diff_x = 0;
                     break;
                 }
@@ -134,12 +141,14 @@ void PhysicsLoop(struct Manager *self) {
                         diff_x = self->levels[0]->platforms[i]->x - p_x - p_width;
                 } 
             }
-        } else {
-            for (int i = 0; i < 5; i++) {
+        } else { //going left
+            for (int i = 0; i < self->levels[0]->size; i++) {
                 if (p_y > self->levels[0]->platforms[i]->y + self->levels[0]->platforms[i]->height || self->levels[0]->platforms[i]->y > p_y + p_height)
                     continue;
                 if (p_x == self->levels[0]->platforms[i]->x + self->levels[0]->platforms[i]->width) {
-                    PlayerSetMomentumX(self->player, -PlayerGetMomentumX(self->player));
+                    PlayerSetMomentumX(self->player, -PlayerGetMomentumX(self->player) / 2);
+                    if (!PlayerGetFloored(self->player))
+                        PlayerSetBounce(self->player, true);
                     diff_x = 0;
                     break;
                 }
@@ -159,12 +168,18 @@ void PhysicsLoop(struct Manager *self) {
     if (!PlayerGetFloored(self->player)){
         //if there is movement turn it to momentum
         if (PlayerGetMovement(self->player) != 0) {
-            PlayerSetMomentumX(self->player, PlayerGetMovement(self->player) / 1.5);
+            PlayerSetMomentumX(self->player, PlayerGetMovement(self->player) / 2);
             PlayerSetMovement(self->player, 0);
+        }
+        if (p_momentum_y < 0) {
+            PlayerSetMomentumY(self->player, p_momentum_y + 1);
         }
         PlayerMove(self->player, 0, diff_y);
         draw_rectangle(10, 10, 10, 10, 0xff0000); // A little signal to tell if its floored (GREEN is floored, RED isnt)
-        //PRECESS MOMENTUM
+
+        if (PlayerGetBounce(self->player)) {
+            PlayerSetAnimation(self->player, 5);
+        }
     }
     else{
         draw_rectangle(10, 10, 10, 10, 0x00ff00); // A little signal to tell if its floored (GREEN is floored, RED isnt)
@@ -173,8 +188,30 @@ void PhysicsLoop(struct Manager *self) {
         PlayerResetMomentum(self->player);
         //turn intent into movement
         //TODO: only if not jumping
-        PlayerSetMovement(self->player, PlayerGetIntent(self->player) * PlayerGetSpeed(self->player));
-        PlayerResetIntent(self->player);
+        draw_rectangle(20, 10, 10, 10, 0xff0000);
+        if (!PlayerGetJumping(self->player)) {
+            draw_rectangle(20, 10, 10, 10, 0x00ff00);
+            PlayerSetMovement(self->player, PlayerGetIntent(self->player) * PlayerGetSpeed(self->player));
+        }
+        else {
+            PlayerSetMovement(self->player, 0);
+        }
+        if (PlayerGetBounce(self->player)) {
+            PlayerSetAnimation(self->player, 6);
+            PlayerSetLaid(self->player, true);
+            PlayerSetBounce(self->player, false);
+        }
+        else if (PlayerGetMovement(self->player) != 0) {
+            PlayerSetAnimation(self->player, 2);
+        }
+        else {
+            if (PlayerGetLaid(self->player))
+                PlayerSetAnimation(self->player, 6);
+            else if (PlayerGetJumping(self->player)) 
+                PlayerSetAnimation(self->player, 1);
+            else
+                PlayerSetAnimation(self->player, 0);
+        }
     }
     
     
@@ -206,18 +243,21 @@ void PhysicsLoop(struct Manager *self) {
 }
 
 void DrawLevel(struct Manager *self) {
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < self->levels[0]->size; i++) {
         draw_rectangle(self->levels[0]->platforms[i]->x, self->levels[0]->platforms[i]->y, self->levels[0]->platforms[i]->width, self->levels[0]->platforms[i]->height, 0xff00ff);
     }
 }
 
 
 void loadLevel1(struct Level *level, struct Manager *manager) {
+    level->size = 7;
     level->platforms[0] = (struct Platform*) malloc(sizeof(struct Platform));
     level->platforms[1] = (struct Platform*) malloc(sizeof(struct Platform));
     level->platforms[2] = (struct Platform*) malloc(sizeof(struct Platform));
     level->platforms[3] = (struct Platform*) malloc(sizeof(struct Platform));
     level->platforms[4] = (struct Platform*) malloc(sizeof(struct Platform));
+    level->platforms[5] = (struct Platform*) malloc(sizeof(struct Platform));
+    level->platforms[6] = (struct Platform*) malloc(sizeof(struct Platform));
 
     level->platforms[0]->x = 0;
     level->platforms[0]->y = 800;
@@ -243,4 +283,15 @@ void loadLevel1(struct Level *level, struct Manager *manager) {
     level->platforms[4]->y = 0;
     level->platforms[4]->width = 1152;
     level->platforms[4]->height = 20;
+
+    //LIMITS
+    level->platforms[5]->x = 0;
+    level->platforms[5]->y = 0;
+    level->platforms[5]->width = 10;
+    level->platforms[5]->height = manager->y_limit;
+
+    level->platforms[6]->x = manager->x_limit - 10;
+    level->platforms[6]->y = 0;
+    level->platforms[6]->width = 10;
+    level->platforms[6]->height = manager->y_limit;
 }

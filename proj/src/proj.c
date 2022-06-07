@@ -55,6 +55,8 @@ int(proj_main_loop)(int argc, char* argv[])
 
     struct Manager* manager = GameManagerCreate(player, vg_info.x_res, vg_info.y_res);
 
+    bool pressed_space = false;
+
 
     //main loop
     while(scancode != ESC_BREAKCODE) {
@@ -81,24 +83,27 @@ int(proj_main_loop)(int argc, char* argv[])
                     graphics_handling();
                     
 
-                    if (scancode == SPACE_MAKECODE) {
-                        PlayerChargeJump(player);
+                    if (scancode == A_MAKECODE) {
+                        PlayerLeftPressed(player);
+                    } else if (scancode == A_BREAKCODE) {
+                        PlayerLeftReleased(player);
+                    } else if (scancode == D_MAKECODE) {
+                        PlayerRightPressed(player);
+                    } else if (scancode == D_BREAKCODE) {
+                        PlayerRightReleased(player);
                     }
-                    if (scancode == SPACE_BREAKCODE) {
+
+                    if (scancode == SPACE_MAKECODE) {
+                        pressed_space = true;
+                    }
+                    if (pressed_space)
+                     PlayerChargeJump(player);
+                     
+                    if (scancode == SPACE_BREAKCODE && pressed_space) {
                         PlayerJump(player);
                         draw_rectangle(40, 30, 10, 10, 0x0000ff);
+                        pressed_space = false;
                     }
-
-                    if (scancode == A_MAKECODE || scancode == A_MAKECODE)
-                        PlayerIntent(player, -1);
-                    if (scancode == D_MAKECODE || scancode == D_MAKECODE)
-                        PlayerIntent(player, 1);
-                    
-                    //draw_rectangle(plat->x, plat->y, plat->width, plat->height, 0x000005);
-
-                    //draw_xpm(PlayerGetSprite(player), PlayerGetX(player), PlayerGetY(player)); //NOT WORKING YET, CANT LOAD XPM
-
-                    //drawPlayer(player);
 
                     
 
@@ -113,6 +118,29 @@ int(proj_main_loop)(int argc, char* argv[])
 
 
                     PhysicsLoop(manager);
+
+                    draw_rectangle(100, 25, 10, 10, 0xff0000);
+
+                    draw_rectangle(115, 25, 10, 10, 0xff0000);
+
+                    draw_rectangle(115, 10, 10, 10, 0xff0000);
+
+                    draw_rectangle(130, 25, 10, 10, 0xff0000);
+
+                    draw_rectangle(160, 25, 40, 10, 0xff0000);
+
+
+                    if (PlayerGetLeftKey(player)) {
+                        draw_rectangle(100, 25, 10, 10, 0x00ff00);
+                    }
+
+                    if (PlayerGetRightKey(player)) {
+                        draw_rectangle(130, 25, 10, 10, 0x00ff00);
+                    }
+
+                    if (pressed_space) {
+                        draw_rectangle(160, 25, 40, 10, 0x00ff00);
+                    }
 
                     
                     //if (draw) {
