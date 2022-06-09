@@ -7,6 +7,9 @@
     "graphics.h": "c",
     "lcf.h": "c",
     "physicobj.h": "c",
-    "sprites.h": "c"
+    "sprites.h": "c",
+    "*.xpm": "c",
+    "menu.h": "c",
+    "changem.h": "c"
   }
 }

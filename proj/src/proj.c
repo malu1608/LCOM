@@ -1,13 +1,21 @@
 #include <lcom/lcf.h>
 #include <stdio.h>
-#include "graphics.h"
 #include "timer.h"
 #include "sprites.h"
 #include "keyboard.h"
 #include "gameManager.h"
+#include "menu.h"
 
 int main(int argc, char *argv[]) {
+    lcf_set_language("EN-US");
 
+  // enables to log function invocations that are being "wrapped" by LCF
+  // [comment this out if you don't want/need it]
+    lcf_trace_calls("/home/lcom/labs/proj/trace.txt");
+
+  // enables to save the output of printf function calls on a file
+  // [comment this out if you don't want/need it]
+    lcf_log_output("/home/lcom/labs/proj/output.txt");
     if (lcf_start(argc, argv))
     return 1;
 
@@ -24,17 +32,19 @@ int(proj_main_loop)(int argc, char* argv[])
 
     int timer_mask = BIT(timer_hook);
 
+   
+
     if (timer_subscribe(&timer_hook)) {
         printf("ERROR: Failed to subscribe to Timer0 \n");
         return 1;
     }
-
     
     if (initialize_graphics() == 0) {
         vg_exit();
     }
     
-    
+    Menu();
+
     //bool draw = true;
 
     int kbd_hook = KBD_IRQ;
@@ -46,15 +56,16 @@ int(proj_main_loop)(int argc, char* argv[])
         return 1;
     }
 
-
+    
     int r;
     int ipc;
     message msg;
 
     struct Player* player = PlayerCreate(200, 50);
 
-    struct Manager* manager = GameManagerCreate(player, vg_info.x_res, vg_info.y_res);
+     struct Manager* manager = GameManagerCreate(player, vg_info.x_res, vg_info.y_res);
 
+    
 
     //main loop
     while(scancode != ESC_BREAKCODE) {
@@ -105,7 +116,6 @@ int(proj_main_loop)(int argc, char* argv[])
                     u_int8_t *map;
                     xpm_image_t img;
                     map = xpm_load(PlayerGetSprite(player), XPM_8_8_8_8, &img);
-                    
                     //if (draw) {
                     DrawLevel(manager);
                     draw_xpm(img, PlayerGetX(player), PlayerGetY(player), map);
