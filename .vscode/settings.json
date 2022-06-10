@@ -2,7 +2,19 @@
   "files.associations": {
     "keyboard.h": "c",
     "player.h": "c",
+<<<<<<< HEAD
     "physicobj.h": "c",
     "*.xpm": "c"
+=======
+    "i8042.h": "c",
+    "gamemanager.h": "c",
+    "graphics.h": "c",
+    "lcf.h": "c",
+    "physicobj.h": "c",
+    "sprites.h": "c",
+    "*.xpm": "c",
+    "menu.h": "c",
+    "changem.h": "c"
+>>>>>>> 0fd1ded73f5dd53201a66d13e54b3a54b92ae772
   }
 }

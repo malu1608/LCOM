@@ -4,8 +4,17 @@
 #include "kbc.h"
 #include "i8042.h"
 
-int(keyboard_subscribe_int)(uint8_t *bit_no);
-int(keyboard_unsubscribe_int)();
-int(keyboard_scan_stop_key)( uint8_t stopkey);
-int(keyboard_poll_stop_key)( uint8_t stopkey);
-int(keyboard_timed_stop_key)( uint8_t stopkey, uint8_t time);
+#include <stdbool.h>
+#include <stdint.h>
+
+extern uint8_t scancode;
+extern uint8_t is_scancode_complete;
+
+int (get_scancode)();
+
+void (analyse_scancode)();
+
+int kbc_reenable_default_int();
+
+int kbc_print_scancode_wrapper();
+

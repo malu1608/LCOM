@@ -2,31 +2,54 @@
 #define I8042_H
 
 #include <lcom/lcf.h>
-#define DELAY_US 20000
 
-//Keyboard IRQ Number
-#define KEYBOARD_IRQ 1 /**< @brief Keyboard IRQ line */
-#define KEYBOARD_ENABLE 0x01
-//KBC Ports
-#define KBC_OUT_BUF 0x60
-#define KBC_ST_REG  0x64
-#define KBC_CMD_REG 0x64
 
-//STATUS REGISTER BITs
-#define KBC_OBF BIT(0)
-#define KBC_IBF BIT(1)
-#define KBC_AUX BIT(5)
-#define KBC_TO_ERR BIT(6)
+#define KBD_IRQ 1
+
+#define KBC_WAIT 10000
+#define TIMEOUT_ATTEMPTS 5
+
+#define OUT_BUF 0x60
+#define IN_BUF_CMD 0x64
+#define IN_BUF_ARGS 0x60
+#define STAT_REG 0x64
+
+#define ESC_MAKECODE 0x01
+#define MAKE_TO_BREAK 0x80
+#define ESC_BREAKCODE 0x81
+#define TWO_BYTE_SCANCODE 0xE0
+
+#define READ_COMMAND_BYTE 0x20
+#define WRITE_COMMAND_BYTE 0x60
+#define CHECK_KBC 0xAA //Returns 0x55, if OK; Returns 0xFC, if error
+#define CHECK_KBD_INTERFACE 0xAB
+#define DISABLE_KBG_INTERFACE 0xAD
+#define ENABLE_KBG_INTERFACE 0xAE
+
+#define CMD_BYTE_DISABLE_MOUSE BIT(5)
+#define CMD_BYTE_DISABLE_KBD_INTERFACE BIT(4)
+#define CMD_BYTE_ENABLE_INT_MOUSE BIT(1)
+#define CMD_BYTE_ENABLE_INT_KBD BIT(0)
+
+#define ST_OUT_BUF BIT(0)
+#define ST_IN_BUF BIT(1)
+
+#define KBC_MOUSE_DATA BIT(5)
+
 #define KBC_PAR_ERR BIT(7)
+#define KBC_TO_ERR BIT(6)
 
+#define SCANCODE_TWO_BYTES 0XE0
 
-//Keyboard KEYs
-#define ESC_BEAKCODE 0x81
+//GAME CONTROLS
 
-#define IS_MAKE_CODE !(scancode & BIT(7))
+#define A_MAKECODE 0x1E
+#define A_BREAKCODE 0x9E
+#define D_MAKECODE 0x20
+#define D_BREAKCODE 0xA0
+#define SPACE_MAKECODE 0x39
+#define SPACE_BREAKCODE 0xB9
 
-//Extended MASK
-#define EXT_MASK 0xE0
 
 
 #endif // I8042_H

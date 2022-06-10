@@ -1,18 +1,23 @@
 #include <lcom/lcf.h>
 #include <stdio.h>
-#include "graphics.h"
 #include "timer.h"
-#include "player.h"
-#include "physicObj.h"
-#include "keyboard.h"
 #include "sprites.h"
-#include "i8042.h"
+#include "keyboard.h"
+#include "gameManager.h"
+#include "graphics.h"
 #include "i8254.h"
-#include "resources/PlayerSprites1.xpm"
-
+//#include "menu.h"
 
 int main(int argc, char *argv[]) {
+    lcf_set_language("EN-US");
 
+  // enables to log function invocations that are being "wrapped" by LCF
+  // [comment this out if you don't want/need it]
+    lcf_trace_calls("/home/lcom/labs/proj/trace.txt");
+
+  // enables to save the output of printf function calls on a file
+  // [comment this out if you don't want/need it]
+    lcf_log_output("/home/lcom/labs/proj/output.txt");
     if (lcf_start(argc, argv))
     return 1;
 
@@ -29,31 +34,47 @@ int(proj_main_loop)(int argc, char* argv[])
 
     int timer_mask = BIT(timer_hook);
 
+   
+
     if (timer_subscribe_int(&timer_hook)) {
         printf("ERROR: Failed to subscribe to Timer0 \n");
         return 1;
     }
-
+    
     if (initialize_graphics() == 0) {
         vg_exit();
     }
+    
+    //Menu();
 
+    //bool draw = true;
+
+    int kbd_hook = KBD_IRQ;
+
+    int kbd_mask = BIT(kbd_hook);
+
+    if (sys_irqsetpolicy(KBD_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE, &kbd_hook) != OK) {
+        printf("Failed to subscribe to keyboard. \n");
+        return 1;
+    }
+
+    
     int r;
     int ipc;
     message msg;
 
-    //Por si, o timer já está a 60Hz, portanto, num segundo vai interromper 60 vezes;
-    int time = 400; //variável temporária!
-
-    bool playing = true;
-
-    initializeObject();
-
     struct Player* player = PlayerCreate(200, 50);
+
+    struct Manager* manager = GameManagerCreate(player, vg_info.x_res, vg_info.y_res);
+
+    
 
 
     //main loop
-    while(playing) {
+    while(scancode != ESC_BREAKCODE) {
+        //printf("ON LOOP");
+        if (is_scancode_complete)
+            kbc_print_scancode_wrapper();
 
         if ( (r = driver_receive(ANY, &msg, &ipc)) != 0) {
             printf("Function driver_receive fails with: %d \n", r);
@@ -63,35 +84,66 @@ int(proj_main_loop)(int argc, char* argv[])
             switch(_ENDPOINT_P(msg.m_source)) {
                 case HARDWARE:
                 if (msg.m_notify.interrupts & timer_mask) {
-                    
-                    //timer_int_handler();
-                    
-                    --time;
+                    if (get_scancode()) {
+                        if (tickdelay(micros_to_ticks(KBC_WAIT))) {
+                            return 1;
+                        }
+                    }
 
-                    if (time <= 0) playing = false;
-                        xpm_image_t img;
+                    analyse_scancode();
                     
-                    u_int8_t *map;
-                    map = xpm_load((xpm_map_t)PlayerSprites1_xpm, XPM_5_6_5, &img);
-                    draw_xpm(img, PlayerGetX(player), PlayerGetY(player), map);
-                    keyboard_scan_stop_key(0x81);
+                    //graphics_handling();
                     
 
-                    graphics_handling();
+                    if (scancode == SPACE_MAKECODE) {
+                        PlayerChargeJump(player);
+                    }
+                    if (scancode == SPACE_BREAKCODE) {
+                        PlayerJump(player);
+                        draw_rectangle(40, 30, 10, 10, 0x0000ff);
+                    }
 
-                    //draw_rectangle((uint16_t) time + 201, 200, 40, 80, 0x000000);
-
-                    //draw_rectangle((uint16_t) time + 200, 200, 40, 80, 0x000003);
-
-                    PlayerMove(player, 1, 0);
-
+                    if (scancode == A_MAKECODE || scancode == A_MAKECODE)
+                        PlayerIntent(player, -1);
+                    if (scancode == D_MAKECODE || scancode == D_MAKECODE)
+                        PlayerIntent(player, 1);
                     
-                    //draw_rectangle(PlayerGetX(player), PlayerGetY(player), PlayerGetWidth(player), PlayerGetHeight(player), 0x000005);
+                    //draw_rectangle(plat->x, plat->y, plat->width, plat->height, 0x000005);
 
-                    //draw_xpm(PlayerGetSprite(player), PlayerGetX(player), PlayerGetY(player)); NOT WORKING YET, CANT LOAD XPM
+                    //draw_xpm(PlayerGetSprite(player), PlayerGetX(player), PlayerGetY(player)); //NOT WORKING YET, CANT LOAD XPM
 
                     //drawPlayer(player);
+
                     
+
+                    //u_int8_t *map;
+                    //xpm_image_t img;
+                    //map = xpm_load(PlayerGetSprite(player), XPM_8_8_8_8, &img);
+                    //if (draw) {
+                    DrawLevel(manager);
+                    //draw_xpm(img, PlayerGetX(player), PlayerGetY(player), map);
+                    //} 
+
+
+                    //PhysicsLoop(manager);
+
+                    
+                    //if (draw) {
+                    //refresh_screen();
+                    //     draw = false;
+                    // } else {
+                    //     draw = true;
+                    // }
+                    
+                }
+                if (msg.m_notify.interrupts & kbd_mask) {
+                    get_scancode();
+                    analyse_scancode();
+                    if (is_scancode_complete) {
+                        if (kbc_print_scancode_wrapper()) {
+                            return 1;
+                        }
+                    }
                 }
                 break;
                 default:
@@ -106,6 +158,12 @@ int(proj_main_loop)(int argc, char* argv[])
         printf("ERROR: Failed to unsubscribe to Timer0 \n");
         return 1;
     }
+
+    sys_irqrmpolicy(&kbd_hook);
+
+    uint32_t value;
+    //This sys_inb to the DATA_PORT will make sure our program doesn't leave anything there making it never finish.
+    sys_inb(0x60, &value);
 
     printf("Program terminated");
     return 0;
