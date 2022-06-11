@@ -1,10 +1,16 @@
 #include <lcom/lcf.h>
 
-
+static char * testSprite[] = {
+"2 2 3 1",
+" 	c #fffffe",
+".	c #ff0040",
+"+	c #0000FF",
+" .",
+"++"};
 
 static char * playerSprite1[] = {
 "96 96 14 1",
-" 	c None",
+" 	c #FFFFFE",
 ".	c #126CB8",
 "+	c #FFFFFF",
 "@	c #8BD8EC",
@@ -118,7 +124,7 @@ static char * playerSprite1[] = {
 
 static char * playerSprite1Flipped[] = {
 "96 96 14 1",
-" 	c None",
+" 	c #FFFFFE",
 ".	c #FFFFFF",
 "+	c #126CB8",
 "@	c #8BD8EC",
@@ -235,7 +241,7 @@ static char * playerSprite1Flipped[] = {
 
 static char * playerSprite2[] = {
 "96 96 14 1",
-" 	c None",
+" 	c #FFFFFE",
 ".	c #126CB8",
 "+	c #FFFFFF",
 "@	c #8BD8EC",
@@ -351,7 +357,7 @@ static char * playerSprite2[] = {
 
 static char * playerSprite2Flipped[] = {
 "96 96 14 1",
-" 	c None",
+" 	c #FFFFFE",
 ".	c #FFFFFF",
 "+	c #126CB8",
 "@	c #8BD8EC",
@@ -467,7 +473,7 @@ static char * playerSprite2Flipped[] = {
 
 static char * playerSprite3[] = {
 "96 96 15 1",
-" 	c None",
+" 	c #FFFFFE",
 ".	c #126CB8",
 "+	c #FFFFFF",
 "@	c #8BD8EC",
@@ -584,7 +590,7 @@ static char * playerSprite3[] = {
 
 static char * playerSprite3Flipped[] = {
 "96 96 15 1",
-" 	c None",
+" 	c #FFFFFE",
 ".	c #FFFFFF",
 "+	c #126CB8",
 "@	c #8BD8EC",
@@ -701,7 +707,7 @@ static char * playerSprite3Flipped[] = {
 
 static char * playerSprite4[] = {
 "96 96 15 1",
-" 	c None",
+" 	c #FFFFFE",
 ".	c #126CB8",
 "+	c #FFFFFF",
 "@	c #8BD8EC",
@@ -818,7 +824,7 @@ static char * playerSprite4[] = {
 
 static char * playerSprite4Flipped[] = {
 "96 96 15 1",
-" 	c None",
+" 	c #FFFFFE",
 ".	c #FFFFFF",
 "+	c #126CB8",
 "@	c #8BD8EC",
@@ -936,7 +942,7 @@ static char * playerSprite4Flipped[] = {
 
 static char * playerSprite5[] = {
 "96 96 13 1",
-" 	c None",
+" 	c #FFFFFE",
 ".	c #8A1814",
 "+	c #D7302A",
 "@	c #590B16",
@@ -1051,7 +1057,7 @@ static char * playerSprite5[] = {
 
 static char * playerSprite5Flipped[] = {
 "96 96 13 1",
-" 	c None",
+" 	c #FFFFFE",
 ".	c #D7302A",
 "+	c #8A1814",
 "@	c #590B16",
@@ -1166,7 +1172,7 @@ static char * playerSprite5Flipped[] = {
 
 static char * playerSprite6[] = {
 "96 96 13 1",
-" 	c None",
+" 	c #FFFFFE",
 ".	c #126CB8",
 "+	c #FFFFFF",
 "@	c #8BD8EC",
@@ -1281,7 +1287,7 @@ static char * playerSprite6[] = {
 
 static char * playerSprite6Flipped[] = {
 "96 96 13 1",
-" 	c None",
+" 	c #FFFFFE",
 ".	c #FFFFFF",
 "+	c #126CB8",
 "@	c #612913",
@@ -1396,7 +1402,7 @@ static char * playerSprite6Flipped[] = {
 
 static char * playerSprite7[] = {
 "96 96 13 1",
-" 	c None",
+" 	c #FFFFFE",
 ".	c #000000",
 "+	c #590B16",
 "@	c #D7302A",
@@ -1511,7 +1517,7 @@ static char * playerSprite7[] = {
 
 static char * playerSprite7Flipped[] = {
 "96 96 13 1",
-" 	c None",
+" 	c #FFFFFE",
 ".	c #D7302A",
 "+	c #8A1814",
 "@	c #590B16",
@@ -1625,7 +1631,7 @@ static char * playerSprite7Flipped[] = {
 
 static char * playerSprite8[] = {
 "96 96 14 1",
-" 	c None",
+" 	c #FFFFFE",
 ".	c #D7302A",
 "+	c #8A1814",
 "@	c #590B16",
@@ -1741,7 +1747,7 @@ static char * playerSprite8[] = {
 
 static char * playerSprite8Flipped[] = {
 "96 96 14 1",
-" 	c None",
+" 	c #FFFFFE",
 ".	c #D7302A",
 "+	c #8A1814",
 "@	c #590B16",
@@ -1857,7 +1863,7 @@ static char * playerSprite8Flipped[] = {
 
 static char * playerSprite9[] = {
 "96 96 13 1",
-" 	c None",
+" 	c #FFFFFE",
 ".	c #126CB8",
 "+	c #FFFFFF",
 "@	c #8BD8EC",
@@ -1972,7 +1978,7 @@ static char * playerSprite9[] = {
 
 static char * playerSprite9Flipped[] = {
 "96 96 13 1",
-" 	c None",
+" 	c #FFFFFE",
 ".	c #FFFFFF",
 "+	c #126CB8",
 "@	c #8BD8EC",
@@ -2087,7 +2093,7 @@ static char * playerSprite9Flipped[] = {
 
 static char * playerSprite10[] = {
 "96 96 14 1",
-" 	c None",
+" 	c #FFFFFE",
 ".	c #126CB8",
 "+	c #FFFFFF",
 "@	c #8BD8EC",
@@ -2203,7 +2209,7 @@ static char * playerSprite10[] = {
 
 static char * playerSprite10Flipped[] = {
 "96 96 14 1",
-" 	c None",
+" 	c #FFFFFE",
 ".	c #FFFFFF",
 "+	c #126CB8",
 "@	c #8BD8EC",
@@ -2319,7 +2325,7 @@ static char * playerSprite10Flipped[] = {
 
 static char * playerSprite11[] = {
 "96 96 14 1",
-" 	c None",
+" 	c #FFFFFE",
 ".	c #126CB8",
 "+	c #FFFFFF",
 "@	c #8BD8EC",
@@ -2435,7 +2441,7 @@ static char * playerSprite11[] = {
 
 static char * playerSprite11Flipped[] = {
 "96 96 14 1",
-" 	c None",
+" 	c #FFFFFE",
 ".	c #FFFFFF",
 "+	c #126CB8",
 "@	c #8BD8EC",
@@ -2551,7 +2557,7 @@ static char * playerSprite11Flipped[] = {
 
 static char * playerSprite12[] = {
 "96 96 14 1",
-" 	c None",
+" 	c #FFFFFE",
 ".	c #126CB8",
 "+	c #FFFFFF",
 "@	c #8BD8EC",
@@ -2667,7 +2673,7 @@ static char * playerSprite12[] = {
 
 static char * playerSprite12Flipped[] = {
 "96 96 14 1",
-" 	c None",
+" 	c #FFFFFE",
 ".	c #FFFFFF",
 "+	c #126CB8",
 "@	c #8BD8EC",
@@ -2783,7 +2789,7 @@ static char * playerSprite12Flipped[] = {
 
 static char * playerSprite13[] = {
 "96 96 14 1",
-" 	c None",
+" 	c #FFFFFE",
 ".	c #FFFFFF",
 "+	c #8BD8EC",
 "@	c #126CB8",
@@ -2899,7 +2905,7 @@ static char * playerSprite13[] = {
 
 static char * playerSprite13Flipped[] = {
 "96 96 14 1",
-" 	c None",
+" 	c #FFFFFE",
 ".	c #126CB8",
 "+	c #8BD8EC",
 "@	c #FFFFFF",

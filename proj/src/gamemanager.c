@@ -11,7 +11,7 @@ struct Platform {
 
 
 struct Level {
-    struct Platform *platforms[7];
+    struct Platform *platforms[50];
 
     int size;
 };
@@ -47,6 +47,7 @@ void ManagerInit(struct Manager *self, struct Player *player, uint16_t x_res, ui
     self->levels[4] = (struct Level*) malloc(sizeof(struct Level));
 
     loadLevel1(self->levels[0], self);
+    loadLevel2(self->levels[1], self);
     // Level[1] = loadLevel2();
     // Level[2] = loadLevel3();
     // Level[3] = loadLevel4();
@@ -65,8 +66,8 @@ void PhysicsLoop(struct Manager *self) {
 
     int16_t p_x = PlayerGetX(self->player);
     int16_t p_y = PlayerGetY(self->player);
-    uint16_t p_width = PlayerGetWidth(self->player);
-    uint16_t p_height = PlayerGetHeight(self->player);
+    uint16_t p_width = PlayerGetColliderWidth(self->player);
+    uint16_t p_height = PlayerGetColliderHeight(self->player);
     int16_t p_momentum_x = PlayerGetMomentumX(self->player);
     int16_t p_momentum_y = PlayerGetMomentumY(self->player);
     int16_t p_movement = PlayerGetMovement(self->player);
@@ -93,68 +94,68 @@ void PhysicsLoop(struct Manager *self) {
     }
 
     if (diff_y > 0) { //going down
-        for (int i = 0; i < self->levels[0]->size; i++) {
-            if (p_x > self->levels[0]->platforms[i]->x + self->levels[0]->platforms[i]->width || self->levels[0]->platforms[i]->x > p_x + p_width)
+        for (int i = 0; i < self->levels[self->level]->size; i++) {
+            if (p_x > self->levels[self->level]->platforms[i]->x + self->levels[self->level]->platforms[i]->width || self->levels[self->level]->platforms[i]->x > p_x + p_width)
                 continue;
-            if (p_y + p_height == self->levels[0]->platforms[i]->y) {
+            if (p_y + p_height == self->levels[self->level]->platforms[i]->y) {
                 PlayerSetFloored(self->player, true);
                 break;
             }
-            if (p_y + p_height + GRAVITY + p_momentum_y + 1 > self->levels[0]->platforms[i]->y && p_y + p_height  <= self->levels[0]->platforms[i]->y){
-                if (self->levels[0]->platforms[i]->y - (p_y + p_height)< diff_y)
-                    diff_y = self->levels[0]->platforms[i]->y - (p_y + p_height);
+            if (p_y + p_height + GRAVITY + p_momentum_y + 1 > self->levels[self->level]->platforms[i]->y && p_y + p_height  <= self->levels[self->level]->platforms[i]->y){
+                if (self->levels[self->level]->platforms[i]->y - (p_y + p_height)< diff_y)
+                    diff_y = self->levels[self->level]->platforms[i]->y - (p_y + p_height);
             } 
         }
     } else if (diff_y < 0) { //going up
-        for (int i = 0; i < self->levels[0]->size; i++) {
-            if (p_x > self->levels[0]->platforms[i]->x + self->levels[0]->platforms[i]->width || self->levels[0]->platforms[i]->x > p_x + p_width)
+        for (int i = 0; i < self->levels[self->level]->size; i++) {
+            if (p_x > self->levels[self->level]->platforms[i]->x + self->levels[self->level]->platforms[i]->width || self->levels[self->level]->platforms[i]->x > p_x + p_width)
                 continue;
-            if (p_y == self->levels[0]->platforms[i]->y + self->levels[0]->platforms[i]->height) {
-                PlayerSetMomentumY(self->player, 0); // PROBLEM: THIS IS NOT RESETTING!
+            if (p_y == self->levels[self->level]->platforms[i]->y + self->levels[self->level]->platforms[i]->height) {
+                PlayerSetMomentumY(self->player, -PlayerGetMomentumY(self->player) / 2); // PROBLEM: THIS IS NOT RESETTING!
                 if (!PlayerGetFloored(self->player))
                     PlayerSetBounce(self->player, true);
                 draw_rectangle(50, 40, 10, 10, 0xff00ff);
                 diff_y = 0;
                 break;
             }
-            if (p_y + GRAVITY + p_momentum_y - 1 < self->levels[0]->platforms[i]->y + self->levels[0]->platforms[i]->height && p_y >= self->levels[0]->platforms[i]->y + self->levels[0]->platforms[i]->height){
-                if (self->levels[0]->platforms[i]->y + self->levels[0]->platforms[i]->height - p_y > diff_y)
-                    diff_y = self->levels[0]->platforms[i]->y + self->levels[0]->platforms[i]->height - p_y;
+            if (p_y + GRAVITY + p_momentum_y - 1 < self->levels[self->level]->platforms[i]->y + self->levels[self->level]->platforms[i]->height && p_y >= self->levels[self->level]->platforms[i]->y + self->levels[self->level]->platforms[i]->height){
+                if (self->levels[self->level]->platforms[i]->y + self->levels[self->level]->platforms[i]->height - p_y > diff_y)
+                    diff_y = self->levels[self->level]->platforms[i]->y + self->levels[self->level]->platforms[i]->height - p_y;
             } 
         }
     }
 
     if (diff_x != 0) {
         if (diff_x > 0) { //going right
-            for (int i = 0; i < self->levels[0]->size; i++) {
-                if (p_y > self->levels[0]->platforms[i]->y + self->levels[0]->platforms[i]->height || self->levels[0]->platforms[i]->y > p_y + p_height)
+            for (int i = 0; i < self->levels[self->level]->size; i++) {
+                if (p_y + diff_y > self->levels[self->level]->platforms[i]->y + self->levels[self->level]->platforms[i]->height || self->levels[self->level]->platforms[i]->y > p_y + p_height + diff_y)
                     continue;
-                if (p_x + p_width == self->levels[0]->platforms[i]->x) {
+                if (p_x + p_width == self->levels[self->level]->platforms[i]->x) {
                     PlayerSetMomentumX(self->player, -PlayerGetMomentumX(self->player) / 2);
                     if (!PlayerGetFloored(self->player))
                         PlayerSetBounce(self->player, true);
                     diff_x = 0;
                     break;
                 }
-                if (p_x + p_width + p_movement + p_momentum_x + 1 > self->levels[0]->platforms[i]->x && p_x + p_width <= self->levels[0]->platforms[i]->x){
-                    if (self->levels[0]->platforms[i]->x - p_x - p_width < diff_x)
-                        diff_x = self->levels[0]->platforms[i]->x - p_x - p_width;
+                if (p_x + p_width + p_movement + p_momentum_x + 1 > self->levels[self->level]->platforms[i]->x && p_x + p_width <= self->levels[self->level]->platforms[i]->x){
+                    if (self->levels[self->level]->platforms[i]->x - p_x - p_width < diff_x)
+                        diff_x = self->levels[self->level]->platforms[i]->x - p_x - p_width;
                 } 
             }
         } else { //going left
-            for (int i = 0; i < self->levels[0]->size; i++) {
-                if (p_y > self->levels[0]->platforms[i]->y + self->levels[0]->platforms[i]->height || self->levels[0]->platforms[i]->y > p_y + p_height)
+            for (int i = 0; i < self->levels[self->level]->size; i++) {
+                if (p_y > self->levels[self->level]->platforms[i]->y + self->levels[self->level]->platforms[i]->height || self->levels[self->level]->platforms[i]->y > p_y + p_height)
                     continue;
-                if (p_x == self->levels[0]->platforms[i]->x + self->levels[0]->platforms[i]->width) {
+                if (p_x == self->levels[self->level]->platforms[i]->x + self->levels[self->level]->platforms[i]->width) {
                     PlayerSetMomentumX(self->player, -PlayerGetMomentumX(self->player) / 2);
                     if (!PlayerGetFloored(self->player))
                         PlayerSetBounce(self->player, true);
                     diff_x = 0;
                     break;
                 }
-                if (p_x + p_movement + p_momentum_x - 1 < self->levels[0]->platforms[i]->x + self->levels[0]->platforms[i]->width && p_x >= self->levels[0]->platforms[i]->x + self->levels[0]->platforms[i]->width){
-                    if (p_x - self->levels[0]->platforms[i]->x - self->levels[0]->platforms[i]->width > diff_x)
-                        diff_x = self->levels[0]->platforms[i]->x + self->levels[0]->platforms[i]->width - p_x;
+                if (p_x + p_movement + p_momentum_x - 1 < self->levels[self->level]->platforms[i]->x + self->levels[self->level]->platforms[i]->width && p_x >= self->levels[self->level]->platforms[i]->x + self->levels[self->level]->platforms[i]->width){
+                    if (p_x - self->levels[self->level]->platforms[i]->x - self->levels[self->level]->platforms[i]->width > diff_x)
+                        diff_x = self->levels[self->level]->platforms[i]->x + self->levels[self->level]->platforms[i]->width - p_x;
                 } 
             }
         }
@@ -179,6 +180,12 @@ void PhysicsLoop(struct Manager *self) {
 
         if (PlayerGetBounce(self->player)) {
             PlayerSetAnimation(self->player, 5);
+        } else {
+            if (p_momentum_y < 0) {
+                PlayerSetAnimation(self->player, 3);
+            } else {
+                PlayerSetAnimation(self->player, 4);
+            }
         }
     }
     else{
@@ -243,8 +250,8 @@ void PhysicsLoop(struct Manager *self) {
 }
 
 void DrawLevel(struct Manager *self) {
-    for (int i = 0; i < self->levels[0]->size; i++) {
-        draw_rectangle(self->levels[0]->platforms[i]->x, self->levels[0]->platforms[i]->y, self->levels[0]->platforms[i]->width, self->levels[0]->platforms[i]->height, 0xff00ff);
+    for (int i = 0; i < self->levels[self->level]->size; i++) {
+        draw_rectangle(self->levels[self->level]->platforms[i]->x, self->levels[self->level]->platforms[i]->y, self->levels[self->level]->platforms[i]->width, self->levels[self->level]->platforms[i]->height, 0xff00ff);
     }
 }
 
@@ -265,23 +272,23 @@ void loadLevel1(struct Level *level, struct Manager *manager) {
     level->platforms[0]->height = 64;
 
     level->platforms[1]->x = 800;
-    level->platforms[1]->y = 0;
-    level->platforms[1]->width = 80;
-    level->platforms[1]->height = 800;
+    level->platforms[1]->y = 500;
+    level->platforms[1]->width = 200;
+    level->platforms[1]->height = 80;
 
     level->platforms[2]->x = 200;
     level->platforms[2]->y = 600;
     level->platforms[2]->width = 80;
     level->platforms[2]->height = 40;
 
-    level->platforms[3]->x = 150;
-    level->platforms[3]->y = 700;
-    level->platforms[3]->width = 10;
-    level->platforms[3]->height = 100;
+    level->platforms[3]->x = 950;
+    level->platforms[3]->y = 50;
+    level->platforms[3]->width = 200;
+    level->platforms[3]->height = 40;
 
-    level->platforms[4]->x = 0;
-    level->platforms[4]->y = 0;
-    level->platforms[4]->width = 1152;
+    level->platforms[4]->x = 100;
+    level->platforms[4]->y = 300;
+    level->platforms[4]->width = 400;
     level->platforms[4]->height = 20;
 
     //LIMITS
@@ -295,3 +302,51 @@ void loadLevel1(struct Level *level, struct Manager *manager) {
     level->platforms[6]->width = 10;
     level->platforms[6]->height = manager->y_limit;
 }
+
+void loadLevel2(struct Level *level, struct Manager *manager) {
+    level->size = 7;
+    level->platforms[0] = (struct Platform*) malloc(sizeof(struct Platform));
+    level->platforms[1] = (struct Platform*) malloc(sizeof(struct Platform));
+    level->platforms[2] = (struct Platform*) malloc(sizeof(struct Platform));
+    level->platforms[3] = (struct Platform*) malloc(sizeof(struct Platform));
+    level->platforms[4] = (struct Platform*) malloc(sizeof(struct Platform));
+    level->platforms[5] = (struct Platform*) malloc(sizeof(struct Platform));
+    level->platforms[6] = (struct Platform*) malloc(sizeof(struct Platform));
+
+    level->platforms[0]->x = 400;
+    level->platforms[0]->y = 720;
+    level->platforms[0]->width = 300;
+    level->platforms[0]->height = 64;
+
+    level->platforms[1]->x = 600;
+    level->platforms[1]->y = 500;
+    level->platforms[1]->width = 200;
+    level->platforms[1]->height = 80;
+
+    level->platforms[2]->x = 200;
+    level->platforms[2]->y = 600;
+    level->platforms[2]->width = 80;
+    level->platforms[2]->height = 40;
+
+    level->platforms[3]->x = 900;
+    level->platforms[3]->y = 200;
+    level->platforms[3]->width = 10;
+    level->platforms[3]->height = 100;
+
+    level->platforms[4]->x = 150;
+    level->platforms[4]->y = 300;
+    level->platforms[4]->width = 200;
+    level->platforms[4]->height = 20;
+
+    //LIMITS
+    level->platforms[5]->x = 0;
+    level->platforms[5]->y = 0;
+    level->platforms[5]->width = 10;
+    level->platforms[5]->height = manager->y_limit;
+
+    level->platforms[6]->x = manager->x_limit - 10;
+    level->platforms[6]->y = 0;
+    level->platforms[6]->width = 10;
+    level->platforms[6]->height = manager->y_limit;
+}
+

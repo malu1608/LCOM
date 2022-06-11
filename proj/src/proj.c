@@ -8,8 +8,20 @@
 
 int main(int argc, char *argv[]) {
 
+    // sets the language of LCF messages (can be either EN-US or PT-PT)
+    lcf_set_language("EN-US");
+
+    // enables to log function invocations that are being "wrapped" by LCF
+    // [comment this out if you don't want/need it]
+    lcf_trace_calls("/home/lcom/labs/g02/proj/src/trace.txt");
+
+    // enables to save the output of printf function calls on a file
+    // [comment this out if you don't want/need it]
+    lcf_log_output("/home/lcom/labs/g02/proj/src/output.txt");
+
     if (lcf_start(argc, argv))
     return 1;
+    
 
     // LCF clean up tasks
     // [must be the last statement before return]
@@ -31,10 +43,9 @@ int(proj_main_loop)(int argc, char* argv[])
 
     
     if (initialize_graphics() == 0) {
-        vg_exit();
+       vg_exit();
     }
-    
-    
+
     //bool draw = true;
 
     int kbd_hook = KBD_IRQ;
@@ -57,12 +68,26 @@ int(proj_main_loop)(int argc, char* argv[])
 
     bool pressed_space = false;
 
+    u_int8_t *map;
+        xpm_image_t img;
+        map = xpm_load((xpm_map_t)testSprite, XPM_8_8_8_8, &img);
+    
+    printf("%x \n", (unsigned long)TRANSPARENCY_COLOR_8_8_8_8);
+    printf("%x \n", xpm_transparency_color(XPM_8_8_8_8));
+    printf("%d \n", vg_info.bits_per_pixel);
+
+    printf("1: %ld|", (int32_t)*img.bytes);
+    printf("%ld|", (int32_t)*(img.bytes + 1 * 4));
+    printf("%ld|", (int32_t)*(img.bytes + 2 * 4));
+    printf("%ld|", (int32_t)*(img.bytes + 3 * 4));
+    printf("%ld \n", (uint32_t)*img.bytes == 254);
+    
 
     //main loop
     while(scancode != ESC_BREAKCODE) {
-        //printf("ON LOOP");
-        if (is_scancode_complete)
-            kbc_print_scancode_wrapper();
+    
+        //if (is_scancode_complete)
+            //kbc_print_scancode_wrapper();
 
         if ( (r = driver_receive(ANY, &msg, &ipc)) != 0) {
             printf("Function driver_receive fails with: %d \n", r);
@@ -112,12 +137,13 @@ int(proj_main_loop)(int argc, char* argv[])
                     map = xpm_load(PlayerGetSprite(player), XPM_8_8_8_8, &img);
                     
                     //if (draw) {
-                    DrawLevel(manager);
-                    draw_xpm(img, PlayerGetX(player), PlayerGetY(player), map);
                     //} 
 
 
                     PhysicsLoop(manager);
+                    DrawLevel(manager);
+                    draw_xpm(img, PlayerGetX(player), PlayerGetY(player), map);
+
 
                     draw_rectangle(100, 25, 10, 10, 0xff0000);
 
@@ -142,6 +168,7 @@ int(proj_main_loop)(int argc, char* argv[])
                         draw_rectangle(160, 25, 40, 10, 0x00ff00);
                     }
 
+                    //draw_rectangle(PlayerGetX(player), PlayerGetY(player), PlayerGetColliderWidth(player), PlayerGetColliderHeight(player), 0x6666ff);
                     
                     //if (draw) {
                     refresh_screen();

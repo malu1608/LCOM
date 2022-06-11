@@ -22,6 +22,11 @@ struct Player {
     uint16_t width;
     uint16_t height;
 
+    uint16_t colliderWidth;
+    uint16_t colliderX;
+    uint16_t colliderHeight;
+    uint16_t colliderY;
+
     int16_t leftKey;
     int16_t rightKey;
     struct Vector momentum; // Will be the variable responsible in storing the characters 
@@ -50,7 +55,7 @@ void PlayerInit(struct Player *self, int16_t x, int16_t y) {
     self->position.y = 100;
     self->width = 96;
     self->height = 96;
-    self->charge = 5;
+    self->charge = 10;
     self->jumping = false;
     self->jumpDir = 0;
     self->leftKey = 0;
@@ -66,6 +71,10 @@ void PlayerInit(struct Player *self, int16_t x, int16_t y) {
     self->laid = false;
     self->bounce = false;
     self->frame = 1;
+    self->colliderWidth = 66;
+    self->colliderX = 15;
+    self->colliderHeight = 80;
+    self->colliderY = 16;
 }
 
 // Allocation + initialization (equivalent to "new Point(x, y)")
@@ -102,6 +111,9 @@ void PlayerMove(struct Player* self, int16_t diff_x, int16_t diff_y) {
 }
 
 void PlayerChargeJump(struct Player* self) {
+    if (!self->floored) {
+        return;
+    }
     if (!self->jumping) {
         self->jumpDir = 0;
     }
@@ -131,7 +143,7 @@ void PlayerJump(struct Player* self) {
         }
         self->jumping = false;
         self->jumpDir = 0;
-        self->charge = 5;
+        self->charge = 10;
     }
 }
 
@@ -174,11 +186,19 @@ int16_t PlayerGetHeight(struct Player* self) {
 }
 
 int16_t PlayerGetX(struct Player* self) {
-    return self->position.x;
+    return self->position.x + self->colliderX;
 }
 
 int16_t PlayerGetY(struct Player* self) {
-    return self->position.y;
+    return self->position.y + self->colliderY;
+}
+
+uint16_t PlayerGetColliderWidth(struct Player* self) {
+    return self->colliderWidth + self->colliderX;
+}
+
+uint16_t PlayerGetColliderHeight(struct Player* self) {
+    return self->colliderHeight + self->colliderY;
 }
 
 int16_t PlayerGetMomentumX(struct Player* self) {
@@ -234,6 +254,10 @@ bool PlayerGetJumping(struct Player* self) {
     return self->jumping;
 }
 
+int PlayerGetCharge(struct Player* self) {
+    return self->charge;
+}
+
 void PlayerSetBounce(struct Player* self, bool _bounce) {
     self->bounce = _bounce;
 }
@@ -287,9 +311,11 @@ xpm_map_t PlayerGetSprite(struct Player* self) {
             break;
         }
         case 3: {
+            self->frame = 5;
             break;
         }
         case 4: {
+            self->frame = 6;
             break;
         }
         case 5: {

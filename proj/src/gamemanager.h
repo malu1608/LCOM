@@ -23,4 +23,8 @@ void PhysicsLoop(struct Manager *self);
 
 void loadLevel1(struct Level *level, struct Manager *manager);
 
+void loadLevel2(struct Level *level, struct Manager *manager);
+
 void DrawLevel(struct Manager *self);
+
+

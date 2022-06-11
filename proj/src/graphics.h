@@ -1,7 +1,7 @@
 #include <lcom/lcf.h>
 #include "video_macros.h"
 
-
+#define TRANSPARENCY_COLOR 254
 
 typedef struct {
 	uint16_t x_res, y_res;

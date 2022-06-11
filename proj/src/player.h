@@ -38,6 +38,10 @@ int16_t PlayerGetX(struct Player* self);
 
 int16_t PlayerGetY(struct Player* self);
 
+uint16_t PlayerGetColliderWidth(struct Player* self);
+
+uint16_t PlayerGetColliderHeight(struct Player* self);
+
 int16_t PlayerGetMomentumX(struct Player* self);
 
 int16_t PlayerGetMomentumY(struct Player* self);
@@ -65,6 +69,8 @@ bool PlayerGetLaid(struct Player* self);
 void PlayerSetLaid(struct Player* self, bool _laid);
 
 bool PlayerGetJumping(struct Player* self);
+
+int PlayerGetCharge(struct Player* self);
 
 void PlayerSetBounce(struct Player* self, bool _bounce);
 
