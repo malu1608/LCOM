@@ -7,7 +7,6 @@ static uint8_t *second_buffer;
 
 vbe_mode_info_summary_t vg_info;
 
-
 void *initialize_graphics() {
     vbe_mode_info_t vbe_info;
     if (vbe_get_mode_info(0x14C, &vbe_info) != 0) {
@@ -88,7 +87,7 @@ void *initialize_graphics() {
 
 
 int draw_pixel(uint16_t x, uint16_t y, uint32_t color) {
-	uint8_t *base = (uint8_t *) second_buffer + (y * vg_info.x_res + x) * vg_info.bytes_per_pixel;
+	uint8_t *base = (uint8_t *)second_buffer + (y * vg_info.x_res + x) * vg_info.bytes_per_pixel;
 	for (uint8_t j = 0; j < vg_info.bytes_per_pixel; ++j) {
 		*base = color >> (j * 8);
 		++base;
@@ -177,7 +176,7 @@ void (destroy_second_buffer)(){
 }
 
 void (refresh_screen)(){
-  memcpy(buffer_base, second_buffer, vg_info.x_res * vg_info.y_res * vg_info.bytes_per_pixel);
+	memcpy(buffer_base, second_buffer, vg_info.x_res * vg_info.y_res * vg_info.bytes_per_pixel);
 }
 
 void erase_xpm(xpm_image_t img, uint16_t x, uint16_t y){

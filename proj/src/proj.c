@@ -1,12 +1,19 @@
 #include <lcom/lcf.h>
 #include <stdio.h>
-#include "graphics.h"
 #include "timer.h"
 #include "sprites.h"
 #include "keyboard.h"
 #include "gameManager.h"
+#include "graphics.h"
+#include "i8254.h"
+//#include "menu.h"
 
 int main(int argc, char *argv[]) {
+    lcf_set_language("EN-US");
+
+  // enables to log function invocations that are being "wrapped" by LCF
+  // [comment this out if you don't want/need it]
+    lcf_trace_calls("/home/lcom/labs/proj/trace.txt");
 
     // sets the language of LCF messages (can be either EN-US or PT-PT)
     lcf_set_language("EN-US");
@@ -32,19 +39,22 @@ int main(int argc, char *argv[]) {
 
 int(proj_main_loop)(int argc, char* argv[])
 {
-    int timer_hook = TIMER0_IRQ;
+    uint8_t timer_hook = TIMER0_IRQ;
 
     int timer_mask = BIT(timer_hook);
 
-    if (timer_subscribe(&timer_hook)) {
+   
+
+    if (timer_subscribe_int(&timer_hook)) {
         printf("ERROR: Failed to subscribe to Timer0 \n");
         return 1;
     }
-
     
     if (initialize_graphics() == 0) {
        vg_exit();
     }
+    
+    //Menu();
 
     //bool draw = true;
 
@@ -57,31 +67,16 @@ int(proj_main_loop)(int argc, char* argv[])
         return 1;
     }
 
-
+    
     int r;
     int ipc;
     message msg;
 
     struct Player* player = PlayerCreate(200, 50);
+    bool pressed_space = false;
 
     struct Manager* manager = GameManagerCreate(player, vg_info.x_res, vg_info.y_res);
 
-    bool pressed_space = false;
-
-    u_int8_t *map;
-        xpm_image_t img;
-        map = xpm_load((xpm_map_t)testSprite, XPM_8_8_8_8, &img);
-    
-    printf("%x \n", (unsigned long)TRANSPARENCY_COLOR_8_8_8_8);
-    printf("%x \n", xpm_transparency_color(XPM_8_8_8_8));
-    printf("%d \n", vg_info.bits_per_pixel);
-
-    printf("1: %ld|", (int32_t)*img.bytes);
-    printf("%ld|", (int32_t)*(img.bytes + 1 * 4));
-    printf("%ld|", (int32_t)*(img.bytes + 2 * 4));
-    printf("%ld|", (int32_t)*(img.bytes + 3 * 4));
-    printf("%ld \n", (uint32_t)*img.bytes == 254);
-    
 
     //main loop
     while(scancode != ESC_BREAKCODE) {
@@ -103,9 +98,11 @@ int(proj_main_loop)(int argc, char* argv[])
                         }
                     }
 
+                    draw_rectangle(0, 0, vg_info.x_res, vg_info.y_res, 0x000000);
+
                     analyse_scancode();
                     
-                    graphics_handling();
+                    //graphics_handling();
                     
 
                     if (scancode == A_MAKECODE) {
@@ -122,7 +119,7 @@ int(proj_main_loop)(int argc, char* argv[])
                         pressed_space = true;
                     }
                     if (pressed_space)
-                     PlayerChargeJump(player);
+                        PlayerChargeJump(player);
                      
                     if (scancode == SPACE_BREAKCODE && pressed_space) {
                         PlayerJump(player);
@@ -135,47 +132,38 @@ int(proj_main_loop)(int argc, char* argv[])
                     u_int8_t *map;
                     xpm_image_t img;
                     map = xpm_load(PlayerGetSprite(player), XPM_8_8_8_8, &img);
-                    
-                    //if (draw) {
-                    //} 
 
-
-                    PhysicsLoop(manager);
                     DrawLevel(manager);
+                    PhysicsLoop(manager);
                     draw_xpm(img, PlayerGetSpriteX(player), PlayerGetSpriteY(player), map);
 
 
-                    draw_rectangle(100, 25, 10, 10, 0xff0000);
+                    draw_rectangle(100, 25, 10, 10, 0xff0000); //DEBUG:
 
-                    draw_rectangle(115, 25, 10, 10, 0xff0000);
+                    draw_rectangle(115, 25, 10, 10, 0xff0000); //DEBUG:
 
-                    draw_rectangle(115, 10, 10, 10, 0xff0000);
+                    draw_rectangle(115, 10, 10, 10, 0xff0000); //DEBUG:
 
-                    draw_rectangle(130, 25, 10, 10, 0xff0000);
+                    draw_rectangle(130, 25, 10, 10, 0xff0000); //DEBUG:
 
-                    draw_rectangle(160, 25, 40, 10, 0xff0000);
+                    draw_rectangle(160, 25, 40, 10, 0xff0000); //DEBUG:
 
 
                     if (PlayerGetLeftKey(player)) {
-                        draw_rectangle(100, 25, 10, 10, 0x00ff00);
+                        draw_rectangle(100, 25, 10, 10, 0x00ff00); //DEBUG:
                     }
 
                     if (PlayerGetRightKey(player)) {
-                        draw_rectangle(130, 25, 10, 10, 0x00ff00);
+                        draw_rectangle(130, 25, 10, 10, 0x00ff00); //DEBUG:
                     }
 
                     if (pressed_space) {
-                        draw_rectangle(160, 25, 40, 10, 0x00ff00);
+                        draw_rectangle(160, 25, 40, 10, 0x00ff00); //DEBUG:
                     }
 
                     //draw_rectangle(PlayerGetX(player), PlayerGetY(player), PlayerGetColliderWidth(player), PlayerGetColliderHeight(player), 0x6666ff);
                     
-                    //if (draw) {
                     refresh_screen();
-                    //     draw = false;
-                    // } else {
-                    //     draw = true;
-                    // }
                     
                 }
                 if (msg.m_notify.interrupts & kbd_mask) {
@@ -196,7 +184,7 @@ int(proj_main_loop)(int argc, char* argv[])
 
     vg_exit();
 
-    if (timer_unsubscribe(&timer_hook)) {
+    if (timer_unsubscribe_int()) {
         printf("ERROR: Failed to unsubscribe to Timer0 \n");
         return 1;
     }

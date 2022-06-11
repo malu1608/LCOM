@@ -1,4 +1,7 @@
 #include "keyboard.h"
+#include "lcom/timer.h"
+#include <stdbool.h>
+#include <stdint.h>
 
 static uint8_t scancode_no_bytes;
 static uint8_t scancode_bytes[2];
