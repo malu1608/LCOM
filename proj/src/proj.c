@@ -148,6 +148,10 @@ int(proj_main_loop)(int argc, char* argv[])
 
                     draw_rectangle(160, 25, 40, 10, 0xff0000); //DEBUG:
 
+<<<<<<< Updated upstream
+=======
+                    PhysicsLoop(manager);
+>>>>>>> Stashed changes
 
                     if (PlayerGetLeftKey(player)) {
                         draw_rectangle(100, 25, 10, 10, 0x00ff00); //DEBUG:
@@ -163,7 +167,16 @@ int(proj_main_loop)(int argc, char* argv[])
 
                     //draw_rectangle(PlayerGetX(player), PlayerGetY(player), PlayerGetColliderWidth(player), PlayerGetColliderHeight(player), 0x6666ff);
                     
+<<<<<<< Updated upstream
                     refresh_screen();
+=======
+                    //if (draw) {
+                    refresh_screen();
+                    //     draw = false;
+                    // } else {
+                    //     draw = true;
+                    // }
+>>>>>>> Stashed changes
                     
                 }
                 if (msg.m_notify.interrupts & kbd_mask) {
