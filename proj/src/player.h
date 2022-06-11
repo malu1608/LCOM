@@ -34,6 +34,10 @@ int16_t PlayerGetWidth(struct Player* self);
 
 int16_t PlayerGetHeight(struct Player* self);
 
+int16_t PlayerGetSpriteX(struct Player* self);
+
+int16_t PlayerGetSpriteY(struct Player* self);
+
 int16_t PlayerGetX(struct Player* self);
 
 int16_t PlayerGetY(struct Player* self);

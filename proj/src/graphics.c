@@ -131,7 +131,7 @@ int draw_rectangle(int16_t x, int16_t y, uint16_t width, uint16_t height, uint32
 
 void draw_xpm(xpm_image_t img, int16_t x, int16_t y, uint8_t *map){
 
-	if (x < 0) {
+	if (x < 0 && x + img.width < 0) {
 		return;
 	}
 
@@ -142,19 +142,28 @@ void draw_xpm(xpm_image_t img, int16_t x, int16_t y, uint8_t *map){
 		return;
 	}
 
-	uint16_t offset = 0;
+	uint16_t offsetY = 0;
+	uint16_t offsetX = 0;
 
 	if (y < 0 ) {
-		offset = -y;
+		offsetY = -y;
+	}
+
+	if (x < 0) {
+		offsetX = -x;
 	}
 
 	uint16_t height = img.height;
+	uint16_t width = img.width;
 	if (y + height >= vg_info.y_res) {
 		height = vg_info.y_res - y;
 	}
+	if (x + width >= vg_info.x_res) {
+		width = vg_info.x_res - x;
+	}
 
-    for(uint16_t i = y + offset; i < y + height; i++){
-        for(uint16_t j = x; j < x + img.width; j++){
+    for(uint16_t i = y + offsetY; i < y + height; i++){
+        for(uint16_t j = x + offsetX; j < x + width; j++){
             uint8_t *ptr = (uint8_t*) second_buffer + j*vg_info.bytes_per_pixel + i*vg_info.x_res*vg_info.bytes_per_pixel;
 			if (((uint32_t)*(img.bytes + (j-x)*vg_info.bytes_per_pixel + (i-y)*img.width*vg_info.bytes_per_pixel)) != 254)
 				memcpy(ptr, img.bytes+(j-x)*vg_info.bytes_per_pixel + (i-y)*img.width*vg_info.bytes_per_pixel, vg_info.bytes_per_pixel);

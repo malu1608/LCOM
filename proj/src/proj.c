@@ -142,7 +142,7 @@ int(proj_main_loop)(int argc, char* argv[])
 
                     PhysicsLoop(manager);
                     DrawLevel(manager);
-                    draw_xpm(img, PlayerGetX(player), PlayerGetY(player), map);
+                    draw_xpm(img, PlayerGetSpriteX(player), PlayerGetSpriteY(player), map);
 
 
                     draw_rectangle(100, 25, 10, 10, 0xff0000);

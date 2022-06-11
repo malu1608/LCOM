@@ -185,6 +185,14 @@ int16_t PlayerGetHeight(struct Player* self) {
     return self->height;
 }
 
+int16_t PlayerGetSpriteX(struct Player* self) {
+    return self->position.x;
+}
+
+int16_t PlayerGetSpriteY(struct Player* self) {
+    return self->position.y;
+}
+
 int16_t PlayerGetX(struct Player* self) {
     return self->position.x + self->colliderX;
 }
@@ -194,11 +202,11 @@ int16_t PlayerGetY(struct Player* self) {
 }
 
 uint16_t PlayerGetColliderWidth(struct Player* self) {
-    return self->colliderWidth + self->colliderX;
+    return self->colliderWidth;
 }
 
 uint16_t PlayerGetColliderHeight(struct Player* self) {
-    return self->colliderHeight + self->colliderY;
+    return self->colliderHeight;
 }
 
 int16_t PlayerGetMomentumX(struct Player* self) {
