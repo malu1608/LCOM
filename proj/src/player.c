@@ -46,6 +46,8 @@ struct Player {
     int frame;
     bool laid;
 
+    xpm_image_t sprites[26];
+
     int anim_delay;
 };
 
@@ -75,6 +77,34 @@ void PlayerInit(struct Player *self, int16_t x, int16_t y) {
     self->colliderX = 15;
     self->colliderHeight = 80;
     self->colliderY = 16;
+
+    //self->sprites[0] = (struct xpm_image_t*) malloc(sizeof(struct xpm_image_t));
+    xpm_load((xpm_map_t)playerSprite1, XPM_8_8_8_8, &self->sprites[0]);
+    xpm_load((xpm_map_t)playerSprite1Flipped, XPM_8_8_8_8, &self->sprites[1]);
+    xpm_load((xpm_map_t)playerSprite2, XPM_8_8_8_8, &self->sprites[2]);
+    xpm_load((xpm_map_t)playerSprite2Flipped, XPM_8_8_8_8, &self->sprites[3]);
+    xpm_load((xpm_map_t)playerSprite3, XPM_8_8_8_8, &self->sprites[4]);
+    xpm_load((xpm_map_t)playerSprite3Flipped, XPM_8_8_8_8, &self->sprites[5]);
+    xpm_load((xpm_map_t)playerSprite4, XPM_8_8_8_8, &self->sprites[6]);
+    xpm_load((xpm_map_t)playerSprite4Flipped, XPM_8_8_8_8, &self->sprites[7]);
+    xpm_load((xpm_map_t)playerSprite5, XPM_8_8_8_8, &self->sprites[8]);
+    xpm_load((xpm_map_t)playerSprite5Flipped, XPM_8_8_8_8, &self->sprites[9]);
+    xpm_load((xpm_map_t)playerSprite6, XPM_8_8_8_8, &self->sprites[10]);
+    xpm_load((xpm_map_t)playerSprite6Flipped, XPM_8_8_8_8, &self->sprites[11]);
+    xpm_load((xpm_map_t)playerSprite7, XPM_8_8_8_8, &self->sprites[12]);
+    xpm_load((xpm_map_t)playerSprite7Flipped, XPM_8_8_8_8, &self->sprites[13]);
+    xpm_load((xpm_map_t)playerSprite8, XPM_8_8_8_8, &self->sprites[14]);
+    xpm_load((xpm_map_t)playerSprite8Flipped, XPM_8_8_8_8, &self->sprites[15]);
+    xpm_load((xpm_map_t)playerSprite9, XPM_8_8_8_8, &self->sprites[16]);
+    xpm_load((xpm_map_t)playerSprite9Flipped, XPM_8_8_8_8, &self->sprites[17]);
+    xpm_load((xpm_map_t)playerSprite10, XPM_8_8_8_8, &self->sprites[18]);
+    xpm_load((xpm_map_t)playerSprite10Flipped, XPM_8_8_8_8, &self->sprites[19]);
+    xpm_load((xpm_map_t)playerSprite11, XPM_8_8_8_8, &self->sprites[20]);
+    xpm_load((xpm_map_t)playerSprite11Flipped, XPM_8_8_8_8, &self->sprites[21]);
+    xpm_load((xpm_map_t)playerSprite12, XPM_8_8_8_8, &self->sprites[22]);
+    xpm_load((xpm_map_t)playerSprite12Flipped, XPM_8_8_8_8, &self->sprites[23]);
+    xpm_load((xpm_map_t)playerSprite13, XPM_8_8_8_8, &self->sprites[24]);
+    xpm_load((xpm_map_t)playerSprite13Flipped, XPM_8_8_8_8, &self->sprites[25]);
 }
 
 // Allocation + initialization (equivalent to "new Point(x, y)")
@@ -286,7 +316,7 @@ void PlayerSetAnimation(struct Player* self, int newAnim) {
 5 - Bounce,
 6 - Laid
 */
-xpm_map_t PlayerGetSprite(struct Player* self) {
+xpm_image_t PlayerGetSprite(struct Player* self) {
     switch (self->animation) {
         case 0: {
             self->anim_delay++;
@@ -336,20 +366,20 @@ xpm_map_t PlayerGetSprite(struct Player* self) {
         }
     }
     switch (self->frame) {
-        case 0: return (self->flipped)? (xpm_map_t)playerSprite1Flipped : (xpm_map_t)playerSprite1;
-        case 1: return (self->flipped)? (xpm_map_t)playerSprite2Flipped : (xpm_map_t)playerSprite2;
-        case 2: return (self->flipped)? (xpm_map_t)playerSprite3Flipped : (xpm_map_t)playerSprite3;
-        case 3: return (self->flipped)? (xpm_map_t)playerSprite4Flipped : (xpm_map_t)playerSprite4;
-        case 4: return (self->flipped)? (xpm_map_t)playerSprite5Flipped : (xpm_map_t)playerSprite5;
-        case 5: return (self->flipped)? (xpm_map_t)playerSprite6Flipped : (xpm_map_t)playerSprite6;
-        case 6: return (self->flipped)? (xpm_map_t)playerSprite7Flipped : (xpm_map_t)playerSprite7;
-        case 7: return (self->flipped)? (xpm_map_t)playerSprite8Flipped : (xpm_map_t)playerSprite8;
-        case 8: return (self->flipped)? (xpm_map_t)playerSprite9Flipped : (xpm_map_t)playerSprite9;
-        case 9: return (self->flipped)? (xpm_map_t)playerSprite10Flipped : (xpm_map_t)playerSprite10;
-        case 10: return (self->flipped)? (xpm_map_t)playerSprite11Flipped : (xpm_map_t)playerSprite11;
-        case 11: return (self->flipped)? (xpm_map_t)playerSprite12Flipped : (xpm_map_t)playerSprite12;
-        case 12: return (self->flipped)? (xpm_map_t)playerSprite13Flipped : (xpm_map_t)playerSprite13;
+        case 0: return (self->flipped)? self->sprites[1] : self->sprites[0];
+        case 1: return (self->flipped)? self->sprites[3] : self->sprites[2];
+        case 2: return (self->flipped)? self->sprites[5] : self->sprites[4];
+        case 3: return (self->flipped)? self->sprites[7] : self->sprites[6];
+        case 4: return (self->flipped)? self->sprites[9] : self->sprites[8];
+        case 5: return (self->flipped)? self->sprites[11] : self->sprites[10];
+        case 6: return (self->flipped)? self->sprites[13] : self->sprites[12];
+        case 7: return (self->flipped)? self->sprites[15] : self->sprites[14];
+        case 8: return (self->flipped)? self->sprites[17] : self->sprites[16];
+        case 9: return (self->flipped)? self->sprites[19] : self->sprites[18];
+        case 10: return (self->flipped)? self->sprites[21] : self->sprites[20];
+        case 11: return (self->flipped)? self->sprites[23] : self->sprites[22];
+        case 12: return (self->flipped)? self->sprites[25] : self->sprites[24];
     }
     //return self->frames[0];
-    return (xpm_map_t)playerSprite1;
+    return self->sprites[0];
 }

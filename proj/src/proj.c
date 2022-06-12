@@ -97,13 +97,16 @@ int(proj_main_loop)(int argc, char* argv[])
                     if (pressed_space)
                         PlayerChargeJump(player);
 
-                    u_int8_t *map;
+                    /*u_int8_t *map;
                     xpm_image_t img;
-                    map = xpm_load(PlayerGetSprite(player), XPM_8_8_8_8, &img);
+                    map = xpm_load(PlayerGetSprite(player), XPM_8_8_8_8, &img); 
+                    */
 
                     DrawLevel(manager);
                     PhysicsLoop(manager);
-                    draw_xpm(img, PlayerGetSpriteX(player), PlayerGetSpriteY(player), map);
+                    //draw_xpm(img, PlayerGetSpriteX(player), PlayerGetSpriteY(player), map);
+
+                    draw_loaded_xpm(PlayerGetSprite(player), PlayerGetSpriteX(player), PlayerGetSpriteY(player));
 
 
                     draw_rectangle(100, 25, 10, 10, 0xff0000); //DEBUG:
@@ -153,7 +156,7 @@ int(proj_main_loop)(int argc, char* argv[])
                         
                         if (scancode == SPACE_BREAKCODE && pressed_space) {
                             PlayerJump(player);
-                            draw_rectangle(40, 30, 10, 10, 0x0000ff);
+                            draw_rectangle(40, 30, 10, 10, 0x0000ff); //DEBUG:
                             pressed_space = false;
                         }
                     }

@@ -84,4 +84,4 @@ uint16_t PlayerGetSpeed(struct Player* self);
 
 void PlayerSetAnimation(struct Player* self, int newAnim);
 
-xpm_map_t PlayerGetSprite(struct Player* self);
+xpm_image_t PlayerGetSprite(struct Player* self);

@@ -21,6 +21,8 @@ int draw_rectangle(int16_t x, int16_t y, uint16_t height, uint16_t width, uint32
 
 void draw_xpm(xpm_image_t img, int16_t x, int16_t y, uint8_t *map);
 
+void draw_loaded_xpm(xpm_image_t img, int16_t x, int16_t y);
+
 void erase_xpm(xpm_image_t img, uint16_t x, uint16_t y);
 
 void (destroy_second_buffer)();

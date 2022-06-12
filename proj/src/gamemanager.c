@@ -95,8 +95,6 @@ bool checkCollisions(struct Player *player) {
 
 void PhysicsLoop(struct Manager *self) {
 
-    //PlayerMove(self->player, PlayerGetIntent(self->player) * 5, 0);
-
 
     int16_t p_x = PlayerGetX(self->player);
     int16_t p_y = PlayerGetY(self->player);
@@ -105,26 +103,25 @@ void PhysicsLoop(struct Manager *self) {
     int16_t p_momentum_x = PlayerGetMomentumX(self->player);
     int16_t p_momentum_y = PlayerGetMomentumY(self->player);
     int16_t p_movement = PlayerGetMovement(self->player);
-    //int16_t p_momentum_y = PlayerGetMomentumY(self->player);
 
 
     int16_t diff_y = GRAVITY + p_momentum_y;
     int16_t diff_x = p_momentum_x + p_movement;
     PlayerSetFloored(self->player, false);
 
-    draw_rectangle(30, 30, 10, 10, 0xff0000);
-    draw_rectangle(10, 30, 10, 10, 0xff0000);
-    draw_rectangle(20, 40, 10, 10, 0xff0000);
-    draw_rectangle(20, 20, 10, 10, 0xff0000);
+    draw_rectangle(30, 30, 10, 10, 0xff0000); //DEBUG:
+    draw_rectangle(10, 30, 10, 10, 0xff0000); //DEBUG:
+    draw_rectangle(20, 40, 10, 10, 0xff0000); //DEBUG:
+    draw_rectangle(20, 20, 10, 10, 0xff0000); //DEBUG:
     if (diff_x > 0) {
-        draw_rectangle(30, 30, 10, 10, 0x00ff00);
+        draw_rectangle(30, 30, 10, 10, 0x00ff00); //DEBUG:
     } else if (diff_x < 0) {
-        draw_rectangle(10, 30, 10, 10, 0x00ff00);
+        draw_rectangle(10, 30, 10, 10, 0x00ff00); //DEBUG:
     }
     if (diff_y > 0) {
-        draw_rectangle(20, 40, 10, 10, 0x00ff00);
+        draw_rectangle(20, 40, 10, 10, 0x00ff00); //DEBUG:
     } else if(diff_y < 0){
-        draw_rectangle(20, 20, 10, 10, 0x00ff00);
+        draw_rectangle(20, 20, 10, 10, 0x00ff00); //DEBUG:
     }
 
     if (diff_y > 0) { //going down
