@@ -2,30 +2,8 @@
 
 #include <lcom/lcf.h>
 
-#define RTC_IRQ 8 //hookid
-#define RTC_ADDR_REG 0x70
-#define RTC_DATA_REG 0x71 
-
-#define RTC_SECONDS 0   
-#define RTC_MINUTES 2   
-#define RTC_HOURS 4   
-#define RTC_DAYOFWEEK 6   
-#define RTC_DAYOFMONTH 7   
-#define RTC_MONTH 8   
-#define RTC_YEAR 9
-
-#define PERIODIC_INTERRUPT_ENABLE BIT(6)
-
-#define RTC_REG_A 10
-#define RTC_REG_B 11
-#define RTC_REG_C 12
-#define RTC_REG_D 13
-
-#define RTC_UIP BIT(7)
-#define RTC_PF BIT(6)
-
 /**
- * @brief Struct for Date
+ * Struct for Date
  * 
  */
 typedef struct Date{
@@ -34,7 +12,7 @@ typedef struct Date{
   uint8_t day;
   uint8_t hour;
   uint8_t minutes;
-  uint8_t second;
+  uint8_t seconds;
 } Date;
 
 #define RTC_ADDR_REG 0x70
