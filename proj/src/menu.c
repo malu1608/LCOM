@@ -11,8 +11,8 @@ void loadMenu() {
   xpm_load((xpm_map_t) options_xpm, XPM_8_8_8_8, &options);
 }
 
-void Menu() {
-  draw_rectangle(0, 0, 100, 600, 0x000000);
+void Menu(uint16_t x_res, uint16_t y_res) {
+  draw_rectangle(0, 0, x_res, y_res, 0x000000);
   draw_loaded_xpm(title, 225, 140);
   draw_loaded_xpm(options, 420, 500);
 }

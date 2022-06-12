@@ -12,7 +12,7 @@
 
 void loadMenu();
 
-void Menu();
+void Menu(uint16_t x_res, uint16_t y_res);
 
 void checkOptions(uint16_t x, uint16_t y);
 
