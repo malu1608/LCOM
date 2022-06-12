@@ -1,6 +1,7 @@
 #include <lcom/lcf.h>
 #include <stdio.h>
 #include "timer.h"
+#include "rtc.h"
 #include "sprites.h"
 #include "keyboard.h"
 #include "gameManager.h"
@@ -40,6 +41,7 @@ int main(int argc, char *argv[]) {
 int(proj_main_loop)(int argc, char* argv[])
 {
     uint8_t timer_hook = TIMER0_IRQ;
+    uint8_t rtc_bit_number = 8;
 
     int timer_mask = BIT(timer_hook);
 
@@ -49,6 +51,8 @@ int(proj_main_loop)(int argc, char* argv[])
         return 1;
     }
     
+    rtc_subscribe(&rtc_bit_number);
+
     if (initialize_graphics() == 0) {
        vg_exit();
     }
@@ -79,6 +83,10 @@ int(proj_main_loop)(int argc, char* argv[])
 
     //main loop
     while(scancode != ESC_BREAKCODE) {
+        char *date = NULL;
+        print_date(date);
+        printf("Date: %d\n", rtc_year());
+        
     
         //if (is_scancode_complete)
             //kbc_print_scancode_wrapper();
@@ -132,11 +140,8 @@ int(proj_main_loop)(int argc, char* argv[])
                     
                 }
                 if (msg.m_notify.interrupts & kbd_mask) {
-                    printf("Hello World! \n");
                     get_scancode();
-                    printf("Hello World2! \n");
                     analyse_scancode();
-                    printf("Hello World!3 \n");
                     if (is_scancode_complete) {
 
                         if (scancode == A_MAKECODE) {
@@ -176,6 +181,8 @@ int(proj_main_loop)(int argc, char* argv[])
         printf("ERROR: Failed to unsubscribe to Timer0 \n");
         return 1;
     }
+
+    rtc_unsubscribe();
 
     sys_irqrmpolicy(&kbd_hook);
 
