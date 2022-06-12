@@ -43,7 +43,6 @@ int(proj_main_loop)(int argc, char* argv[])
 
     int timer_mask = BIT(timer_hook);
 
-   
 
     if (timer_subscribe_int(&timer_hook)) {
         printf("ERROR: Failed to subscribe to Timer0 \n");
@@ -92,42 +91,11 @@ int(proj_main_loop)(int argc, char* argv[])
             switch(_ENDPOINT_P(msg.m_source)) {
                 case HARDWARE:
                 if (msg.m_notify.interrupts & timer_mask) {
-                    if (get_scancode()) {
-                        if (tickdelay(micros_to_ticks(KBC_WAIT))) {
-                            return 1;
-                        }
-                    }
 
                     draw_rectangle(0, 0, vg_info.x_res, vg_info.y_res, 0x000000);
 
-                    analyse_scancode();
-                    
-                    //graphics_handling();
-                    
-
-                    if (scancode == A_MAKECODE) {
-                        PlayerLeftPressed(player);
-                    } else if (scancode == A_BREAKCODE) {
-                        PlayerLeftReleased(player);
-                    } else if (scancode == D_MAKECODE) {
-                        PlayerRightPressed(player);
-                    } else if (scancode == D_BREAKCODE) {
-                        PlayerRightReleased(player);
-                    }
-
-                    if (scancode == SPACE_MAKECODE) {
-                        pressed_space = true;
-                    }
                     if (pressed_space)
                         PlayerChargeJump(player);
-                     
-                    if (scancode == SPACE_BREAKCODE && pressed_space) {
-                        PlayerJump(player);
-                        draw_rectangle(40, 30, 10, 10, 0x0000ff);
-                        pressed_space = false;
-                    }
-
-                    
 
                     u_int8_t *map;
                     xpm_image_t img;
@@ -148,11 +116,6 @@ int(proj_main_loop)(int argc, char* argv[])
 
                     draw_rectangle(160, 25, 40, 10, 0xff0000); //DEBUG:
 
-<<<<<<< Updated upstream
-=======
-                    PhysicsLoop(manager);
->>>>>>> Stashed changes
-
                     if (PlayerGetLeftKey(player)) {
                         draw_rectangle(100, 25, 10, 10, 0x00ff00); //DEBUG:
                     }
@@ -164,25 +127,37 @@ int(proj_main_loop)(int argc, char* argv[])
                     if (pressed_space) {
                         draw_rectangle(160, 25, 40, 10, 0x00ff00); //DEBUG:
                     }
-
-                    //draw_rectangle(PlayerGetX(player), PlayerGetY(player), PlayerGetColliderWidth(player), PlayerGetColliderHeight(player), 0x6666ff);
                     
-<<<<<<< Updated upstream
                     refresh_screen();
-=======
-                    //if (draw) {
-                    refresh_screen();
-                    //     draw = false;
-                    // } else {
-                    //     draw = true;
-                    // }
->>>>>>> Stashed changes
                     
                 }
                 if (msg.m_notify.interrupts & kbd_mask) {
+                    printf("Hello World! \n");
                     get_scancode();
+                    printf("Hello World2! \n");
                     analyse_scancode();
+                    printf("Hello World!3 \n");
                     if (is_scancode_complete) {
+
+                        if (scancode == A_MAKECODE) {
+                            PlayerLeftPressed(player);
+                        } else if (scancode == A_BREAKCODE) {
+                            PlayerLeftReleased(player);
+                        } else if (scancode == D_MAKECODE) {
+                            PlayerRightPressed(player);
+                        } else if (scancode == D_BREAKCODE) {
+                            PlayerRightReleased(player);
+                        }
+
+                        if (scancode == SPACE_MAKECODE) {
+                            pressed_space = true;
+                        }
+                        
+                        if (scancode == SPACE_BREAKCODE && pressed_space) {
+                            PlayerJump(player);
+                            draw_rectangle(40, 30, 10, 10, 0x0000ff);
+                            pressed_space = false;
+                        }
                         if (kbc_print_scancode_wrapper()) {
                             return 1;
                         }

@@ -14,7 +14,6 @@ uint8_t is_scancode_complete = 1;
 
 
 int get_scancode(){
-  //This makes the call to the system returning to character the scancode, if it returns 1 then it failed so I signal that by making valid_scancode 1.
     if (util_sys_inb(STAT_REG, &character)) {
       valid_scancode = 0;
       return 1;
