@@ -6,7 +6,11 @@
 #include "gameManager.h"
 #include "graphics.h"
 #include "i8254.h"
-//#include "menu.h"
+#include "menu.h"
+
+enum GAME_STATE {MAIN_MENU, LEADERBOARD, PLAYING, PAUSE};
+
+enum GAME_STATE game_state = MAIN_MENU;
 
 int main(int argc, char *argv[]) {
     lcf_set_language("EN-US");
@@ -37,6 +41,7 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
+
 int(proj_main_loop)(int argc, char* argv[])
 {
     uint8_t timer_hook = TIMER0_IRQ;
@@ -53,9 +58,7 @@ int(proj_main_loop)(int argc, char* argv[])
        vg_exit();
     }
     
-    //Menu();
-
-    //bool draw = true;
+    loadMenu();
 
     int kbd_hook = KBD_IRQ;
 
@@ -66,7 +69,6 @@ int(proj_main_loop)(int argc, char* argv[])
         return 1;
     }
 
-    
     int r;
     int ipc;
     message msg;
@@ -79,10 +81,6 @@ int(proj_main_loop)(int argc, char* argv[])
 
     //main loop
     while(scancode != ESC_BREAKCODE) {
-    
-        //if (is_scancode_complete)
-            //kbc_print_scancode_wrapper();
-
         if ( (r = driver_receive(ANY, &msg, &ipc)) != 0) {
             printf("Function driver_receive fails with: %d \n", r);
             continue;
@@ -91,48 +89,46 @@ int(proj_main_loop)(int argc, char* argv[])
             switch(_ENDPOINT_P(msg.m_source)) {
                 case HARDWARE:
                 if (msg.m_notify.interrupts & timer_mask) {
+                    if (game_state == MAIN_MENU) {
+                        Menu();
+                    } else if (game_state == LEADERBOARD) {
+                        //Menu();
+                    } else {
+                        //draw_rectangle(0, 0, vg_info.x_res, vg_info.y_res, 0x000000);
 
-                    //draw_rectangle(0, 0, vg_info.x_res, vg_info.y_res, 0x000000);
+                        if (pressed_space)
+                            PlayerChargeJump(player);
 
-                    if (pressed_space)
-                        PlayerChargeJump(player);
+                        DrawLevel(manager);
+                        PhysicsLoop(manager);
+                        //draw_xpm(img, PlayerGetSpriteX(player), PlayerGetSpriteY(player), map);
 
-                    /*u_int8_t *map;
-                    xpm_image_t img;
-                    map = xpm_load(PlayerGetSprite(player), XPM_8_8_8_8, &img); 
-                    */
+                        draw_loaded_xpm(PlayerGetSprite(player), PlayerGetSpriteX(player), PlayerGetSpriteY(player));
 
-                    DrawLevel(manager);
-                    PhysicsLoop(manager);
-                    //draw_xpm(img, PlayerGetSpriteX(player), PlayerGetSpriteY(player), map);
+                        draw_rectangle(100, 25, 10, 10, 0xff0000); //DEBUG:
 
-                    draw_loaded_xpm(PlayerGetSprite(player), PlayerGetSpriteX(player), PlayerGetSpriteY(player));
+                        draw_rectangle(115, 25, 10, 10, 0xff0000); //DEBUG:
 
+                        draw_rectangle(115, 10, 10, 10, 0xff0000); //DEBUG:
 
-                    draw_rectangle(100, 25, 10, 10, 0xff0000); //DEBUG:
+                        draw_rectangle(130, 25, 10, 10, 0xff0000); //DEBUG:
 
-                    draw_rectangle(115, 25, 10, 10, 0xff0000); //DEBUG:
+                        draw_rectangle(160, 25, 40, 10, 0xff0000); //DEBUG:
 
-                    draw_rectangle(115, 10, 10, 10, 0xff0000); //DEBUG:
+                        if (PlayerGetLeftKey(player)) {
+                            draw_rectangle(100, 25, 10, 10, 0x00ff00); //DEBUG:
+                        }
 
-                    draw_rectangle(130, 25, 10, 10, 0xff0000); //DEBUG:
+                        if (PlayerGetRightKey(player)) {
+                            draw_rectangle(130, 25, 10, 10, 0x00ff00); //DEBUG:
+                        }
 
-                    draw_rectangle(160, 25, 40, 10, 0xff0000); //DEBUG:
-
-                    if (PlayerGetLeftKey(player)) {
-                        draw_rectangle(100, 25, 10, 10, 0x00ff00); //DEBUG:
+                        if (pressed_space) {
+                            draw_rectangle(160, 25, 40, 10, 0x00ff00); //DEBUG:
+                        }
                     }
-
-                    if (PlayerGetRightKey(player)) {
-                        draw_rectangle(130, 25, 10, 10, 0x00ff00); //DEBUG:
-                    }
-
-                    if (pressed_space) {
-                        draw_rectangle(160, 25, 40, 10, 0x00ff00); //DEBUG:
-                    }
-                    
+                        
                     refresh_screen();
-                    
                 }
                 if (msg.m_notify.interrupts & kbd_mask) {
                     get_scancode();
