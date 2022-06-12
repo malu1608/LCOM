@@ -5,6 +5,7 @@ struct packet mouse_parsed_packet;
 
 int16_t mouse_x;
 int16_t mouse_y;
+bool mouse_pressed;
 
 static uint8_t st, counter = 0;
 static uint8_t packet_bytes[3];
@@ -46,7 +47,10 @@ uint8_t (parse_packet)() {
     /* MOUSE BUTTONS */
     mouse_parsed_packet.lb = packet_bytes[0] & MOUSE_PARSE_LB;     
     mouse_parsed_packet.rb = packet_bytes[0] & MOUSE_PARSE_RB;
-    mouse_parsed_packet.mb = packet_bytes[0] & MOUSE_PARSE_MB;   
+    mouse_parsed_packet.mb = packet_bytes[0] & MOUSE_PARSE_MB; 
+
+    if (mouse_parsed_packet.lb)
+        mouse_pressed = true;  
 
     /* MOUSE MOVEMENT DELTAS */
     // Doesn't take into account the sign
@@ -65,11 +69,26 @@ uint8_t (parse_packet)() {
     mouse_parsed_packet.y_ov = packet_bytes[0] & MOUSE_PARSE_Y_OVERFLOW;
 
     if (!mouse_parsed_packet.x_ov) {
-        mouse_x += mouse_parsed_packet.delta_x;
+        if (abs(mouse_parsed_packet.delta_x) < 50)
+            mouse_x += mouse_parsed_packet.delta_x;
     }
     if (!mouse_parsed_packet.y_ov) {
-        mouse_y -= mouse_parsed_packet.delta_y;
+        if (abs(mouse_parsed_packet.delta_y) < 50)
+            mouse_y -= mouse_parsed_packet.delta_y;
     }
+
+    if (mouse_x < 0)
+        mouse_x = 0;
+    if (mouse_y < 0)
+        mouse_y = 0;
+    if (mouse_x > 1152)
+        mouse_x = 1152;
+    if (mouse_y > 864)
+        mouse_x = 864;
+
+    
+
+
     return 0;
 }
 

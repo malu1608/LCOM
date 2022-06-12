@@ -11,6 +11,7 @@ extern struct packet mouse_parsed_packet;
 
 extern int16_t mouse_x;
 extern int16_t mouse_y;
+extern bool mouse_pressed;
 
 void (mouse_ih)();
 

@@ -16,4 +16,4 @@ void Menu(uint16_t x_res, uint16_t y_res);
 
 void checkOptions(uint16_t x, uint16_t y);
 
-void clickOption(uint16_t x, uint16_t y);
+int clickOption(uint16_t x, uint16_t y);

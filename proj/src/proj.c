@@ -81,6 +81,7 @@ int(proj_main_loop)(int argc, char* argv[])
 
     mouse_x = 600;
     mouse_y = 320;
+    mouse_pressed = false;
 
 
     sys_outb(WRITE_CMD_CTRLREG, MOUSE_WRITE_BYTE);
@@ -116,9 +117,10 @@ int(proj_main_loop)(int argc, char* argv[])
 
     struct Manager* manager = GameManagerCreate(player, vg_info.x_res, vg_info.y_res);
 
+    bool looping = true;
 
     //main loop
-    while(scancode != ESC_BREAKCODE) {
+    while(looping) {
         if ( (r = driver_receive(ANY, &msg, &ipc)) != 0) {
             printf("Function driver_receive fails with: %d \n", r);
             continue;
@@ -129,7 +131,22 @@ int(proj_main_loop)(int argc, char* argv[])
                 if (msg.m_notify.interrupts & timer_mask) {
                     if (game_state == MAIN_MENU) {
                         Menu(vg_info.x_res, vg_info.y_res);
+                        checkOptions(mouse_x, mouse_y);
                         draw_loaded_xpm(mouse_loaded_xpm, mouse_x, mouse_y);
+                        if (mouse_pressed) {
+                            switch(clickOption(mouse_x, mouse_y)) {
+                                case 0: 
+                                    game_state = PLAYING;
+                                    break;
+                                case 1: 
+                                    game_state = LEADERBOARD;
+                                    break;
+                                case 2:
+                                    looping = false;
+                                    break;
+                            }
+                            mouse_pressed = false;
+                        }
                     } else if (game_state == LEADERBOARD) {
                         //Menu(); Mete aqui a chamada para desenhar a leaderboard como fiz no menu
                     } else {
@@ -171,30 +188,37 @@ int(proj_main_loop)(int argc, char* argv[])
                 }
                 if (msg.m_notify.interrupts & kbd_mask) {
                     get_scancode();
-                    if (game_state == MAIN_MENU || game_state == LEADERBOARD) {
                         // Handle Input
-                        analyse_scancode();
-                        if (is_scancode_complete) {
+                    analyse_scancode();
+                    if (is_scancode_complete) {
 
-                            if (scancode == A_MAKECODE || scancode == LEFT_ARROW_MAKECODE) {
-                                PlayerLeftPressed(player);
-                            } else if (scancode == A_BREAKCODE || scancode == LEFT_ARROW_BREAKCODE) {
-                                PlayerLeftReleased(player);
-                            } else if (scancode == D_MAKECODE || scancode == RIGHT_ARROW_MAKECODE) {
-                                PlayerRightPressed(player);
-                            } else if (scancode == D_BREAKCODE || scancode == RIGHT_ARROW_BREAKCODE) {
-                                PlayerRightReleased(player);
-                            }
+                        if (scancode == A_MAKECODE || scancode == LEFT_ARROW_MAKECODE) {
+                            PlayerLeftPressed(player);
+                        } else if (scancode == A_BREAKCODE || scancode == LEFT_ARROW_BREAKCODE) {
+                            PlayerLeftReleased(player);
+                        } else if (scancode == D_MAKECODE || scancode == RIGHT_ARROW_MAKECODE) {
+                            PlayerRightPressed(player);
+                        } else if (scancode == D_BREAKCODE || scancode == RIGHT_ARROW_BREAKCODE) {
+                            PlayerRightReleased(player);
+                        }
 
-                            if (scancode == SPACE_MAKECODE) {
-                                pressed_space = true;
-                            }
-                            
-                            if (scancode == SPACE_BREAKCODE && pressed_space) {
-                                PlayerJump(player);
-                                draw_rectangle(40, 30, 10, 10, 0x0000ff); //DEBUG:
-                                pressed_space = false;
-                            }
+                        if (scancode == SPACE_MAKECODE) {
+                            pressed_space = true;
+                        }
+
+                        if (scancode == ESC_BREAKCODE) {
+                            if (game_state == MAIN_MENU)
+                                looping = false;
+                            else if (game_state == LEADERBOARD)
+                                game_state = MAIN_MENU;
+                            else if (game_state == PLAYING)
+                                game_state = MAIN_MENU;
+                        }
+                        
+                        if (scancode == SPACE_BREAKCODE && pressed_space) {
+                            PlayerJump(player);
+                            draw_rectangle(40, 30, 10, 10, 0x0000ff); //DEBUG:
+                            pressed_space = false;
                         }
                     }
                 }

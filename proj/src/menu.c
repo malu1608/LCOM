@@ -18,9 +18,33 @@ void Menu(uint16_t x_res, uint16_t y_res) {
 }
 
 void checkOptions(uint16_t x, uint16_t y) {
-
+  if (x < 420 || x > 808)
+    return;
+  if (x > 445 && x < 758 && y > 500 && y < 540) {
+    draw_rectangle(445, 544, 313, 4, 0xECECEC);
+  }
+  if (x > 420 && x < 783 && y > 581 && y < 621) {
+    draw_rectangle(420, 625, 363, 4, 0xECECEC);
+  }
+  if (x > 420 && x < 783 && y > 660 && y < 713) {
+    draw_rectangle(542, 710, 119, 4, 0xECECEC);
+  }
 }
 
-void clickOption(uint16_t x, uint16_t y) {
-  
+int clickOption(uint16_t x, uint16_t y) {
+  if (x < 420 || x > 808)
+    return 4;
+  if (x > 445 && x < 758 && y > 500 && y < 540) {
+    draw_rectangle(445, 544, 313, 4, 0xECECEC);
+    return 0;
+  }
+  if (x > 420 && x < 783 && y > 581 && y < 621) {
+    draw_rectangle(420, 585, 363, 4, 0xECECEC);
+    return 1;
+  }
+  if (x > 420 && x < 783 && y > 660 && y < 713) {
+    draw_rectangle(542, 717, 119, 4, 0xECECEC);
+    return 2;
+  }
+  return 4;
 }
