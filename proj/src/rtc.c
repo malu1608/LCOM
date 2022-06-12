@@ -38,7 +38,7 @@ Date * get_date(){
 	sys_inb(RTC_DATA_REG, &date->year);
     if(!is_binary()){
         date->second=bcd_to_binary(date->second);
-        date->minute=bcd_to_binary(date->minute);
+        date->minutes=bcd_to_binary(date->minutes);
         date->hour=bcd_to_binary(date->hour);
         date->day=bcd_to_binary(date->day);
         date->month=bcd_to_binary(date->month);
