@@ -1,6 +1,7 @@
 #include <lcom/lcf.h>
 #include <stdio.h>
 #include "timer.h"
+#include "rtc.h"
 #include "sprites.h"
 #include "keyboard.h"
 #include "gameManager.h"
@@ -79,7 +80,10 @@ int(proj_main_loop)(int argc, char* argv[])
 
     //main loop
     while(scancode != ESC_BREAKCODE) {
-    
+        //TO GET DATE
+        //Data * date = get_date();
+        //printf("%d:%d:%d - %d/%d/%d\n", date->hour, date->minutes, date->seconds, date->day, date->month, date->year);
+
         //if (is_scancode_complete)
             //kbc_print_scancode_wrapper();
 
