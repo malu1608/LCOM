@@ -92,7 +92,7 @@ int(proj_main_loop)(int argc, char* argv[])
                 case HARDWARE:
                 if (msg.m_notify.interrupts & timer_mask) {
 
-                    draw_rectangle(0, 0, vg_info.x_res, vg_info.y_res, 0x000000);
+                    //draw_rectangle(0, 0, vg_info.x_res, vg_info.y_res, 0x000000);
 
                     if (pressed_space)
                         PlayerChargeJump(player);
@@ -132,20 +132,18 @@ int(proj_main_loop)(int argc, char* argv[])
                     
                 }
                 if (msg.m_notify.interrupts & kbd_mask) {
-                    printf("Hello World! \n");
                     get_scancode();
-                    printf("Hello World2! \n");
                     analyse_scancode();
-                    printf("Hello World!3 \n");
+                    // Handle Input
                     if (is_scancode_complete) {
 
-                        if (scancode == A_MAKECODE) {
+                        if (scancode == A_MAKECODE || scancode == LEFT_ARROW_MAKECODE) {
                             PlayerLeftPressed(player);
-                        } else if (scancode == A_BREAKCODE) {
+                        } else if (scancode == A_BREAKCODE || scancode == LEFT_ARROW_BREAKCODE) {
                             PlayerLeftReleased(player);
-                        } else if (scancode == D_MAKECODE) {
+                        } else if (scancode == D_MAKECODE || scancode == RIGHT_ARROW_MAKECODE) {
                             PlayerRightPressed(player);
-                        } else if (scancode == D_BREAKCODE) {
+                        } else if (scancode == D_BREAKCODE || scancode == RIGHT_ARROW_BREAKCODE) {
                             PlayerRightReleased(player);
                         }
 
@@ -157,9 +155,6 @@ int(proj_main_loop)(int argc, char* argv[])
                             PlayerJump(player);
                             draw_rectangle(40, 30, 10, 10, 0x0000ff);
                             pressed_space = false;
-                        }
-                        if (kbc_print_scancode_wrapper()) {
-                            return 1;
                         }
                     }
                 }

@@ -176,6 +176,12 @@ void PhysicsLoop(struct Manager *self) {
                         diff_x = self->levels[self->level]->platforms[i]->x - p_x - p_width;
                 } 
             }
+            if (p_x + p_width >= self->x_limit) {
+                PlayerSetMomentumX(self->player, -PlayerGetMomentumX(self->player) / 2);
+                if (!PlayerGetFloored(self->player))
+                    PlayerSetBounce(self->player, true);
+                diff_x = 0;
+            }
         } else { //going left
             for (int i = 0; i < self->levels[self->level]->size; i++) {
                 if (p_y > self->levels[self->level]->platforms[i]->y + self->levels[self->level]->platforms[i]->height || self->levels[self->level]->platforms[i]->y > p_y + p_height)
@@ -191,6 +197,13 @@ void PhysicsLoop(struct Manager *self) {
                     if (p_x - self->levels[self->level]->platforms[i]->x - self->levels[self->level]->platforms[i]->width > diff_x)
                         diff_x = self->levels[self->level]->platforms[i]->x + self->levels[self->level]->platforms[i]->width - p_x;
                 } 
+            }
+
+            if (p_x <= 0) {
+                PlayerSetMomentumX(self->player, -PlayerGetMomentumX(self->player) / 2);
+                if (!PlayerGetFloored(self->player))
+                    PlayerSetBounce(self->player, true);
+                diff_x = 0;
             }
         }
     }
@@ -210,7 +223,7 @@ void PhysicsLoop(struct Manager *self) {
             PlayerSetMomentumY(self->player, p_momentum_y + 1);
         }
         PlayerMove(self->player, 0, diff_y);
-        draw_rectangle(10, 10, 10, 10, 0xff0000); // A little signal to tell if its floored (GREEN is floored, RED isnt)
+        draw_rectangle(10, 10, 10, 10, 0xff0000); // A little signal to tell if its floored (GREEN is floored, RED isnt) DEBUG
 
         if (PlayerGetBounce(self->player)) {
             PlayerSetAnimation(self->player, 5);
@@ -223,15 +236,15 @@ void PhysicsLoop(struct Manager *self) {
         }
     }
     else{
-        draw_rectangle(10, 10, 10, 10, 0x00ff00); // A little signal to tell if its floored (GREEN is floored, RED isnt)
+        draw_rectangle(10, 10, 10, 10, 0x00ff00); // A little signal to tell if its floored (GREEN is floored, RED isnt) //DEBUG
         //PlayerMove(self->player, PlayerGetIntent(self->player) * 5, 0);
         //When floored the player shall not move;
         PlayerResetMomentum(self->player);
         //turn intent into movement
         //TODO: only if not jumping
-        draw_rectangle(20, 10, 10, 10, 0xff0000);
+        draw_rectangle(20, 10, 10, 10, 0xff0000); //DEBUG
         if (!PlayerGetJumping(self->player)) {
-            draw_rectangle(20, 10, 10, 10, 0x00ff00);
+            draw_rectangle(20, 10, 10, 10, 0x00ff00); //DEBUG
             PlayerSetMovement(self->player, PlayerGetIntent(self->player) * PlayerGetSpeed(self->player));
         }
         else {
@@ -260,13 +273,13 @@ void PhysicsLoop(struct Manager *self) {
     Check for collisions;
     */
 
-    //GRAVITY
-    if (PlayerGetX(self->player) > self->x_limit - (int16_t)PlayerGetWidth(self->player)/2) {
-        PlayerSetPosition(self->player, self->x_limit - (int16_t)PlayerGetWidth(self->player)/2, PlayerGetY(self->player));
-    } else if (PlayerGetX(self->player) < 0) {
-        PlayerSetPosition(self->player, 0, PlayerGetY(self->player));
-    }
+    // if (PlayerGetX(self->player) > self->x_limit - (int16_t)PlayerGetWidth(self->player)/2) {
+    //     PlayerSetPosition(self->player, self->x_limit - (int16_t)PlayerGetWidth(self->player)/2, PlayerGetY(self->player));
+    // } else if (PlayerGetX(self->player) < 0) {
+    //     PlayerSetPosition(self->player, 0, PlayerGetY(self->player));
+    // }
 
+    //GRAVITY
     if ((PlayerGetY(self->player) > self->y_limit + 20)) {
         PlayerSetPosition(self->player, PlayerGetX(self->player), 0-PlayerGetHeight(self->player));
         if (self->level == 0){
@@ -292,7 +305,7 @@ void DrawLevel(struct Manager *self) {
 
 
 void loadLevel1(struct Level *level, struct Manager *manager) {
-    level->size = 6;
+    level->size = 4;
 
     level->map_background = xpm_load((xpm_map_t)level_1_background_xpm, XPM_8_8_8_8, &level->img_background);
 
@@ -340,7 +353,7 @@ void loadLevel1(struct Level *level, struct Manager *manager) {
 }
 
 void loadLevel2(struct Level *level, struct Manager *manager) {
-    level->size = 7;
+    level->size = 5;
 
     level->map_background = xpm_load((xpm_map_t)level_2_background_xpm, XPM_8_8_8_8, &level->img_background);
 
@@ -395,7 +408,7 @@ void loadLevel2(struct Level *level, struct Manager *manager) {
 }
 
 void loadLevel3(struct Level *level, struct Manager *manager) {
-    level->size = 10;
+    level->size = 8;
 
     level->map_background = xpm_load((xpm_map_t)level_3_background_xpm, XPM_8_8_8_8, &level->img_background);
 
@@ -471,7 +484,7 @@ void loadLevel3(struct Level *level, struct Manager *manager) {
 }
 
 void loadLevel4(struct Level *level, struct Manager *manager) {
-    level->size = 11;
+    level->size = 9;
 
     level->map_background = xpm_load((xpm_map_t)level_4_background_xpm, XPM_8_8_8_8, &level->img_background);
 
@@ -555,7 +568,7 @@ void loadLevel4(struct Level *level, struct Manager *manager) {
 }
 
 void loadLevel5(struct Level *level, struct Manager *manager) {
-    level->size = 21;
+    level->size = 19;
 
     level->map_background = xpm_load((xpm_map_t)level_5_background5_xpm, XPM_8_8_8_8, &level->img_background);
 
