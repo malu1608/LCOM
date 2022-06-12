@@ -1,6 +1,7 @@
 #include <lcom/lcf.h>
 #include <stdio.h>
 #include "timer.h"
+#include "rtc.h"
 #include "sprites.h"
 #include "keyboard.h"
 #include "gameManager.h"
@@ -81,6 +82,16 @@ int(proj_main_loop)(int argc, char* argv[])
 
     //main loop
     while(scancode != ESC_BREAKCODE) {
+<<<<<<< HEAD
+=======
+        //TO GET DATE
+        //Data * date = get_date();
+        //printf("%d:%d:%d - %d/%d/%d\n", date->hour, date->minutes, date->seconds, date->day, date->month, date->year);
+
+        //if (is_scancode_complete)
+            //kbc_print_scancode_wrapper();
+
+>>>>>>> 3d453db25d9c0af4582c406333e61c7ec7ae2115
         if ( (r = driver_receive(ANY, &msg, &ipc)) != 0) {
             printf("Function driver_receive fails with: %d \n", r);
             continue;
