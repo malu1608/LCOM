@@ -41,7 +41,6 @@ int main(int argc, char *argv[]) {
 int(proj_main_loop)(int argc, char* argv[])
 {
     uint8_t timer_hook = TIMER0_IRQ;
-    uint8_t rtc_bit_number = 8;
 
     int timer_mask = BIT(timer_hook);
 
@@ -51,8 +50,6 @@ int(proj_main_loop)(int argc, char* argv[])
         return 1;
     }
     
-    rtc_subscribe(&rtc_bit_number);
-
     if (initialize_graphics() == 0) {
        vg_exit();
     }
@@ -83,11 +80,8 @@ int(proj_main_loop)(int argc, char* argv[])
 
     //main loop
     while(scancode != ESC_BREAKCODE) {
-        char *date = NULL;
-        print_date(date);
-        printf("Date: %d\n", rtc_year());
-        
-    
+        Date * date = get_date();
+        printf("%d\n", date->year);
         //if (is_scancode_complete)
             //kbc_print_scancode_wrapper();
 
@@ -181,8 +175,6 @@ int(proj_main_loop)(int argc, char* argv[])
         printf("ERROR: Failed to unsubscribe to Timer0 \n");
         return 1;
     }
-
-    rtc_unsubscribe();
 
     sys_irqrmpolicy(&kbd_hook);
 
