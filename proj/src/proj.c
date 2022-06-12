@@ -80,8 +80,9 @@ int(proj_main_loop)(int argc, char* argv[])
 
     //main loop
     while(scancode != ESC_BREAKCODE) {
-        Date * date = get_date();
+        Data * date = get_date();
         printf("%d\n", date->year);
+
         //if (is_scancode_complete)
             //kbc_print_scancode_wrapper();
 

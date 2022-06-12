@@ -3,7 +3,7 @@
 #include <lcom/lcf.h>
 
 /**
- * Struct for Date
+ * Struct for Data
  * 
  */
 typedef struct Date{
@@ -13,7 +13,7 @@ typedef struct Date{
   uint8_t hour;
   uint8_t minutes;
   uint8_t seconds;
-} Date;
+} Data;
 
 #define RTC_ADDR_REG 0x70
 #define RTC_DATA_REG 0x71
@@ -31,32 +31,21 @@ typedef struct Date{
 
 
 /**
- * @brief Check if the input from the rtc is written in binary or in bcd.
- * 
- * @return true - It's written in binary
- * @return false - It's written in bcd
+ * Checks if rtc's input is written in bcd or in binary.
  */
 bool is_binary();
 
 /**
- * @brief Checks if rtc is updating.
- * 
- * @return true - It's updating
- * @return false - It's not updating
+ * Checks if rtc is updating.
  */
-bool RTC_is_Updating();
+bool rtcIsUpdating();
 
 /**
- * @brief Converts the int passed in the parameter from bcd to binary.
- * 
- * @param num - Number to be converted
- * @return int - The converted number
+ * Converts a number from bcd to binary.
  */
-int bcd_to_binary(int num);
+int bcd_to_bin(int num);
 
 /**
- * @brief Get the date object.
- * 
- * @return Date* - Date pointer to Date object
+ * Gets a pointer to the desired Data object.
  */
-Date * get_date();
+Data * get_date();
