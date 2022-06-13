@@ -1,0 +1,26 @@
+var i8254_8h =
+[
+    [ "TIMER0_IRQ", "i8254_8h.html#a30bf84c312af248cb81bb224e09f9ba8", null ],
+    [ "TIMER0_IRQ_SET_MASK", "i8254_8h.html#a548c4662756aec024a1b5dc5a4e9e8ec", null ],
+    [ "TIMER_0", "i8254_8h.html#acc9ff9df4a9674a1ce9ba08fc4a4679e", null ],
+    [ "TIMER_1", "i8254_8h.html#ac62c99c2a9289891c1b83052242cca49", null ],
+    [ "TIMER_2", "i8254_8h.html#a1f34f18ad0ab8cace46b615773b48735", null ],
+    [ "TIMER_BCD", "i8254_8h.html#a325b992a371d5d981c4eceff42fa5956", null ],
+    [ "TIMER_BIN", "i8254_8h.html#ad2913dcf2f91453317bd035589ac0a7d", null ],
+    [ "TIMER_CTRL", "i8254_8h.html#a282832448fb0281ef53d243c1cd48491", null ],
+    [ "TIMER_FREQ", "i8254_8h.html#acf926951944b6cf370b7229ebd50dd8b", null ],
+    [ "TIMER_IN_MASK", "i8254_8h.html#a325a2957763772330e64eeac3bdf362a", null ],
+    [ "TIMER_LSB", "i8254_8h.html#ac18cb814ebd0d67235392c330e0e3504", null ],
+    [ "TIMER_LSB_MSB", "i8254_8h.html#a8c0f1933323274c765e23837e4fbc8c7", null ],
+    [ "TIMER_M_MASK", "i8254_8h.html#a98f5eae4d318d4371d3d22d0e9d7312b", null ],
+    [ "TIMER_MSB", "i8254_8h.html#a2a8a6d363c612d756cd8d78480f7cd04", null ],
+    [ "TIMER_POS_IN_MASK", "i8254_8h.html#aaea8a606bba75261afd705c2e63d5a49", null ],
+    [ "TIMER_POS_M_MASK", "i8254_8h.html#a262780114a3fa1affcfe93a00a5e5c12", null ],
+    [ "TIMER_RB_CMD", "i8254_8h.html#a4c2eecbfb96744a9c2af71dba75ecb18", null ],
+    [ "TIMER_RB_COUNT_", "i8254_8h.html#a6c248216df24b5e9d907d126d80bd195", null ],
+    [ "TIMER_RB_SEL", "i8254_8h.html#af598b17740e07842a0545af512714711", null ],
+    [ "TIMER_RB_STATUS_", "i8254_8h.html#a08b4952bb7058684a3f8f66be04dd45e", null ],
+    [ "TIMER_SEL0", "i8254_8h.html#a6a4822642d40c248435692324a818010", null ],
+    [ "TIMER_SEL1", "i8254_8h.html#a8349623fd8d99f9cc5d8ae29d78594fc", null ],
+    [ "TIMER_SEL2", "i8254_8h.html#a142a255de0dbc48aeabd45fc10c33672", null ]
+];

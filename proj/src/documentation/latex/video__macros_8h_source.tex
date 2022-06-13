@@ -1,0 +1,60 @@
+\hypertarget{video__macros_8h_source}{}\doxysection{C\+:/\+Users/asus/uni/\+LCOM/shared/g02/proj/src/video\+\_\+macros.h}
+\mbox{\hyperlink{video__macros_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#define BASE\_PHYS\_ADDRESS 0}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MiB BIT(20)}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define VG\_MODE\_INDEXED 4}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define VG\_MODE\_DIRECT 6}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{comment}{/* VBE FUNCTIONS */}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#define VBE\_AH\_FUNCTION\_INDICATOR 0x4F}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#define VBE\_AL\_CONTROLLER\_INFO 0x00}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#define VBE\_AL\_MODE\_INFO 0x01}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define VBE\_AL\_SET\_MODE 0x02}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define VBE\_BX\_SET\_MODE\_ARGUMENT BIT(14)}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define VBE\_INTERRUPT\_NUMBER 0x10}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define VBE\_CONTROLLER\_MODE\_LIST\_TERMINATOR 0xFFFF}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{comment}{// Returns are on the AX}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define VBE\_FUNCTION\_RET\_SUCCESS 0x00}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define VBE\_FUNCTION\_RET\_FAIL 0x01}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#define VBE\_FUNCTION\_RET\_NOT\_SUPPORTED 0x02}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define VBE\_FUNCTION\_RET\_INVALID\_IN\_CURRENT\_MODE 0x03}}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{comment}{// AH CALL}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#define AH\_CALL\_FAILED 0x01}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define AH\_CALL\_NOT\_SUPPORTED 0x02}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define AH\_CALL\_INVALID 0x03}}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{comment}{//VBE MODE}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define MODE\_1024X768 0x105 }\textcolor{comment}{// Indexed 8}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#define MODE\_640X480 0x110 }\textcolor{comment}{//Direct color 15((1:)5:5:5)}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define MODE\_800X600 0x115 }\textcolor{comment}{// Direct color 24 (8:8:8)}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#define MODE\_1280X1024 0x11A }\textcolor{comment}{// Direct color 16 (5:6:5)}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#define MODE\_1152X864 0x14C }\textcolor{comment}{// Direct color 32 ((8:)8:8:8)}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \textcolor{comment}{//VBE FUNCTIONS}}
+\DoxyCodeLine{41 \textcolor{comment}{//http://www.phatcode.net/res/221/files/vbe20.pdf página 12 em diante}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#define VBE\_INFO\_CONTROLLER 0x4F00}}
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#define VBE\_INFO\_MODE 0x4F01}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#define VBE\_SET\_MODE 0x4F02}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#define VBE\_CURRENT\_MODE 0x4F03}}
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#define VBE\_SAVE\_RESTORE\_STATE 0x4F04}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#define VBE\_DISPLAY\_WINDOW\_CTRL 0x4F05}}
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#define VBE\_SET\_GET\_LOGICAL\_SCAN\_L\_LEN 0x4F06}}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#define VBE\_SET\_GET\_DISPLAY\_START 0x4F07}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#define VBE\_SET\_GET\_DAC\_PALLETE\_FORMAT 0x4F08}}
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#define VBE\_SET\_GET\_PALLETE\_DATA 0x4F09}}
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#define VBE\_SET\_GET\_PROT\_INTERFACE 0x4F0A}}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 }
+
+\end{DoxyCode}

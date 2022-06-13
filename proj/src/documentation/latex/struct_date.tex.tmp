@@ -1,0 +1,77 @@
+\hypertarget{struct_date}{}\doxysection{Date Struct Reference}
+\label{struct_date}\index{Date@{Date}}
+
+
+A struct for the rtc\textquotesingle{}s returned date.  
+
+
+
+
+{\ttfamily \#include $<$rtc.\+h$>$}
+
+
+
+Collaboration diagram for Date\+:
+% FIG 0
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{struct_date_ab93e42ad6d3774e717d79c3f197817fa}{year}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_date_abc86e25ad3cd6c62831f7e6c46902eb2}{month}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_date_a42b01fdc428ecea9462d205268d670ad}{day}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_date_a8dfee89f7697c98e54d3a12e4c71c601}{hour}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_date_a4514587b9dc93e1b283c9832cb132904}{minutes}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_date_ada0d55e10f54ce6a031e4dd8ede0cb7e}{seconds}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A struct for the rtc\textquotesingle{}s returned date. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_date_a42b01fdc428ecea9462d205268d670ad}\label{struct_date_a42b01fdc428ecea9462d205268d670ad}} 
+\index{Date@{Date}!day@{day}}
+\index{day@{day}!Date@{Date}}
+\doxysubsubsection{\texorpdfstring{day}{day}}
+{\footnotesize\ttfamily uint8\+\_\+t Date\+::day}
+
+\mbox{\Hypertarget{struct_date_a8dfee89f7697c98e54d3a12e4c71c601}\label{struct_date_a8dfee89f7697c98e54d3a12e4c71c601}} 
+\index{Date@{Date}!hour@{hour}}
+\index{hour@{hour}!Date@{Date}}
+\doxysubsubsection{\texorpdfstring{hour}{hour}}
+{\footnotesize\ttfamily uint8\+\_\+t Date\+::hour}
+
+\mbox{\Hypertarget{struct_date_a4514587b9dc93e1b283c9832cb132904}\label{struct_date_a4514587b9dc93e1b283c9832cb132904}} 
+\index{Date@{Date}!minutes@{minutes}}
+\index{minutes@{minutes}!Date@{Date}}
+\doxysubsubsection{\texorpdfstring{minutes}{minutes}}
+{\footnotesize\ttfamily uint8\+\_\+t Date\+::minutes}
+
+\mbox{\Hypertarget{struct_date_abc86e25ad3cd6c62831f7e6c46902eb2}\label{struct_date_abc86e25ad3cd6c62831f7e6c46902eb2}} 
+\index{Date@{Date}!month@{month}}
+\index{month@{month}!Date@{Date}}
+\doxysubsubsection{\texorpdfstring{month}{month}}
+{\footnotesize\ttfamily uint8\+\_\+t Date\+::month}
+
+\mbox{\Hypertarget{struct_date_ada0d55e10f54ce6a031e4dd8ede0cb7e}\label{struct_date_ada0d55e10f54ce6a031e4dd8ede0cb7e}} 
+\index{Date@{Date}!seconds@{seconds}}
+\index{seconds@{seconds}!Date@{Date}}
+\doxysubsubsection{\texorpdfstring{seconds}{seconds}}
+{\footnotesize\ttfamily uint8\+\_\+t Date\+::seconds}
+
+\mbox{\Hypertarget{struct_date_ab93e42ad6d3774e717d79c3f197817fa}\label{struct_date_ab93e42ad6d3774e717d79c3f197817fa}} 
+\index{Date@{Date}!year@{year}}
+\index{year@{year}!Date@{Date}}
+\doxysubsubsection{\texorpdfstring{year}{year}}
+{\footnotesize\ttfamily uint32\+\_\+t Date\+::year}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/asus/uni/\+LCOM/shared/g02/proj/src/\mbox{\hyperlink{rtc_8h}{rtc.\+h}}\end{DoxyCompactItemize}

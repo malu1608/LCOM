@@ -1,0 +1,22 @@
+digraph "draw_pixel"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="draw_pixel",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Draws a pixel with \"color\" color on position (x, y)."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="draw_hline",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$graphics_8c.html#a5a4a85e95c113e0f9f6f5db7d1a08e8a",tooltip="Draws an horizontal line starting at position (x, y) with \"len\" length and \"color\" color...."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="draw_rectangle",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$graphics_8c.html#ae7646fcb7b4e8c095c9cd1684a896921",tooltip="Draws a rectangle starting at position (x, y) with \"height\" height, \"width\" width and \"color\" color...."];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="checkOptions",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$menu_8c.html#ae56e4c2c09e4e910f9763e59fc60bdcb",tooltip="Checks if the mouse on position (x, y) is overlapping a menu option, underlining it if so."];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="proj_main_loop",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b",tooltip=" "];
+  Node3 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="clickOption",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$menu_8c.html#abf322d46b5fd9a36b969a8232752215f",tooltip="Checks if the mouse on position (x, y) is overlapping a menu option when the left button pressed,..."];
+  Node6 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="Menu",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$menu_8c.html#a3e7e52f3c6c64725ab16ba74bed8441d",tooltip="Draws the main menu window. Uses the x_res and y_res to draw the whole window with the desired backgr..."];
+  Node7 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+}

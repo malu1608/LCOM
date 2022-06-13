@@ -1,0 +1,9 @@
+<map id="GameManagerCreate" name="GameManagerCreate">
+<area shape="rect" id="node1" title="Creates a Manager, storing its player and screen dimensions." alt="" coords="5,107,151,133"/>
+<area shape="rect" id="node2" href="$gamemanager_8c.html#aae38d75a13e06a4477028d5cf8b14ad2" title="Initializes the Manager, giving itself the provided values." alt="" coords="199,107,288,133"/>
+<area shape="rect" id="node3" href="$gamemanager_8c.html#a676e0dd069cb91e7b0c337300c0f19f0" title="Loads the first level." alt="" coords="336,5,419,32"/>
+<area shape="rect" id="node4" href="$gamemanager_8c.html#a370c1cf1674f77a09b6531b002244f24" title="Loads the second level." alt="" coords="336,56,419,83"/>
+<area shape="rect" id="node5" href="$gamemanager_8c.html#a70fc8da839fb5e784302bcb0b5590a55" title="Loads the third level." alt="" coords="336,107,419,133"/>
+<area shape="rect" id="node6" href="$gamemanager_8c.html#aafcc55df4aaccd2830a698e9c748c25a" title="Loads the forth level." alt="" coords="336,157,419,184"/>
+<area shape="rect" id="node7" href="$gamemanager_8c.html#ab77a2bd53a659745575b641f26e72eb0" title="Loads the fifth level." alt="" coords="336,208,419,235"/>
+</map>

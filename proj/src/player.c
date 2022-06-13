@@ -114,14 +114,9 @@ struct Player* PlayerCreate(int16_t x, int16_t y) {
     return result;
 }
 
-// Destructor (without deallocation)
-void PlayerReset(struct Player* self) {
-}
-
 // Destructor + deallocation (equivalent to "delete point")
 void PlayerDestroy(struct Player* player) {
     if (player) {
-        PlayerReset(player);
         free(player);
     }
 }

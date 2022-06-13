@@ -1,0 +1,7 @@
+digraph "vbe_mode_info_summary_t"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{vbe_mode_info_summary_t\n|+ x_res\l+ y_res\l+ bits_per_pixel\l+ bytes_per_pixel\l+ vg_mode\l+ red_mask\l+ green_mask\l+ blue_mask\l+ red_field_position\l+ green_field_position\l+ blue_field_position\l+ red_mask_size\l+ green_mask_size\l+ blue_mask_size\l|}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="A struct that holds informationg about the initialized graphics."];
+}

@@ -1,0 +1,26 @@
+var struct_player =
+[
+    [ "anim_delay", "struct_player.html#a910b1acf4a885bbccb6bf973d23adf43", null ],
+    [ "animation", "struct_player.html#af938187a7cdc7cf3b69b8768c941bc6a", null ],
+    [ "bounce", "struct_player.html#afe9e3e34eeb361f7a0918360bd4da283", null ],
+    [ "charge", "struct_player.html#a6bc91187f3fb793fe1d6e1b6b354efbc", null ],
+    [ "colliderHeight", "struct_player.html#a591f82d436a714be440741b82d41f711", null ],
+    [ "colliderWidth", "struct_player.html#aeaa98774bef14fe09687d956c39c7225", null ],
+    [ "colliderX", "struct_player.html#a517bf5ef6e1c58267885e24cda3154ba", null ],
+    [ "colliderY", "struct_player.html#a2b2228113651679c4e3ff9d45b715c2b", null ],
+    [ "flipped", "struct_player.html#afdaf9979bd7c0a99d758eba2d3748d33", null ],
+    [ "floored", "struct_player.html#ad809b8e37b454509be4ea18a042ac802", null ],
+    [ "frame", "struct_player.html#a4af20962be9096bdc5571ee9f9bf3a29", null ],
+    [ "height", "struct_player.html#a95494e42b608ec64a50614c573d75dd4", null ],
+    [ "jumpDir", "struct_player.html#ac6dea01adf964e784b4d21bd48bfdede", null ],
+    [ "jumping", "struct_player.html#a226de302724871714a91df1190a8e893", null ],
+    [ "laid", "struct_player.html#aefe3403d573d6396f5bef45dc0e979fd", null ],
+    [ "leftKey", "struct_player.html#a54a5e3185015484095d8d65c62c333aa", null ],
+    [ "momentum", "struct_player.html#a0ee25b98c13962fc5731ed914b49d6a1", null ],
+    [ "movement", "struct_player.html#ab1721cd528d09126eeba894a06687c4e", null ],
+    [ "position", "struct_player.html#a2458abf905d2b9b9e1a8e493bc3d0c81", null ],
+    [ "rightKey", "struct_player.html#ac0193e71eb76b97b3beeaabd13294f2b", null ],
+    [ "speed", "struct_player.html#a35dd8968e610d51ea09e1fcb54a0f714", null ],
+    [ "sprites", "struct_player.html#a8907963c79aee9e52784dea06668ddbc", null ],
+    [ "width", "struct_player.html#a9e81e95ae918279584c168e05e675b85", null ]
+];

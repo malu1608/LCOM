@@ -8,10 +8,6 @@
  */
 
 /**
- * @brief Enumerated type for specifying the timer value initialization
- */
-
-/**
  * @brief Changes the operating frequency of a timer
  * 
  * Must use the read-back command so that it does not change 

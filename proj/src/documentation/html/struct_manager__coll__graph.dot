@@ -1,0 +1,15 @@
+digraph "Manager"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{Manager\n|+ x_limit\l+ y_limit\l+ level\l+ babe\l|}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node2 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +player" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node2 [label="{Player\n|+ width\l+ height\l+ colliderWidth\l+ colliderX\l+ colliderHeight\l+ colliderY\l+ leftKey\l+ rightKey\l+ movement\l+ speed\land 11 more...\l|}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_player.html",tooltip=" "];
+  Node3 -> Node2 [color="grey25",fontsize="10",style="solid",label=" +momentum\n+position" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node3 [label="{Vector\n|+ x\l+ y\l|}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_vector.html",tooltip=" "];
+  Node4 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +levels" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node4 [label="{Level\n|+ map_background\l+ img_background\l+ size\l|}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_level.html",tooltip=" "];
+  Node5 -> Node4 [color="grey25",fontsize="10",style="solid",label=" +platforms" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node5 [label="{Platform\n|+ x\l+ y\l+ width\l+ height\l+ map\l+ img\l|}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_platform.html",tooltip=" "];
+}

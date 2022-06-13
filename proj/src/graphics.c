@@ -221,18 +221,3 @@ void (destroy_second_buffer)(){
 void (refresh_screen)(){
 	memcpy(buffer_base, second_buffer, vg_info.x_res * vg_info.y_res * vg_info.bytes_per_pixel);
 }
-
-void erase_xpm(xpm_image_t img, uint16_t x, uint16_t y){
-    int color = xpm_transparency_color(XPM_8_8_8_8);
-
-    for(uint16_t i = y; i < y + img.height; i++){
-        for(uint16_t j = x; j < x + img.width; j++){
-            draw_pixel(j, i, color);
-        }
-    }
-}
-
-void graphics_handling() {
-	draw_rectangle(0, 0, vg_info.x_res, vg_info.y_res, 0x000000);
-    return;
-}

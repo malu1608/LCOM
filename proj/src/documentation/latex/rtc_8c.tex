@@ -1,0 +1,80 @@
+\hypertarget{rtc_8c}{}\doxysection{C\+:/\+Users/asus/uni/\+LCOM/shared/g02/proj/src/rtc.c File Reference}
+\label{rtc_8c}\index{C:/Users/asus/uni/LCOM/shared/g02/proj/src/rtc.c@{C:/Users/asus/uni/LCOM/shared/g02/proj/src/rtc.c}}
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}rtc.\+h\char`\"{}}\newline
+Include dependency graph for rtc.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=259pt]{rtc_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{rtc_8c_ae4c2eccc59963cb4d3c54881c214abbd}{rtc\+Is\+Updating}} ()
+\begin{DoxyCompactList}\small\item\em Checks if rtc is updating. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{rtc_8c_a8a2dc651a01dabc7b70aa1e99eb0753a}{is\+\_\+binary}} ()
+\begin{DoxyCompactList}\small\item\em Checks if rtc\textquotesingle{}s input is written in bcd or in binary. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{rtc_8c_a37479f897994ea41699d9d71e7f4e1eb}{bcd\+\_\+to\+\_\+bin}} (int num)
+\begin{DoxyCompactList}\small\item\em Converts a number from bcd to binary. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{rtc_8h_a3ea100ae85e835c1ff4e90b5c9a12f66}{Data}} $\ast$ \mbox{\hyperlink{rtc_8c_a9e8e92b264f902500d2bd96e713e2c0a}{get\+\_\+date}} ()
+\begin{DoxyCompactList}\small\item\em Gets a pointer to the desired Data object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{rtc_8c_a37479f897994ea41699d9d71e7f4e1eb}\label{rtc_8c_a37479f897994ea41699d9d71e7f4e1eb}} 
+\index{rtc.c@{rtc.c}!bcd\_to\_bin@{bcd\_to\_bin}}
+\index{bcd\_to\_bin@{bcd\_to\_bin}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{bcd\_to\_bin()}{bcd\_to\_bin()}}
+{\footnotesize\ttfamily int bcd\+\_\+to\+\_\+bin (\begin{DoxyParamCaption}\item[{int}]{num }\end{DoxyParamCaption})}
+
+
+
+Converts a number from bcd to binary. 
+
+Here is the caller graph for this function\+:
+% FIG 0
+\mbox{\Hypertarget{rtc_8c_a9e8e92b264f902500d2bd96e713e2c0a}\label{rtc_8c_a9e8e92b264f902500d2bd96e713e2c0a}} 
+\index{rtc.c@{rtc.c}!get\_date@{get\_date}}
+\index{get\_date@{get\_date}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{get\_date()}{get\_date()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{rtc_8h_a3ea100ae85e835c1ff4e90b5c9a12f66}{Data}} $\ast$ get\+\_\+date (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets a pointer to the desired Data object. 
+
+Here is the call graph for this function\+:
+% FIG 1
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{rtc_8c_a8a2dc651a01dabc7b70aa1e99eb0753a}\label{rtc_8c_a8a2dc651a01dabc7b70aa1e99eb0753a}} 
+\index{rtc.c@{rtc.c}!is\_binary@{is\_binary}}
+\index{is\_binary@{is\_binary}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{is\_binary()}{is\_binary()}}
+{\footnotesize\ttfamily bool is\+\_\+binary (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if rtc\textquotesingle{}s input is written in bcd or in binary. 
+
+Here is the call graph for this function\+:
+% FIG 3
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{rtc_8c_ae4c2eccc59963cb4d3c54881c214abbd}\label{rtc_8c_ae4c2eccc59963cb4d3c54881c214abbd}} 
+\index{rtc.c@{rtc.c}!rtcIsUpdating@{rtcIsUpdating}}
+\index{rtcIsUpdating@{rtcIsUpdating}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{rtcIsUpdating()}{rtcIsUpdating()}}
+{\footnotesize\ttfamily bool rtc\+Is\+Updating (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if rtc is updating. 
+
+Here is the call graph for this function\+:
+% FIG 5
+Here is the caller graph for this function\+:
+% FIG 6

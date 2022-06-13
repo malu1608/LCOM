@@ -1,0 +1,90 @@
+\hypertarget{player_8h_source}{}\doxysection{C\+:/\+Users/asus/uni/\+LCOM/shared/g02/proj/src/player.h}
+\mbox{\hyperlink{player_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#include <lcom/lcf.h>}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#define MAX\_CHARGE 40}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{9 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_player}{Player}};}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{18 \textcolor{keywordtype}{void} \mbox{\hyperlink{player_8h_aadae0073378d48be1ddbffe22c16873c}{PlayerInit}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self}, int16\_t x, int16\_t y);}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{27 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_player}{Player}}* \mbox{\hyperlink{player_8h_afb5d8d6817e9b769632659023ccea643}{PlayerCreate}}(int16\_t x, int16\_t y);}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{34 \textcolor{keywordtype}{void} \mbox{\hyperlink{player_8h_ac394e9208c51c0c77e56033ff6deffcd}{PlayerDestroy}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* player);}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{43 \textcolor{keywordtype}{void} \mbox{\hyperlink{player_8h_affd6ecbcf41d18688d6dc26991da5527}{PlayerSetPosition}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self}, int16\_t x, int16\_t y);}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{52 \textcolor{keywordtype}{void} \mbox{\hyperlink{player_8h_a89e8c497bdee917a5a01fddbbe86ecd9}{PlayerMove}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self}, int16\_t diff\_x, int16\_t diff\_y);}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{59 \textcolor{keywordtype}{void} \mbox{\hyperlink{player_8h_afbe513ebf136d9b6e50e2002bcc93877}{PlayerLeftPressed}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{66 \textcolor{keywordtype}{void} \mbox{\hyperlink{player_8h_a49084c2efd9866f91f4784f70eb04d4f}{PlayerLeftReleased}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{73 \textcolor{keywordtype}{void} \mbox{\hyperlink{player_8h_a20f4558cd5f6262c61b113c15bbc6779}{PlayerRightPressed}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{80 \textcolor{keywordtype}{void} \mbox{\hyperlink{player_8h_a638956ce80664c96894b511860a9b522}{PlayerRightReleased}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{89 \textcolor{keywordtype}{bool} \mbox{\hyperlink{player_8h_a81d0b2b651958d9bab76b01d89191a63}{PlayerGetLeftKey}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{98 \textcolor{keywordtype}{bool} \mbox{\hyperlink{player_8h_a67d4c60e69a8152a13e280a6cbe311fa}{PlayerGetRightKey}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{106 int16\_t \mbox{\hyperlink{player_8h_a1af03673202f515a65c3299acbd260ab}{PlayerGetIntent}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{114 int16\_t \mbox{\hyperlink{player_8h_a61f8caff4fc4c5a37dba8c7693d1b6e5}{PlayerGetWidth}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{122 int16\_t \mbox{\hyperlink{player_8h_ae282534f89673a32b418c4b5c845f2cb}{PlayerGetHeight}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{130 int16\_t \mbox{\hyperlink{player_8h_a3b737a5f046411b3455a75c64614e307}{PlayerGetSpriteX}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{131 }
+\DoxyCodeLine{138 int16\_t \mbox{\hyperlink{player_8h_ad5241f2a6e09bcf7ff65ab06d6fb52a9}{PlayerGetSpriteY}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{146 int16\_t \mbox{\hyperlink{player_8h_af4cd2117a49f10cb188ae11ade18392b}{PlayerGetX}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{147 }
+\DoxyCodeLine{154 int16\_t \mbox{\hyperlink{player_8h_ad1f66bed95ac95cc4d2b3dd9ac25324e}{PlayerGetY}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{162 uint16\_t \mbox{\hyperlink{player_8h_ae55ff27b6ca1fcec8fa86bc29afa852a}{PlayerGetColliderWidth}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{163 }
+\DoxyCodeLine{170 uint16\_t \mbox{\hyperlink{player_8h_a2eb2ee9c4b762db26d2f49025d471304}{PlayerGetColliderHeight}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{178 int16\_t \mbox{\hyperlink{player_8h_a179a625307babd3e29f6e41e7c39c6fd}{PlayerGetMomentumX}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{179 }
+\DoxyCodeLine{186 int16\_t \mbox{\hyperlink{player_8h_afcc714a83c68c4bc5e13041fcbcb8ca4}{PlayerGetMomentumY}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{187 }
+\DoxyCodeLine{194 \textcolor{keywordtype}{void} \mbox{\hyperlink{player_8h_ac6e6ca66072c473edd5d72b251787562}{PlayerSetMomentumX}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self}, int16\_t new\_mom);}
+\DoxyCodeLine{195 }
+\DoxyCodeLine{202 \textcolor{keywordtype}{void} \mbox{\hyperlink{player_8h_ac11f1e7ecbba25aebd5ce76bb97dce50}{PlayerSetMomentumY}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self}, int16\_t new\_mom);}
+\DoxyCodeLine{203 }
+\DoxyCodeLine{209 \textcolor{keywordtype}{void} \mbox{\hyperlink{player_8h_a4ff7a44d1708927d1f9b336db185bbff}{PlayerResetMomentum}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{210 }
+\DoxyCodeLine{217 int16\_t \mbox{\hyperlink{player_8h_a56a88df40d8068e8aa127a62712a20e8}{PlayerGetMovement}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{218 }
+\DoxyCodeLine{225 \textcolor{keywordtype}{void} \mbox{\hyperlink{player_8h_ad218e0aabd866ddb687272bd6caa487d}{PlayerSetMovement}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self}, int16\_t new\_move);}
+\DoxyCodeLine{226 }
+\DoxyCodeLine{232 \textcolor{keywordtype}{void} \mbox{\hyperlink{player_8h_a0f4ec2e9f0a2f2b3ae668d8ab1a7a2a3}{PlayerChargeJump}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{233 }
+\DoxyCodeLine{239 \textcolor{keywordtype}{void} \mbox{\hyperlink{player_8h_a80f160acf46ceb63f287e49ad164be33}{PlayerJump}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{240 }
+\DoxyCodeLine{248 \textcolor{keywordtype}{bool} \mbox{\hyperlink{player_8h_af084c204ae3b8aa1abd59db1b2e2fd01}{PlayerGetFloored}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{249 }
+\DoxyCodeLine{256 \textcolor{keywordtype}{void} \mbox{\hyperlink{player_8h_abc17d57de15e74cb5d2a1d7ab67f9993}{PlayerSetFloored}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self}, \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_player_ad809b8e37b454509be4ea18a042ac802}{floored}});}
+\DoxyCodeLine{257 }
+\DoxyCodeLine{265 \textcolor{keywordtype}{bool} \mbox{\hyperlink{player_8h_af4ea247c81550d57c6e507cb15e1249b}{PlayerGetLaid}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{266 }
+\DoxyCodeLine{273 \textcolor{keywordtype}{void} \mbox{\hyperlink{player_8h_a185dc1c70a2ca96a620adc3e790ef97d}{PlayerSetLaid}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self}, \textcolor{keywordtype}{bool} \_laid);}
+\DoxyCodeLine{274 }
+\DoxyCodeLine{282 \textcolor{keywordtype}{bool} \mbox{\hyperlink{player_8h_a324d2099cc961aad6b0e5b491d153aaa}{PlayerGetJumping}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{283 }
+\DoxyCodeLine{290 \textcolor{keywordtype}{int} \mbox{\hyperlink{player_8h_a53598d64ae5213adcd462a4cc0da4e25}{PlayerGetCharge}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{291 }
+\DoxyCodeLine{298 \textcolor{keywordtype}{void} \mbox{\hyperlink{player_8h_ae06995b792aeddebfb8b657a0b8a120f}{PlayerSetBounce}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self}, \textcolor{keywordtype}{bool} \_bounce);}
+\DoxyCodeLine{299 }
+\DoxyCodeLine{307 \textcolor{keywordtype}{bool} \mbox{\hyperlink{player_8h_a68f319c16028d2e5a60b296049469d7f}{PlayerGetBounce}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{308 }
+\DoxyCodeLine{315 uint16\_t \mbox{\hyperlink{player_8h_ac8c9cf4591555dd5e13b865b9a05ac70}{PlayerGetSpeed}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{316 }
+\DoxyCodeLine{323 \textcolor{keywordtype}{void} \mbox{\hyperlink{player_8h_ab9b76dbdc19bc7e425bafa1e9ca76d76}{PlayerSetAnimation}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self}, \textcolor{keywordtype}{int} newAnim);}
+\DoxyCodeLine{324 }
+\DoxyCodeLine{331 xpm\_image\_t \mbox{\hyperlink{player_8h_ada06e2e0751e17f5cb1087c13560f4ce}{PlayerGetSprite}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+
+\end{DoxyCode}

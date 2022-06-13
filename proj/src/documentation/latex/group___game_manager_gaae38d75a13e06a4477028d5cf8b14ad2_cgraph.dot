@@ -1,0 +1,18 @@
+digraph "ManagerInit"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="ManagerInit",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Initializes the Manager, giving itself the provided values."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="loadLevel1",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___game_manager.html#ga676e0dd069cb91e7b0c337300c0f19f0",tooltip="Loads the first level."];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="loadLevel2",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___game_manager.html#ga370c1cf1674f77a09b6531b002244f24",tooltip="Loads the second level."];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="loadLevel3",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___game_manager.html#ga70fc8da839fb5e784302bcb0b5590a55",tooltip="Loads the third level."];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="loadLevel4",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___game_manager.html#gaafcc55df4aaccd2830a698e9c748c25a",tooltip="Loads the forth level."];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="loadLevel5",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___game_manager.html#gab77a2bd53a659745575b641f26e72eb0",tooltip="Loads the fifth level."];
+}

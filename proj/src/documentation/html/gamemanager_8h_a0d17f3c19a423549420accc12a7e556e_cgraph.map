@@ -1,0 +1,4 @@
+<map id="DrawLevel" name="DrawLevel">
+<area shape="rect" id="node1" title="Draws the current level (background and the platforms)." alt="" coords="5,5,85,32"/>
+<area shape="rect" id="node2" href="$graphics_8c.html#a38b29c5cfa36c166f7d566f938571c4f" title=" " alt="" coords="133,5,215,32"/>
+</map>

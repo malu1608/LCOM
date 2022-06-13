@@ -1,0 +1,12 @@
+<map id="util_sys_inb" name="util_sys_inb">
+<area shape="rect" id="node1" title=" " alt="" coords="655,105,745,132"/>
+<area shape="rect" id="node2" href="$rtc_8c.html#a9e8e92b264f902500d2bd96e713e2c0a" title=" " alt="" coords="347,43,419,69"/>
+<area shape="rect" id="node5" href="$keyboard_8c.html#aabe32d3d3ebb9ccff7ca4b7992f48209" title="Gets the scancode from the keyboard out buffer. Does not parse it." alt="" coords="163,131,265,157"/>
+<area shape="rect" id="node6" href="$rtc_8c.html#a8a2dc651a01dabc7b70aa1e99eb0753a" title=" " alt="" coords="516,29,591,56"/>
+<area shape="rect" id="node7" href="$mouse__func_8c.html#a210374b50462acdedab00df64d5cea3c" title=" " alt="" coords="343,181,422,208"/>
+<area shape="rect" id="node8" href="$rtc_8c.html#ae4c2eccc59963cb4d3c54881c214abbd" title=" " alt="" coords="504,80,603,107"/>
+<area shape="rect" id="node9" href="$group__timer.html#ga703c60b40c8c49607d6ecb6fef82d27a" title="Reads the input timer configuration (status) via read&#45;back command." alt="" coords="500,232,607,259"/>
+<area shape="rect" id="node3" href="$menu_8c.html#a3e7e52f3c6c64725ab16ba74bed8441d" title=" " alt="" coords="187,68,241,95"/>
+<area shape="rect" id="node4" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,131,115,157"/>
+<area shape="rect" id="node10" href="$group__timer.html#gaf2c04fa8e97ffa748fd3f612886a92a7" title="Enumerated type for specifying the timer value initialization." alt="" coords="313,232,452,259"/>
+</map>

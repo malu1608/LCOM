@@ -1,0 +1,5 @@
+<map id="ManagerInit" name="ManagerInit">
+<area shape="rect" id="node1" title="Initializes the Manager, giving itself the provided values." alt="" coords="356,5,445,32"/>
+<area shape="rect" id="node2" href="$gamemanager_8c.html#a88b8817b2af5313c9e182582527d27cc" title="Creates a Manager, storing its player and screen dimensions." alt="" coords="163,5,308,32"/>
+<area shape="rect" id="node3" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,5,115,32"/>
+</map>

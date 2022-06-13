@@ -1,0 +1,7 @@
+<map id="Manager" name="Manager">
+<area shape="rect" id="node1" title=" " alt="" coords="49,199,121,225"/>
+<area shape="rect" id="node2" href="$struct_player.html" title=" " alt="" coords="17,109,75,136"/>
+<area shape="rect" id="node3" href="$struct_vector.html" title=" " alt="" coords="5,5,65,32"/>
+<area shape="rect" id="node4" href="$struct_level.html" title=" " alt="" coords="105,109,155,136"/>
+<area shape="rect" id="node5" href="$struct_platform.html" title=" " alt="" coords="100,5,171,32"/>
+</map>

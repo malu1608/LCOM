@@ -1,0 +1,6 @@
+<map id="loadLevel5" name="loadLevel5">
+<area shape="rect" id="node1" title="Loads the fifth level." alt="" coords="493,5,576,32"/>
+<area shape="rect" id="node2" href="$gamemanager_8c.html#aae38d75a13e06a4477028d5cf8b14ad2" title="Initializes the Manager, giving itself the provided values." alt="" coords="356,5,445,32"/>
+<area shape="rect" id="node3" href="$gamemanager_8c.html#a88b8817b2af5313c9e182582527d27cc" title="Creates a Manager, storing its player and screen dimensions." alt="" coords="163,5,308,32"/>
+<area shape="rect" id="node4" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,5,115,32"/>
+</map>

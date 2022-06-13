@@ -1,0 +1,52 @@
+<map id="proj_main_loop" name="proj_main_loop">
+<area shape="rect" id="node1" title=" " alt="" coords="5,791,115,817"/>
+<area shape="rect" id="node2" href="$keyboard_8c.html#a09b6dda480c3d299946bf395173912b3" title="Parses the scancode if it is ready to." alt="" coords="172,5,303,32"/>
+<area shape="rect" id="node3" href="$menu_8c.html#ae56e4c2c09e4e910f9763e59fc60bdcb" title=" " alt="" coords="186,56,289,83"/>
+<area shape="rect" id="node5" href="$menu_8c.html#abf322d46b5fd9a36b969a8232752215f" title=" " alt="" coords="194,107,281,133"/>
+<area shape="rect" id="node6" href="$graphics_8c.html#a65e2491e8b03270a9b5d27a3b714b038" title=" " alt="" coords="377,157,503,184"/>
+<area shape="rect" id="node7" href="$gamemanager_8c.html#a0d17f3c19a423549420accc12a7e556e" title="Draws the current level (background and the platforms)." alt="" coords="197,664,277,691"/>
+<area shape="rect" id="node9" href="$gamemanager_8c.html#a88b8817b2af5313c9e182582527d27cc" title="Creates a Manager, storing its player and screen dimensions." alt="" coords="165,715,310,741"/>
+<area shape="rect" id="node11" href="$keyboard_8c.html#aabe32d3d3ebb9ccff7ca4b7992f48209" title="Gets the scancode from the keyboard out buffer. Does not parse it." alt="" coords="389,1019,491,1045"/>
+<area shape="rect" id="node13" href="$graphics_8c.html#acad532bd831f98761530579c268027a2" title=" " alt="" coords="175,765,300,792"/>
+<area shape="rect" id="node14" href="$menu_8c.html#ae1e40066053f39b327fd5d8459b3586f" title=" " alt="" coords="198,816,277,843"/>
+<area shape="rect" id="node15" href="$menu_8c.html#a18005ab9b6cdc2e7e9abd024af4df1e8" title=" " alt="" coords="187,867,288,893"/>
+<area shape="rect" id="node16" href="$menu_8c.html#a3e7e52f3c6c64725ab16ba74bed8441d" title=" " alt="" coords="210,157,265,184"/>
+<area shape="rect" id="node18" href="$mouse__func_8c.html#a8c9ada78efb4cbe3f5f345063e2d0a95" title=" " alt="" coords="166,917,309,944"/>
+<area shape="rect" id="node20" href="$mouse__func_8c.html#a210374b50462acdedab00df64d5cea3c" title=" " alt="" coords="401,1069,479,1096"/>
+<area shape="rect" id="node21" href="$gamemanager_8c.html#a9c472682ee9d3142f81b78f13516e02d" title="Processes collisions and some game logic." alt="" coords="189,512,286,539"/>
+<area shape="rect" id="node37" href="$player_8c.html#a0f4ec2e9f0a2f2b3ae668d8ab1a7a2a3" title=" " alt="" coords="172,360,303,387"/>
+<area shape="rect" id="node38" href="$player_8c.html#a80f160acf46ceb63f287e49ad164be33" title=" " alt="" coords="395,208,485,235"/>
+<area shape="rect" id="node39" href="$player_8c.html#afb5d8d6817e9b769632659023ccea643" title=" " alt="" coords="189,968,286,995"/>
+<area shape="rect" id="node40" href="$player_8c.html#ada06e2e0751e17f5cb1087c13560f4ce" title=" " alt="" coords="180,1019,295,1045"/>
+<area shape="rect" id="node41" href="$player_8c.html#a3b737a5f046411b3455a75c64614e307" title=" " alt="" coords="177,1069,298,1096"/>
+<area shape="rect" id="node42" href="$player_8c.html#ad5241f2a6e09bcf7ff65ab06d6fb52a9" title=" " alt="" coords="176,1120,299,1147"/>
+<area shape="rect" id="node43" href="$player_8c.html#afbe513ebf136d9b6e50e2002bcc93877" title=" " alt="" coords="173,1171,301,1197"/>
+<area shape="rect" id="node44" href="$player_8c.html#a49084c2efd9866f91f4784f70eb04d4f" title=" " alt="" coords="170,1221,305,1248"/>
+<area shape="rect" id="node45" href="$player_8c.html#a20f4558cd5f6262c61b113c15bbc6779" title=" " alt="" coords="169,1272,306,1299"/>
+<area shape="rect" id="node46" href="$player_8c.html#a638956ce80664c96894b511860a9b522" title=" " alt="" coords="166,1323,309,1349"/>
+<area shape="rect" id="node47" href="$graphics_8c.html#a9cbce3a40233f0a503c1007134b74085" title=" " alt="" coords="184,1373,291,1400"/>
+<area shape="rect" id="node48" href="$group__timer.html#gac57a7e1140a7e00ad95ac5488d2a671b" title="Subscribes and enables Timer 0 interrupts." alt="" coords="170,1424,305,1451"/>
+<area shape="rect" id="node49" href="$group__timer.html#gafabd21de449be154dd65d5fdb2d8045d" title="Unsubscribes Timer 0 interrupts." alt="" coords="163,1475,312,1501"/>
+<area shape="rect" id="node50" href="$menu_8c.html#aad60145aeae1f2ef75815f21fe67ff7b" title=" " alt="" coords="199,259,276,285"/>
+<area shape="rect" id="node4" href="$graphics_8c.html#ae7646fcb7b4e8c095c9cd1684a896921" title=" " alt="" coords="385,56,495,83"/>
+<area shape="rect" id="node8" href="$graphics_8c.html#a38b29c5cfa36c166f7d566f938571c4f" title=" " alt="" coords="399,1120,481,1147"/>
+<area shape="rect" id="node10" href="$gamemanager_8c.html#aae38d75a13e06a4477028d5cf8b14ad2" title="Initializes the Manager, giving itself the provided values." alt="" coords="395,1171,485,1197"/>
+<area shape="rect" id="node12" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title=" " alt="" coords="568,1019,659,1045"/>
+<area shape="rect" id="node17" href="$rtc_8c.html#a9e8e92b264f902500d2bd96e713e2c0a" title=" " alt="" coords="404,107,476,133"/>
+<area shape="rect" id="node19" href="$mouse__func_8c.html#a1034d775f62ca03b1e977021f74ec177" title=" " alt="" coords="390,1221,490,1248"/>
+<area shape="rect" id="node22" href="$player_8c.html#a68f319c16028d2e5a60b296049469d7f" title=" " alt="" coords="378,411,502,437"/>
+<area shape="rect" id="node23" href="$player_8c.html#a2eb2ee9c4b762db26d2f49025d471304" title=" " alt="" coords="360,461,520,488"/>
+<area shape="rect" id="node24" href="$player_8c.html#ae55ff27b6ca1fcec8fa86bc29afa852a" title=" " alt="" coords="361,512,519,539"/>
+<area shape="rect" id="node25" href="$player_8c.html#af084c204ae3b8aa1abd59db1b2e2fd01" title=" " alt="" coords="379,563,501,589"/>
+<area shape="rect" id="node26" href="$player_8c.html#ae282534f89673a32b418c4b5c845f2cb" title=" " alt="" coords="381,613,499,640"/>
+<area shape="rect" id="node27" href="$player_8c.html#a1af03673202f515a65c3299acbd260ab" title=" " alt="" coords="384,259,496,285"/>
+<area shape="rect" id="node28" href="$player_8c.html#a324d2099cc961aad6b0e5b491d153aaa" title=" " alt="" coords="376,664,504,691"/>
+<area shape="rect" id="node29" href="$player_8c.html#af4ea247c81550d57c6e507cb15e1249b" title=" " alt="" coords="388,715,492,741"/>
+<area shape="rect" id="node30" href="$player_8c.html#a179a625307babd3e29f6e41e7c39c6fd" title=" " alt="" coords="364,765,516,792"/>
+<area shape="rect" id="node31" href="$player_8c.html#afcc714a83c68c4bc5e13041fcbcb8ca4" title=" " alt="" coords="363,816,517,843"/>
+<area shape="rect" id="node32" href="$player_8c.html#a56a88df40d8068e8aa127a62712a20e8" title=" " alt="" coords="371,867,509,893"/>
+<area shape="rect" id="node33" href="$player_8c.html#ac8c9cf4591555dd5e13b865b9a05ac70" title=" " alt="" coords="381,917,499,944"/>
+<area shape="rect" id="node34" href="$player_8c.html#af4cd2117a49f10cb188ae11ade18392b" title=" " alt="" coords="397,968,483,995"/>
+<area shape="rect" id="node35" href="$player_8c.html#ad1f66bed95ac95cc4d2b3dd9ac25324e" title=" " alt="" coords="395,309,485,336"/>
+<area shape="rect" id="node36" href="$player_8c.html#a89e8c497bdee917a5a01fddbbe86ecd9" title=" " alt="" coords="395,360,485,387"/>
+</map>

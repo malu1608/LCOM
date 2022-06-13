@@ -94,10 +94,6 @@ void ManagerInit(struct Manager *self, struct Player *player, uint16_t x_res, ui
 }
 
 
-bool checkCollisions(struct Player *player) {
-    return false;
-}
-
 int PhysicsLoop(struct Manager *self) {
 
 

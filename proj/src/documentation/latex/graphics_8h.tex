@@ -1,0 +1,278 @@
+\hypertarget{graphics_8h}{}\doxysection{C\+:/\+Users/asus/uni/\+LCOM/shared/g02/proj/src/graphics.h File Reference}
+\label{graphics_8h}\index{C:/Users/asus/uni/LCOM/shared/g02/proj/src/graphics.h@{C:/Users/asus/uni/LCOM/shared/g02/proj/src/graphics.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}video\+\_\+macros.\+h\char`\"{}}\newline
+Include dependency graph for graphics.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=243pt]{graphics_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structvbe__mode__info__summary__t}{vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em A struct that holds informationg about the initialized graphics. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{graphics_8h_a08683ca900b5acecff46a990a22d7b7b}{TRANSPARENCY\+\_\+\+COLOR}}~254
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \mbox{\hyperlink{graphics_8h_acad532bd831f98761530579c268027a2}{initialize\+\_\+graphics}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the graphics in mode 0x14C. Returning the video memory address. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graphics_8h_a5a4a85e95c113e0f9f6f5db7d1a08e8a}{draw\+\_\+hline}} (uint16\+\_\+t x, uint16\+\_\+t y, uint16\+\_\+t len, uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Draws an horizontal line starting at position (x, y) with \char`\"{}len\char`\"{} length and \char`\"{}color\char`\"{} color. Returns an 0 if sucessful. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graphics_8h_ad9afc559a75d9a80979b9feeb7187276}{draw\+\_\+rectangle}} (int16\+\_\+t x, int16\+\_\+t y, uint16\+\_\+t height, uint16\+\_\+t width, uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Draws a rectangle starting at position (x, y) with \char`\"{}height\char`\"{} height, \char`\"{}width\char`\"{} width and \char`\"{}color\char`\"{} color. Returns an 0 if sucessful. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{graphics_8h_a38b29c5cfa36c166f7d566f938571c4f}{draw\+\_\+xpm}} (xpm\+\_\+image\+\_\+t img, int16\+\_\+t x, int16\+\_\+t y, uint8\+\_\+t $\ast$map)
+\begin{DoxyCompactList}\small\item\em Draws a xpm on position (x, y) using the information stored in the img and map parameters. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{graphics_8h_a65e2491e8b03270a9b5d27a3b714b038}{draw\+\_\+loaded\+\_\+xpm}} (xpm\+\_\+image\+\_\+t img, int16\+\_\+t x, int16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Similar to the draw\+\_\+xpm method but draws using only the img information as the xpm has been previously loaded. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{graphics_8h_a8b2969363c73d2526906a0bcde14e45b}{destroy\+\_\+second\+\_\+buffer}} ()
+\begin{DoxyCompactList}\small\item\em Frees the memory allocated to the second buffer. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{graphics_8h_aa75d96618132cccec2c977ae043d31fe}{draw\+\_\+pixel}} (uint16\+\_\+t x, uint16\+\_\+t y, uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Draws a pixel with \char`\"{}color\char`\"{} color on position (x, y). \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{graphics_8h_a9cbce3a40233f0a503c1007134b74085}{refresh\+\_\+screen}} ()
+\begin{DoxyCompactList}\small\item\em Copies the second buffer memory and pastes it on the main video memory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structvbe__mode__info__summary__t}{vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t}} \mbox{\hyperlink{graphics_8h_a95bfd6204aec580f079790770fd9c338}{vg\+\_\+info}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{graphics_8h_a08683ca900b5acecff46a990a22d7b7b}\label{graphics_8h_a08683ca900b5acecff46a990a22d7b7b}} 
+\index{graphics.h@{graphics.h}!TRANSPARENCY\_COLOR@{TRANSPARENCY\_COLOR}}
+\index{TRANSPARENCY\_COLOR@{TRANSPARENCY\_COLOR}!graphics.h@{graphics.h}}
+\doxysubsubsection{\texorpdfstring{TRANSPARENCY\_COLOR}{TRANSPARENCY\_COLOR}}
+{\footnotesize\ttfamily \#define TRANSPARENCY\+\_\+\+COLOR~254}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{graphics_8h_a8b2969363c73d2526906a0bcde14e45b}\label{graphics_8h_a8b2969363c73d2526906a0bcde14e45b}} 
+\index{graphics.h@{graphics.h}!destroy\_second\_buffer@{destroy\_second\_buffer}}
+\index{destroy\_second\_buffer@{destroy\_second\_buffer}!graphics.h@{graphics.h}}
+\doxysubsubsection{\texorpdfstring{destroy\_second\_buffer()}{destroy\_second\_buffer()}}
+{\footnotesize\ttfamily void() destroy\+\_\+second\+\_\+buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Frees the memory allocated to the second buffer. 
+
+\mbox{\Hypertarget{graphics_8h_a5a4a85e95c113e0f9f6f5db7d1a08e8a}\label{graphics_8h_a5a4a85e95c113e0f9f6f5db7d1a08e8a}} 
+\index{graphics.h@{graphics.h}!draw\_hline@{draw\_hline}}
+\index{draw\_hline@{draw\_hline}!graphics.h@{graphics.h}}
+\doxysubsubsection{\texorpdfstring{draw\_hline()}{draw\_hline()}}
+{\footnotesize\ttfamily int draw\+\_\+hline (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint16\+\_\+t}]{len,  }\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Draws an horizontal line starting at position (x, y) with \char`\"{}len\char`\"{} length and \char`\"{}color\char`\"{} color. Returns an 0 if sucessful. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+{\em len} & \\
+\hline
+{\em color} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{graphics_8h_a5a4a85e95c113e0f9f6f5db7d1a08e8a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics_8h_a5a4a85e95c113e0f9f6f5db7d1a08e8a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{graphics_8h_a65e2491e8b03270a9b5d27a3b714b038}\label{graphics_8h_a65e2491e8b03270a9b5d27a3b714b038}} 
+\index{graphics.h@{graphics.h}!draw\_loaded\_xpm@{draw\_loaded\_xpm}}
+\index{draw\_loaded\_xpm@{draw\_loaded\_xpm}!graphics.h@{graphics.h}}
+\doxysubsubsection{\texorpdfstring{draw\_loaded\_xpm()}{draw\_loaded\_xpm()}}
+{\footnotesize\ttfamily void draw\+\_\+loaded\+\_\+xpm (\begin{DoxyParamCaption}\item[{xpm\+\_\+image\+\_\+t}]{img,  }\item[{int16\+\_\+t}]{x,  }\item[{int16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Similar to the draw\+\_\+xpm method but draws using only the img information as the xpm has been previously loaded. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em img} & \\
+\hline
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics_8h_a65e2491e8b03270a9b5d27a3b714b038_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{graphics_8h_aa75d96618132cccec2c977ae043d31fe}\label{graphics_8h_aa75d96618132cccec2c977ae043d31fe}} 
+\index{graphics.h@{graphics.h}!draw\_pixel@{draw\_pixel}}
+\index{draw\_pixel@{draw\_pixel}!graphics.h@{graphics.h}}
+\doxysubsubsection{\texorpdfstring{draw\_pixel()}{draw\_pixel()}}
+{\footnotesize\ttfamily int() draw\+\_\+pixel (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Draws a pixel with \char`\"{}color\char`\"{} color on position (x, y). 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics_8h_aa75d96618132cccec2c977ae043d31fe_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{graphics_8h_ad9afc559a75d9a80979b9feeb7187276}\label{graphics_8h_ad9afc559a75d9a80979b9feeb7187276}} 
+\index{graphics.h@{graphics.h}!draw\_rectangle@{draw\_rectangle}}
+\index{draw\_rectangle@{draw\_rectangle}!graphics.h@{graphics.h}}
+\doxysubsubsection{\texorpdfstring{draw\_rectangle()}{draw\_rectangle()}}
+{\footnotesize\ttfamily int draw\+\_\+rectangle (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{x,  }\item[{int16\+\_\+t}]{y,  }\item[{uint16\+\_\+t}]{height,  }\item[{uint16\+\_\+t}]{width,  }\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Draws a rectangle starting at position (x, y) with \char`\"{}height\char`\"{} height, \char`\"{}width\char`\"{} width and \char`\"{}color\char`\"{} color. Returns an 0 if sucessful. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+{\em height} & \\
+\hline
+{\em width} & \\
+\hline
+{\em color} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics_8h_ad9afc559a75d9a80979b9feeb7187276_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics_8h_ad9afc559a75d9a80979b9feeb7187276_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{graphics_8h_a38b29c5cfa36c166f7d566f938571c4f}\label{graphics_8h_a38b29c5cfa36c166f7d566f938571c4f}} 
+\index{graphics.h@{graphics.h}!draw\_xpm@{draw\_xpm}}
+\index{draw\_xpm@{draw\_xpm}!graphics.h@{graphics.h}}
+\doxysubsubsection{\texorpdfstring{draw\_xpm()}{draw\_xpm()}}
+{\footnotesize\ttfamily void draw\+\_\+xpm (\begin{DoxyParamCaption}\item[{xpm\+\_\+image\+\_\+t}]{img,  }\item[{int16\+\_\+t}]{x,  }\item[{int16\+\_\+t}]{y,  }\item[{uint8\+\_\+t $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Draws a xpm on position (x, y) using the information stored in the img and map parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em img} & \\
+\hline
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+{\em map} & \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics_8h_a38b29c5cfa36c166f7d566f938571c4f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{graphics_8h_acad532bd831f98761530579c268027a2}\label{graphics_8h_acad532bd831f98761530579c268027a2}} 
+\index{graphics.h@{graphics.h}!initialize\_graphics@{initialize\_graphics}}
+\index{initialize\_graphics@{initialize\_graphics}!graphics.h@{graphics.h}}
+\doxysubsubsection{\texorpdfstring{initialize\_graphics()}{initialize\_graphics()}}
+{\footnotesize\ttfamily void $\ast$ initialize\+\_\+graphics (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initializes the graphics in mode 0x14C. Returning the video memory address. 
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=292pt]{graphics_8h_acad532bd831f98761530579c268027a2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{graphics_8h_a9cbce3a40233f0a503c1007134b74085}\label{graphics_8h_a9cbce3a40233f0a503c1007134b74085}} 
+\index{graphics.h@{graphics.h}!refresh\_screen@{refresh\_screen}}
+\index{refresh\_screen@{refresh\_screen}!graphics.h@{graphics.h}}
+\doxysubsubsection{\texorpdfstring{refresh\_screen()}{refresh\_screen()}}
+{\footnotesize\ttfamily void() refresh\+\_\+screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Copies the second buffer memory and pastes it on the main video memory. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=278pt]{graphics_8h_a9cbce3a40233f0a503c1007134b74085_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{graphics_8h_a95bfd6204aec580f079790770fd9c338}\label{graphics_8h_a95bfd6204aec580f079790770fd9c338}} 
+\index{graphics.h@{graphics.h}!vg\_info@{vg\_info}}
+\index{vg\_info@{vg\_info}!graphics.h@{graphics.h}}
+\doxysubsubsection{\texorpdfstring{vg\_info}{vg\_info}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structvbe__mode__info__summary__t}{vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t}} vg\+\_\+info\hspace{0.3cm}{\ttfamily [extern]}}
+

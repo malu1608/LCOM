@@ -2,8 +2,15 @@
 
 #include <lcom/lcf.h>
 
+/** @defgroup RTC RTC
+ * @{
+ *
+ * Functions for the using the rtc.
+ */
+
+
 /**
- * Struct for Data
+ * @brief A struct for the rtc's returned date.
  * 
  */
 typedef struct Date{
@@ -31,21 +38,21 @@ typedef struct Date{
 
 
 /**
- * Checks if rtc's input is written in bcd or in binary.
+ * @brief Checks if rtc's input is written in bcd or in binary.
  */
 bool is_binary();
 
 /**
- * Checks if rtc is updating.
+ * @brief Checks if rtc is updating.
  */
 bool rtcIsUpdating();
 
 /**
- * Converts a number from bcd to binary.
+ * @brief Converts a number from bcd to binary.
  */
 int bcd_to_bin(int num);
 
 /**
- * Gets a pointer to the desired Data object.
+ * @brief Gets a pointer to the desired Data object.
  */
 Data * get_date();
