@@ -1,0 +1,394 @@
+\hypertarget{mouse__macros_8h}{}\doxysection{mouse\+\_\+macros.\+h File Reference}
+\label{mouse__macros_8h}\index{mouse\_macros.h@{mouse\_macros.h}}
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a85964cb90343bb1a029b1d1b4229f910}{MOUSE\+\_\+\+IRQ}}~12
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a5c1072213ce8d8cd43628c4319ae0391}{KBD\+\_\+\+IRQ}}~1
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_ab0c169c959c5be67954c866776329563}{DATA\+\_\+\+PORT}}~0x60
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_ac5cc853d684282f89a6f107b53e7aaf5}{READ\+\_\+\+ST\+\_\+\+REG}}~0x64
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a8084e8d44af33c44125855f40ed06251}{WRITE\+\_\+\+CMD\+\_\+\+CTRLREG}}~0x64
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a3edb96ff4ed65c98f514852bcdd4f944}{READ\+\_\+\+CMD\+\_\+\+BYTE}}~0x20
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a6bbab0e165f6f55c8f1371fd18ce9a0e}{WRITE\+\_\+\+CMD\+\_\+\+BYTE}}~0x60
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a094907f521b569f790a760be8885ec4d}{MOUSE\+\_\+\+DISABLE}}~0x\+A7
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a4e6aa8d10e05b5f94c196bfe2cdfb8d7}{MOUSE\+\_\+\+ENABLE}}~0x\+A8
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a0c75ab7afbfd606a381ba127a7c4d922}{MOUSE\+\_\+\+CHECK\+\_\+\+INT}}~0x\+A9
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a4c0ae31ac87b44634b62181eddea4cd8}{MOUSE\+\_\+\+WRITE\+\_\+\+BYTE}}~0x\+D4
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a81d2ca6759f3f3bf04556b7558aea6bc}{PARITY\+\_\+\+ERROR}}~BIT(7)
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_aefc48d416c882f06edaf6d01779d4d74}{TIMEOUT\+\_\+\+ERROR}}~BIT(6)
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_abec8e6f83406f848e1de13ef6163d585}{AUX\+\_\+\+ST\+\_\+\+REG}}~BIT(5)
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a25c2487a8013ee637101e31957da1d3f}{INH\+\_\+\+FLAG}}~BIT(4)
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_aa81d76372bf97201de801fd48c5fef64}{A2\+\_\+\+ST\+\_\+\+REG}}~BIT(3)
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a70ba5cfd6ec32ae0b141b32f232d5ca2}{SYS\+\_\+\+FLAG}}~BIT(2)
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a692e241a14d7f115e2b31fe77a090e19}{INPUT\+\_\+\+BUF\+\_\+\+FULL}}~BIT(1)
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a526d513d3b5a8e360dcedf743c6d9b45}{OUTPUT\+\_\+\+BUF\+\_\+\+FULL}}~BIT(0)
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_acfea45d9194dc92f850f870c6edd5e91}{CMD\+\_\+\+DIS\+\_\+\+MOUSE}}~BIT(5)
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a449d68c504da8b2146e0c15a16f07990}{CMD\+\_\+\+DIS\+\_\+\+KBD}}~BIT(4)
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a5f8e0c593d30c1ad011b562262897c8a}{CMD\+\_\+\+EN\+\_\+\+INT\+\_\+\+MOUSE}}~BIT(1)
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_ad876e7805b7d79594d424f9cccb98c31}{CMD\+\_\+\+EN\+\_\+\+INT\+\_\+\+KBD}}~BIT(0)
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a6b902000c4f0a66e57f0eb78d7611105}{MOUSE\+\_\+\+RESET}}~0x\+FF
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a1a33902ed453e53395da2d845da0c5b6}{MOUSE\+\_\+\+RESEND}}~0x\+FE
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_aacb967610731528c8b5652024e8a1ac7}{MOUSE\+\_\+\+SET\+\_\+\+DEFAULTS}}~0\+XF6
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a06f7fb462508b52d3c4793ff131f5a5c}{MOUSE\+\_\+\+DATA\+\_\+\+REP\+\_\+\+DISABLE}}~0\+XF5
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a6247ccb28d4fffcec22719c11e3c2e5e}{MOUSE\+\_\+\+DATA\+\_\+\+REP\+\_\+\+ENABLE}}~0\+XF4
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_ab755944a7aa52223e0d49b6f8974974e}{MOUSE\+\_\+\+SET\+\_\+\+SAMPLE\+\_\+\+RATE}}~0\+XF3
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_aaa2d5ba39424fb94c1593ae86906008c}{MOUSE\+\_\+\+SET\+\_\+\+REMOTE\+\_\+\+MODE}}~0\+XF0
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a6065e2718e2c8e4a5b5d005cba836cbc}{MOUSE\+\_\+\+READ\+\_\+\+DATA}}~0\+XEB
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a9af4ac19fb83e1b113043bf44520d386}{MOUSE\+\_\+\+SET\+\_\+\+STREAM\+\_\+\+MODE}}~0\+XEA
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_ae81dac725cb48935cbc4564c35a46c5d}{MOUSE\+\_\+\+STATUS\+\_\+\+REQUEST}}~0\+XE9
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a8f8d8784039ad37ba8f03185ce3c48dc}{MOUSE\+\_\+\+SET\+\_\+\+RESOLUTION}}~0\+XF6
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a68facc7e8e4d5ad44a25447af2bc9115}{MOUSE\+\_\+\+SET\+\_\+\+SCALING\+\_\+2\+\_\+1}}~0\+XE7
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_ad5a4b0396cdfd4d7c407e0dbcca1afd7}{MOUSE\+\_\+\+SET\+\_\+\+SCALING\+\_\+1\+\_\+1}}~0\+XE6
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_af1996a92b282e51c43861fc6ff085d6c}{RES\+\_\+\+ACK}}~0x\+FA
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a86fc358a41e4df9e9187eeef70aae24f}{RES\+\_\+\+NACK}}~0x\+FE
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a6f3c177a526f359ce8b35d9d2efd0970}{RES\+\_\+\+ERROR}}~0x\+FC
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a803f40eda0a50c1d94dc96a89c25e7e9}{MOUSE\+\_\+\+PARSE\+\_\+\+LB}}~BIT(0)
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a9784b005f2e9728279b56a1f53343c78}{MOUSE\+\_\+\+PARSE\+\_\+\+RB}}~BIT(1)
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_af4d9237b8c0ba93f539cc76a8af53773}{MOUSE\+\_\+\+PARSE\+\_\+\+MB}}~BIT(2)
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a955b69dce88772ddd83d3c0736c6fcb0}{MOUSE\+\_\+\+PARSE\+\_\+\+FIRST\+\_\+\+PACKET\+\_\+\+IDENTIFIER}}~BIT(3)
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_ace80568b662126d5c20a19faaf5853ca}{MOUSE\+\_\+\+PARSE\+\_\+\+X\+\_\+\+DELTA\+\_\+\+MSB}}~BIT(4)
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_ac017e9865dcf210b11226fd2d49e1b51}{MOUSE\+\_\+\+PARSE\+\_\+\+Y\+\_\+\+DELTA\+\_\+\+MSB}}~BIT(5)
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a3fcfaddd16c5f797fe6e3d630b5fc678}{MOUSE\+\_\+\+PARSE\+\_\+\+X\+\_\+\+OVERFLOW}}~BIT(6)
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a10616f0e51d5dafd7f18375575552a4f}{MOUSE\+\_\+\+PARSE\+\_\+\+Y\+\_\+\+OVERFLOW}}~BIT(7)
+\item 
+\#define \mbox{\hyperlink{mouse__macros_8h_a1a820dd7dd5827d002500792c5d3b1ff}{EXTEND\+\_\+\+SIGN}}~0x\+FF00
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mouse__macros_8h_aa81d76372bf97201de801fd48c5fef64}\label{mouse__macros_8h_aa81d76372bf97201de801fd48c5fef64}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!A2\_ST\_REG@{A2\_ST\_REG}}
+\index{A2\_ST\_REG@{A2\_ST\_REG}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{A2\_ST\_REG}{A2\_ST\_REG}}
+{\footnotesize\ttfamily \#define A2\+\_\+\+ST\+\_\+\+REG~BIT(3)}
+
+\mbox{\Hypertarget{mouse__macros_8h_abec8e6f83406f848e1de13ef6163d585}\label{mouse__macros_8h_abec8e6f83406f848e1de13ef6163d585}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!AUX\_ST\_REG@{AUX\_ST\_REG}}
+\index{AUX\_ST\_REG@{AUX\_ST\_REG}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{AUX\_ST\_REG}{AUX\_ST\_REG}}
+{\footnotesize\ttfamily \#define AUX\+\_\+\+ST\+\_\+\+REG~BIT(5)}
+
+\mbox{\Hypertarget{mouse__macros_8h_a449d68c504da8b2146e0c15a16f07990}\label{mouse__macros_8h_a449d68c504da8b2146e0c15a16f07990}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!CMD\_DIS\_KBD@{CMD\_DIS\_KBD}}
+\index{CMD\_DIS\_KBD@{CMD\_DIS\_KBD}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{CMD\_DIS\_KBD}{CMD\_DIS\_KBD}}
+{\footnotesize\ttfamily \#define CMD\+\_\+\+DIS\+\_\+\+KBD~BIT(4)}
+
+\mbox{\Hypertarget{mouse__macros_8h_acfea45d9194dc92f850f870c6edd5e91}\label{mouse__macros_8h_acfea45d9194dc92f850f870c6edd5e91}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!CMD\_DIS\_MOUSE@{CMD\_DIS\_MOUSE}}
+\index{CMD\_DIS\_MOUSE@{CMD\_DIS\_MOUSE}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{CMD\_DIS\_MOUSE}{CMD\_DIS\_MOUSE}}
+{\footnotesize\ttfamily \#define CMD\+\_\+\+DIS\+\_\+\+MOUSE~BIT(5)}
+
+\mbox{\Hypertarget{mouse__macros_8h_ad876e7805b7d79594d424f9cccb98c31}\label{mouse__macros_8h_ad876e7805b7d79594d424f9cccb98c31}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!CMD\_EN\_INT\_KBD@{CMD\_EN\_INT\_KBD}}
+\index{CMD\_EN\_INT\_KBD@{CMD\_EN\_INT\_KBD}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{CMD\_EN\_INT\_KBD}{CMD\_EN\_INT\_KBD}}
+{\footnotesize\ttfamily \#define CMD\+\_\+\+EN\+\_\+\+INT\+\_\+\+KBD~BIT(0)}
+
+\mbox{\Hypertarget{mouse__macros_8h_a5f8e0c593d30c1ad011b562262897c8a}\label{mouse__macros_8h_a5f8e0c593d30c1ad011b562262897c8a}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!CMD\_EN\_INT\_MOUSE@{CMD\_EN\_INT\_MOUSE}}
+\index{CMD\_EN\_INT\_MOUSE@{CMD\_EN\_INT\_MOUSE}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{CMD\_EN\_INT\_MOUSE}{CMD\_EN\_INT\_MOUSE}}
+{\footnotesize\ttfamily \#define CMD\+\_\+\+EN\+\_\+\+INT\+\_\+\+MOUSE~BIT(1)}
+
+\mbox{\Hypertarget{mouse__macros_8h_ab0c169c959c5be67954c866776329563}\label{mouse__macros_8h_ab0c169c959c5be67954c866776329563}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!DATA\_PORT@{DATA\_PORT}}
+\index{DATA\_PORT@{DATA\_PORT}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{DATA\_PORT}{DATA\_PORT}}
+{\footnotesize\ttfamily \#define DATA\+\_\+\+PORT~0x60}
+
+\mbox{\Hypertarget{mouse__macros_8h_a1a820dd7dd5827d002500792c5d3b1ff}\label{mouse__macros_8h_a1a820dd7dd5827d002500792c5d3b1ff}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!EXTEND\_SIGN@{EXTEND\_SIGN}}
+\index{EXTEND\_SIGN@{EXTEND\_SIGN}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{EXTEND\_SIGN}{EXTEND\_SIGN}}
+{\footnotesize\ttfamily \#define EXTEND\+\_\+\+SIGN~0x\+FF00}
+
+\mbox{\Hypertarget{mouse__macros_8h_a25c2487a8013ee637101e31957da1d3f}\label{mouse__macros_8h_a25c2487a8013ee637101e31957da1d3f}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!INH\_FLAG@{INH\_FLAG}}
+\index{INH\_FLAG@{INH\_FLAG}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{INH\_FLAG}{INH\_FLAG}}
+{\footnotesize\ttfamily \#define INH\+\_\+\+FLAG~BIT(4)}
+
+\mbox{\Hypertarget{mouse__macros_8h_a692e241a14d7f115e2b31fe77a090e19}\label{mouse__macros_8h_a692e241a14d7f115e2b31fe77a090e19}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!INPUT\_BUF\_FULL@{INPUT\_BUF\_FULL}}
+\index{INPUT\_BUF\_FULL@{INPUT\_BUF\_FULL}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{INPUT\_BUF\_FULL}{INPUT\_BUF\_FULL}}
+{\footnotesize\ttfamily \#define INPUT\+\_\+\+BUF\+\_\+\+FULL~BIT(1)}
+
+\mbox{\Hypertarget{mouse__macros_8h_a5c1072213ce8d8cd43628c4319ae0391}\label{mouse__macros_8h_a5c1072213ce8d8cd43628c4319ae0391}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!KBD\_IRQ@{KBD\_IRQ}}
+\index{KBD\_IRQ@{KBD\_IRQ}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{KBD\_IRQ}{KBD\_IRQ}}
+{\footnotesize\ttfamily \#define KBD\+\_\+\+IRQ~1}
+
+\mbox{\Hypertarget{mouse__macros_8h_a0c75ab7afbfd606a381ba127a7c4d922}\label{mouse__macros_8h_a0c75ab7afbfd606a381ba127a7c4d922}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!MOUSE\_CHECK\_INT@{MOUSE\_CHECK\_INT}}
+\index{MOUSE\_CHECK\_INT@{MOUSE\_CHECK\_INT}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_CHECK\_INT}{MOUSE\_CHECK\_INT}}
+{\footnotesize\ttfamily \#define MOUSE\+\_\+\+CHECK\+\_\+\+INT~0x\+A9}
+
+\mbox{\Hypertarget{mouse__macros_8h_a06f7fb462508b52d3c4793ff131f5a5c}\label{mouse__macros_8h_a06f7fb462508b52d3c4793ff131f5a5c}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!MOUSE\_DATA\_REP\_DISABLE@{MOUSE\_DATA\_REP\_DISABLE}}
+\index{MOUSE\_DATA\_REP\_DISABLE@{MOUSE\_DATA\_REP\_DISABLE}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_DATA\_REP\_DISABLE}{MOUSE\_DATA\_REP\_DISABLE}}
+{\footnotesize\ttfamily \#define MOUSE\+\_\+\+DATA\+\_\+\+REP\+\_\+\+DISABLE~0\+XF5}
+
+\mbox{\Hypertarget{mouse__macros_8h_a6247ccb28d4fffcec22719c11e3c2e5e}\label{mouse__macros_8h_a6247ccb28d4fffcec22719c11e3c2e5e}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!MOUSE\_DATA\_REP\_ENABLE@{MOUSE\_DATA\_REP\_ENABLE}}
+\index{MOUSE\_DATA\_REP\_ENABLE@{MOUSE\_DATA\_REP\_ENABLE}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_DATA\_REP\_ENABLE}{MOUSE\_DATA\_REP\_ENABLE}}
+{\footnotesize\ttfamily \#define MOUSE\+\_\+\+DATA\+\_\+\+REP\+\_\+\+ENABLE~0\+XF4}
+
+\mbox{\Hypertarget{mouse__macros_8h_a094907f521b569f790a760be8885ec4d}\label{mouse__macros_8h_a094907f521b569f790a760be8885ec4d}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!MOUSE\_DISABLE@{MOUSE\_DISABLE}}
+\index{MOUSE\_DISABLE@{MOUSE\_DISABLE}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_DISABLE}{MOUSE\_DISABLE}}
+{\footnotesize\ttfamily \#define MOUSE\+\_\+\+DISABLE~0x\+A7}
+
+\mbox{\Hypertarget{mouse__macros_8h_a4e6aa8d10e05b5f94c196bfe2cdfb8d7}\label{mouse__macros_8h_a4e6aa8d10e05b5f94c196bfe2cdfb8d7}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!MOUSE\_ENABLE@{MOUSE\_ENABLE}}
+\index{MOUSE\_ENABLE@{MOUSE\_ENABLE}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_ENABLE}{MOUSE\_ENABLE}}
+{\footnotesize\ttfamily \#define MOUSE\+\_\+\+ENABLE~0x\+A8}
+
+\mbox{\Hypertarget{mouse__macros_8h_a85964cb90343bb1a029b1d1b4229f910}\label{mouse__macros_8h_a85964cb90343bb1a029b1d1b4229f910}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!MOUSE\_IRQ@{MOUSE\_IRQ}}
+\index{MOUSE\_IRQ@{MOUSE\_IRQ}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_IRQ}{MOUSE\_IRQ}}
+{\footnotesize\ttfamily \#define MOUSE\+\_\+\+IRQ~12}
+
+\mbox{\Hypertarget{mouse__macros_8h_a955b69dce88772ddd83d3c0736c6fcb0}\label{mouse__macros_8h_a955b69dce88772ddd83d3c0736c6fcb0}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!MOUSE\_PARSE\_FIRST\_PACKET\_IDENTIFIER@{MOUSE\_PARSE\_FIRST\_PACKET\_IDENTIFIER}}
+\index{MOUSE\_PARSE\_FIRST\_PACKET\_IDENTIFIER@{MOUSE\_PARSE\_FIRST\_PACKET\_IDENTIFIER}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_PARSE\_FIRST\_PACKET\_IDENTIFIER}{MOUSE\_PARSE\_FIRST\_PACKET\_IDENTIFIER}}
+{\footnotesize\ttfamily \#define MOUSE\+\_\+\+PARSE\+\_\+\+FIRST\+\_\+\+PACKET\+\_\+\+IDENTIFIER~BIT(3)}
+
+\mbox{\Hypertarget{mouse__macros_8h_a803f40eda0a50c1d94dc96a89c25e7e9}\label{mouse__macros_8h_a803f40eda0a50c1d94dc96a89c25e7e9}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!MOUSE\_PARSE\_LB@{MOUSE\_PARSE\_LB}}
+\index{MOUSE\_PARSE\_LB@{MOUSE\_PARSE\_LB}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_PARSE\_LB}{MOUSE\_PARSE\_LB}}
+{\footnotesize\ttfamily \#define MOUSE\+\_\+\+PARSE\+\_\+\+LB~BIT(0)}
+
+\mbox{\Hypertarget{mouse__macros_8h_af4d9237b8c0ba93f539cc76a8af53773}\label{mouse__macros_8h_af4d9237b8c0ba93f539cc76a8af53773}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!MOUSE\_PARSE\_MB@{MOUSE\_PARSE\_MB}}
+\index{MOUSE\_PARSE\_MB@{MOUSE\_PARSE\_MB}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_PARSE\_MB}{MOUSE\_PARSE\_MB}}
+{\footnotesize\ttfamily \#define MOUSE\+\_\+\+PARSE\+\_\+\+MB~BIT(2)}
+
+\mbox{\Hypertarget{mouse__macros_8h_a9784b005f2e9728279b56a1f53343c78}\label{mouse__macros_8h_a9784b005f2e9728279b56a1f53343c78}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!MOUSE\_PARSE\_RB@{MOUSE\_PARSE\_RB}}
+\index{MOUSE\_PARSE\_RB@{MOUSE\_PARSE\_RB}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_PARSE\_RB}{MOUSE\_PARSE\_RB}}
+{\footnotesize\ttfamily \#define MOUSE\+\_\+\+PARSE\+\_\+\+RB~BIT(1)}
+
+\mbox{\Hypertarget{mouse__macros_8h_ace80568b662126d5c20a19faaf5853ca}\label{mouse__macros_8h_ace80568b662126d5c20a19faaf5853ca}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!MOUSE\_PARSE\_X\_DELTA\_MSB@{MOUSE\_PARSE\_X\_DELTA\_MSB}}
+\index{MOUSE\_PARSE\_X\_DELTA\_MSB@{MOUSE\_PARSE\_X\_DELTA\_MSB}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_PARSE\_X\_DELTA\_MSB}{MOUSE\_PARSE\_X\_DELTA\_MSB}}
+{\footnotesize\ttfamily \#define MOUSE\+\_\+\+PARSE\+\_\+\+X\+\_\+\+DELTA\+\_\+\+MSB~BIT(4)}
+
+\mbox{\Hypertarget{mouse__macros_8h_a3fcfaddd16c5f797fe6e3d630b5fc678}\label{mouse__macros_8h_a3fcfaddd16c5f797fe6e3d630b5fc678}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!MOUSE\_PARSE\_X\_OVERFLOW@{MOUSE\_PARSE\_X\_OVERFLOW}}
+\index{MOUSE\_PARSE\_X\_OVERFLOW@{MOUSE\_PARSE\_X\_OVERFLOW}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_PARSE\_X\_OVERFLOW}{MOUSE\_PARSE\_X\_OVERFLOW}}
+{\footnotesize\ttfamily \#define MOUSE\+\_\+\+PARSE\+\_\+\+X\+\_\+\+OVERFLOW~BIT(6)}
+
+\mbox{\Hypertarget{mouse__macros_8h_ac017e9865dcf210b11226fd2d49e1b51}\label{mouse__macros_8h_ac017e9865dcf210b11226fd2d49e1b51}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!MOUSE\_PARSE\_Y\_DELTA\_MSB@{MOUSE\_PARSE\_Y\_DELTA\_MSB}}
+\index{MOUSE\_PARSE\_Y\_DELTA\_MSB@{MOUSE\_PARSE\_Y\_DELTA\_MSB}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_PARSE\_Y\_DELTA\_MSB}{MOUSE\_PARSE\_Y\_DELTA\_MSB}}
+{\footnotesize\ttfamily \#define MOUSE\+\_\+\+PARSE\+\_\+\+Y\+\_\+\+DELTA\+\_\+\+MSB~BIT(5)}
+
+\mbox{\Hypertarget{mouse__macros_8h_a10616f0e51d5dafd7f18375575552a4f}\label{mouse__macros_8h_a10616f0e51d5dafd7f18375575552a4f}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!MOUSE\_PARSE\_Y\_OVERFLOW@{MOUSE\_PARSE\_Y\_OVERFLOW}}
+\index{MOUSE\_PARSE\_Y\_OVERFLOW@{MOUSE\_PARSE\_Y\_OVERFLOW}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_PARSE\_Y\_OVERFLOW}{MOUSE\_PARSE\_Y\_OVERFLOW}}
+{\footnotesize\ttfamily \#define MOUSE\+\_\+\+PARSE\+\_\+\+Y\+\_\+\+OVERFLOW~BIT(7)}
+
+\mbox{\Hypertarget{mouse__macros_8h_a6065e2718e2c8e4a5b5d005cba836cbc}\label{mouse__macros_8h_a6065e2718e2c8e4a5b5d005cba836cbc}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!MOUSE\_READ\_DATA@{MOUSE\_READ\_DATA}}
+\index{MOUSE\_READ\_DATA@{MOUSE\_READ\_DATA}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_READ\_DATA}{MOUSE\_READ\_DATA}}
+{\footnotesize\ttfamily \#define MOUSE\+\_\+\+READ\+\_\+\+DATA~0\+XEB}
+
+\mbox{\Hypertarget{mouse__macros_8h_a1a33902ed453e53395da2d845da0c5b6}\label{mouse__macros_8h_a1a33902ed453e53395da2d845da0c5b6}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!MOUSE\_RESEND@{MOUSE\_RESEND}}
+\index{MOUSE\_RESEND@{MOUSE\_RESEND}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_RESEND}{MOUSE\_RESEND}}
+{\footnotesize\ttfamily \#define MOUSE\+\_\+\+RESEND~0x\+FE}
+
+\mbox{\Hypertarget{mouse__macros_8h_a6b902000c4f0a66e57f0eb78d7611105}\label{mouse__macros_8h_a6b902000c4f0a66e57f0eb78d7611105}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!MOUSE\_RESET@{MOUSE\_RESET}}
+\index{MOUSE\_RESET@{MOUSE\_RESET}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_RESET}{MOUSE\_RESET}}
+{\footnotesize\ttfamily \#define MOUSE\+\_\+\+RESET~0x\+FF}
+
+\mbox{\Hypertarget{mouse__macros_8h_aacb967610731528c8b5652024e8a1ac7}\label{mouse__macros_8h_aacb967610731528c8b5652024e8a1ac7}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!MOUSE\_SET\_DEFAULTS@{MOUSE\_SET\_DEFAULTS}}
+\index{MOUSE\_SET\_DEFAULTS@{MOUSE\_SET\_DEFAULTS}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_SET\_DEFAULTS}{MOUSE\_SET\_DEFAULTS}}
+{\footnotesize\ttfamily \#define MOUSE\+\_\+\+SET\+\_\+\+DEFAULTS~0\+XF6}
+
+\mbox{\Hypertarget{mouse__macros_8h_aaa2d5ba39424fb94c1593ae86906008c}\label{mouse__macros_8h_aaa2d5ba39424fb94c1593ae86906008c}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!MOUSE\_SET\_REMOTE\_MODE@{MOUSE\_SET\_REMOTE\_MODE}}
+\index{MOUSE\_SET\_REMOTE\_MODE@{MOUSE\_SET\_REMOTE\_MODE}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_SET\_REMOTE\_MODE}{MOUSE\_SET\_REMOTE\_MODE}}
+{\footnotesize\ttfamily \#define MOUSE\+\_\+\+SET\+\_\+\+REMOTE\+\_\+\+MODE~0\+XF0}
+
+\mbox{\Hypertarget{mouse__macros_8h_a8f8d8784039ad37ba8f03185ce3c48dc}\label{mouse__macros_8h_a8f8d8784039ad37ba8f03185ce3c48dc}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!MOUSE\_SET\_RESOLUTION@{MOUSE\_SET\_RESOLUTION}}
+\index{MOUSE\_SET\_RESOLUTION@{MOUSE\_SET\_RESOLUTION}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_SET\_RESOLUTION}{MOUSE\_SET\_RESOLUTION}}
+{\footnotesize\ttfamily \#define MOUSE\+\_\+\+SET\+\_\+\+RESOLUTION~0\+XF6}
+
+\mbox{\Hypertarget{mouse__macros_8h_ab755944a7aa52223e0d49b6f8974974e}\label{mouse__macros_8h_ab755944a7aa52223e0d49b6f8974974e}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!MOUSE\_SET\_SAMPLE\_RATE@{MOUSE\_SET\_SAMPLE\_RATE}}
+\index{MOUSE\_SET\_SAMPLE\_RATE@{MOUSE\_SET\_SAMPLE\_RATE}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_SET\_SAMPLE\_RATE}{MOUSE\_SET\_SAMPLE\_RATE}}
+{\footnotesize\ttfamily \#define MOUSE\+\_\+\+SET\+\_\+\+SAMPLE\+\_\+\+RATE~0\+XF3}
+
+\mbox{\Hypertarget{mouse__macros_8h_ad5a4b0396cdfd4d7c407e0dbcca1afd7}\label{mouse__macros_8h_ad5a4b0396cdfd4d7c407e0dbcca1afd7}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!MOUSE\_SET\_SCALING\_1\_1@{MOUSE\_SET\_SCALING\_1\_1}}
+\index{MOUSE\_SET\_SCALING\_1\_1@{MOUSE\_SET\_SCALING\_1\_1}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_SET\_SCALING\_1\_1}{MOUSE\_SET\_SCALING\_1\_1}}
+{\footnotesize\ttfamily \#define MOUSE\+\_\+\+SET\+\_\+\+SCALING\+\_\+1\+\_\+1~0\+XE6}
+
+\mbox{\Hypertarget{mouse__macros_8h_a68facc7e8e4d5ad44a25447af2bc9115}\label{mouse__macros_8h_a68facc7e8e4d5ad44a25447af2bc9115}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!MOUSE\_SET\_SCALING\_2\_1@{MOUSE\_SET\_SCALING\_2\_1}}
+\index{MOUSE\_SET\_SCALING\_2\_1@{MOUSE\_SET\_SCALING\_2\_1}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_SET\_SCALING\_2\_1}{MOUSE\_SET\_SCALING\_2\_1}}
+{\footnotesize\ttfamily \#define MOUSE\+\_\+\+SET\+\_\+\+SCALING\+\_\+2\+\_\+1~0\+XE7}
+
+\mbox{\Hypertarget{mouse__macros_8h_a9af4ac19fb83e1b113043bf44520d386}\label{mouse__macros_8h_a9af4ac19fb83e1b113043bf44520d386}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!MOUSE\_SET\_STREAM\_MODE@{MOUSE\_SET\_STREAM\_MODE}}
+\index{MOUSE\_SET\_STREAM\_MODE@{MOUSE\_SET\_STREAM\_MODE}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_SET\_STREAM\_MODE}{MOUSE\_SET\_STREAM\_MODE}}
+{\footnotesize\ttfamily \#define MOUSE\+\_\+\+SET\+\_\+\+STREAM\+\_\+\+MODE~0\+XEA}
+
+\mbox{\Hypertarget{mouse__macros_8h_ae81dac725cb48935cbc4564c35a46c5d}\label{mouse__macros_8h_ae81dac725cb48935cbc4564c35a46c5d}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!MOUSE\_STATUS\_REQUEST@{MOUSE\_STATUS\_REQUEST}}
+\index{MOUSE\_STATUS\_REQUEST@{MOUSE\_STATUS\_REQUEST}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_STATUS\_REQUEST}{MOUSE\_STATUS\_REQUEST}}
+{\footnotesize\ttfamily \#define MOUSE\+\_\+\+STATUS\+\_\+\+REQUEST~0\+XE9}
+
+\mbox{\Hypertarget{mouse__macros_8h_a4c0ae31ac87b44634b62181eddea4cd8}\label{mouse__macros_8h_a4c0ae31ac87b44634b62181eddea4cd8}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!MOUSE\_WRITE\_BYTE@{MOUSE\_WRITE\_BYTE}}
+\index{MOUSE\_WRITE\_BYTE@{MOUSE\_WRITE\_BYTE}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_WRITE\_BYTE}{MOUSE\_WRITE\_BYTE}}
+{\footnotesize\ttfamily \#define MOUSE\+\_\+\+WRITE\+\_\+\+BYTE~0x\+D4}
+
+\mbox{\Hypertarget{mouse__macros_8h_a526d513d3b5a8e360dcedf743c6d9b45}\label{mouse__macros_8h_a526d513d3b5a8e360dcedf743c6d9b45}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!OUTPUT\_BUF\_FULL@{OUTPUT\_BUF\_FULL}}
+\index{OUTPUT\_BUF\_FULL@{OUTPUT\_BUF\_FULL}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{OUTPUT\_BUF\_FULL}{OUTPUT\_BUF\_FULL}}
+{\footnotesize\ttfamily \#define OUTPUT\+\_\+\+BUF\+\_\+\+FULL~BIT(0)}
+
+\mbox{\Hypertarget{mouse__macros_8h_a81d2ca6759f3f3bf04556b7558aea6bc}\label{mouse__macros_8h_a81d2ca6759f3f3bf04556b7558aea6bc}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!PARITY\_ERROR@{PARITY\_ERROR}}
+\index{PARITY\_ERROR@{PARITY\_ERROR}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{PARITY\_ERROR}{PARITY\_ERROR}}
+{\footnotesize\ttfamily \#define PARITY\+\_\+\+ERROR~BIT(7)}
+
+\mbox{\Hypertarget{mouse__macros_8h_a3edb96ff4ed65c98f514852bcdd4f944}\label{mouse__macros_8h_a3edb96ff4ed65c98f514852bcdd4f944}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!READ\_CMD\_BYTE@{READ\_CMD\_BYTE}}
+\index{READ\_CMD\_BYTE@{READ\_CMD\_BYTE}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{READ\_CMD\_BYTE}{READ\_CMD\_BYTE}}
+{\footnotesize\ttfamily \#define READ\+\_\+\+CMD\+\_\+\+BYTE~0x20}
+
+\mbox{\Hypertarget{mouse__macros_8h_ac5cc853d684282f89a6f107b53e7aaf5}\label{mouse__macros_8h_ac5cc853d684282f89a6f107b53e7aaf5}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!READ\_ST\_REG@{READ\_ST\_REG}}
+\index{READ\_ST\_REG@{READ\_ST\_REG}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{READ\_ST\_REG}{READ\_ST\_REG}}
+{\footnotesize\ttfamily \#define READ\+\_\+\+ST\+\_\+\+REG~0x64}
+
+\mbox{\Hypertarget{mouse__macros_8h_af1996a92b282e51c43861fc6ff085d6c}\label{mouse__macros_8h_af1996a92b282e51c43861fc6ff085d6c}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!RES\_ACK@{RES\_ACK}}
+\index{RES\_ACK@{RES\_ACK}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{RES\_ACK}{RES\_ACK}}
+{\footnotesize\ttfamily \#define RES\+\_\+\+ACK~0x\+FA}
+
+\mbox{\Hypertarget{mouse__macros_8h_a6f3c177a526f359ce8b35d9d2efd0970}\label{mouse__macros_8h_a6f3c177a526f359ce8b35d9d2efd0970}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!RES\_ERROR@{RES\_ERROR}}
+\index{RES\_ERROR@{RES\_ERROR}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{RES\_ERROR}{RES\_ERROR}}
+{\footnotesize\ttfamily \#define RES\+\_\+\+ERROR~0x\+FC}
+
+\mbox{\Hypertarget{mouse__macros_8h_a86fc358a41e4df9e9187eeef70aae24f}\label{mouse__macros_8h_a86fc358a41e4df9e9187eeef70aae24f}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!RES\_NACK@{RES\_NACK}}
+\index{RES\_NACK@{RES\_NACK}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{RES\_NACK}{RES\_NACK}}
+{\footnotesize\ttfamily \#define RES\+\_\+\+NACK~0x\+FE}
+
+\mbox{\Hypertarget{mouse__macros_8h_a70ba5cfd6ec32ae0b141b32f232d5ca2}\label{mouse__macros_8h_a70ba5cfd6ec32ae0b141b32f232d5ca2}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!SYS\_FLAG@{SYS\_FLAG}}
+\index{SYS\_FLAG@{SYS\_FLAG}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{SYS\_FLAG}{SYS\_FLAG}}
+{\footnotesize\ttfamily \#define SYS\+\_\+\+FLAG~BIT(2)}
+
+\mbox{\Hypertarget{mouse__macros_8h_aefc48d416c882f06edaf6d01779d4d74}\label{mouse__macros_8h_aefc48d416c882f06edaf6d01779d4d74}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!TIMEOUT\_ERROR@{TIMEOUT\_ERROR}}
+\index{TIMEOUT\_ERROR@{TIMEOUT\_ERROR}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{TIMEOUT\_ERROR}{TIMEOUT\_ERROR}}
+{\footnotesize\ttfamily \#define TIMEOUT\+\_\+\+ERROR~BIT(6)}
+
+\mbox{\Hypertarget{mouse__macros_8h_a6bbab0e165f6f55c8f1371fd18ce9a0e}\label{mouse__macros_8h_a6bbab0e165f6f55c8f1371fd18ce9a0e}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!WRITE\_CMD\_BYTE@{WRITE\_CMD\_BYTE}}
+\index{WRITE\_CMD\_BYTE@{WRITE\_CMD\_BYTE}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{WRITE\_CMD\_BYTE}{WRITE\_CMD\_BYTE}}
+{\footnotesize\ttfamily \#define WRITE\+\_\+\+CMD\+\_\+\+BYTE~0x60}
+
+\mbox{\Hypertarget{mouse__macros_8h_a8084e8d44af33c44125855f40ed06251}\label{mouse__macros_8h_a8084e8d44af33c44125855f40ed06251}} 
+\index{mouse\_macros.h@{mouse\_macros.h}!WRITE\_CMD\_CTRLREG@{WRITE\_CMD\_CTRLREG}}
+\index{WRITE\_CMD\_CTRLREG@{WRITE\_CMD\_CTRLREG}!mouse\_macros.h@{mouse\_macros.h}}
+\doxysubsubsection{\texorpdfstring{WRITE\_CMD\_CTRLREG}{WRITE\_CMD\_CTRLREG}}
+{\footnotesize\ttfamily \#define WRITE\+\_\+\+CMD\+\_\+\+CTRLREG~0x64}
+

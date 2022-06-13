@@ -1,0 +1,40 @@
+\hypertarget{keyboard_8h}{}\doxysection{keyboard.\+h File Reference}
+\label{keyboard_8h}\index{keyboard.h@{keyboard.h}}
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}i8042.\+h\char`\"{}}\newline
+Include dependency graph for keyboard.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{group___keyboard_ga7746d9a4bc9b24c99661e30a415d1cc2}{get\+\_\+scancode}} ()
+\begin{DoxyCompactList}\small\item\em Gets the scancode from the keyboard out buffer. Does not parse it. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{group___keyboard_ga743680408c7837696a493078db7f6887}{analyse\+\_\+scancode}} ()
+\begin{DoxyCompactList}\small\item\em Parses the scancode if it is ready to. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___keyboard_ga7e88c2cbdb3d50b32bfd4ef0a7a5afb4}{kbc\+\_\+print\+\_\+scancode\+\_\+wrapper}} ()
+\begin{DoxyCompactList}\small\item\em Prints the scancode that completed reading. Returns 0 if sucessful. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{keyboard_8h_aa1de7a5557e9d96b83cf03f73c92163f}{scancode}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{keyboard_8h_a2eea182a5a82747f8a031bada7b8de3b}{is\+\_\+scancode\+\_\+complete}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{keyboard_8h_a2eea182a5a82747f8a031bada7b8de3b}\label{keyboard_8h_a2eea182a5a82747f8a031bada7b8de3b}} 
+\index{keyboard.h@{keyboard.h}!is\_scancode\_complete@{is\_scancode\_complete}}
+\index{is\_scancode\_complete@{is\_scancode\_complete}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{is\_scancode\_complete}{is\_scancode\_complete}}
+{\footnotesize\ttfamily uint8\+\_\+t is\+\_\+scancode\+\_\+complete\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{keyboard_8h_aa1de7a5557e9d96b83cf03f73c92163f}\label{keyboard_8h_aa1de7a5557e9d96b83cf03f73c92163f}} 
+\index{keyboard.h@{keyboard.h}!scancode@{scancode}}
+\index{scancode@{scancode}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{scancode}{scancode}}
+{\footnotesize\ttfamily uint8\+\_\+t scancode\hspace{0.3cm}{\ttfamily [extern]}}
+

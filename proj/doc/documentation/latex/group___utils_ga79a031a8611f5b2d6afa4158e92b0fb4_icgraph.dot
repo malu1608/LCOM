@@ -1,0 +1,30 @@
+digraph "util_sys_inb"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="util_sys_inb",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Gives the \"value\" variable the value obtained through the sys_inb call to the \"port\" in uint8_t."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="get_date",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___r_t_c.html#ga9e8e92b264f902500d2bd96e713e2c0a",tooltip="Gets a pointer to the desired Data object."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="Menu",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___menu.html#ga3e7e52f3c6c64725ab16ba74bed8441d",tooltip="Draws the main menu window. Uses the x_res and y_res to draw the whole window with the desired backgr..."];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="proj_main_loop",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b",tooltip=" "];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="get_scancode",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___keyboard.html#ga7746d9a4bc9b24c99661e30a415d1cc2",tooltip="Gets the scancode from the keyboard out buffer. Does not parse it."];
+  Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="is_binary",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___r_t_c.html#ga8a2dc651a01dabc7b70aa1e99eb0753a",tooltip="Checks if rtc's input is written in bcd or in binary."];
+  Node6 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="mouse_ih",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___mouse.html#ga210374b50462acdedab00df64d5cea3c",tooltip="Handles the mouse's interrupts."];
+  Node7 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="rtcIsUpdating",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___r_t_c.html#gae4c2eccc59963cb4d3c54881c214abbd",tooltip="Checks if rtc is updating."];
+  Node8 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="timer_get_conf",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__timer.html#ga703c60b40c8c49607d6ecb6fef82d27a",tooltip="Reads the input timer configuration (status) via read-back command."];
+  Node9 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="timer_set_frequency",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__timer.html#gaf2c04fa8e97ffa748fd3f612886a92a7",tooltip="Changes the operating frequency of a timer."];
+}

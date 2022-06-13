@@ -1,0 +1,104 @@
+\hypertarget{player_8h}{}\doxysection{player.\+h File Reference}
+\label{player_8h}\index{player.h@{player.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+Include dependency graph for player.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{player_8h_a03f1a6b4d75a447ea50b669045f6f35f}{MAX\+\_\+\+CHARGE}}~40
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group___player_gaadae0073378d48be1ddbffe22c16873c}{Player\+Init}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self, int16\+\_\+t x, int16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Initializes the player on the position (x, y) with the default values, loading the sprites in addition. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_player}{Player}} $\ast$ \mbox{\hyperlink{group___player_gafb5d8d6817e9b769632659023ccea643}{Player\+Create}} (int16\+\_\+t x, int16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Creates a \mbox{\hyperlink{struct_player}{Player}} on the position (x, y). Returns the pointer to the created object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___player_gac394e9208c51c0c77e56033ff6deffcd}{Player\+Destroy}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$player)
+\begin{DoxyCompactList}\small\item\em Frees the memory allocated to the player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___player_gaffd6ecbcf41d18688d6dc26991da5527}{Player\+Set\+Position}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self, int16\+\_\+t x, int16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Sets the player (self) position to (x, y);. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___player_ga89e8c497bdee917a5a01fddbbe86ecd9}{Player\+Move}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self, int16\+\_\+t diff\+\_\+x, int16\+\_\+t diff\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Adds the diff\+\_\+x and diff\+\_\+y deltas to the player (self) position. Also flips the character depending on the diff\+\_\+x\textquotesingle{}s sign. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___player_gafbe513ebf136d9b6e50e2002bcc93877}{Player\+Left\+Pressed}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self)
+\begin{DoxyCompactList}\small\item\em Sets left\+Key value to 1. If the player is laid sets laid to false. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___player_ga49084c2efd9866f91f4784f70eb04d4f}{Player\+Left\+Released}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self)
+\begin{DoxyCompactList}\small\item\em Sets left\+Key to 0;. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___player_ga20f4558cd5f6262c61b113c15bbc6779}{Player\+Right\+Pressed}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self)
+\begin{DoxyCompactList}\small\item\em Sets right\+Key value to 1. If the player is laid sets laid to false. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___player_ga638956ce80664c96894b511860a9b522}{Player\+Right\+Released}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self)
+\begin{DoxyCompactList}\small\item\em Sets right\+Key to 0;. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___player_ga81d0b2b651958d9bab76b01d89191a63}{Player\+Get\+Left\+Key}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self)
+\begin{DoxyCompactList}\small\item\em Returns the player\textquotesingle{}s (self) left\+Key value. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___player_ga67d4c60e69a8152a13e280a6cbe311fa}{Player\+Get\+Right\+Key}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self)
+\begin{DoxyCompactList}\small\item\em Returns the player\textquotesingle{}s (self) right\+Key value. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{group___player_ga1af03673202f515a65c3299acbd260ab}{Player\+Get\+Intent}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self)
+\begin{DoxyCompactList}\small\item\em Returns the player\textquotesingle{}s (self) intent. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{group___player_ga61f8caff4fc4c5a37dba8c7693d1b6e5}{Player\+Get\+Width}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self)
+\begin{DoxyCompactList}\small\item\em Returns the player\textquotesingle{}s (self) width. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{group___player_gae282534f89673a32b418c4b5c845f2cb}{Player\+Get\+Height}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self)
+\begin{DoxyCompactList}\small\item\em Returns the player\textquotesingle{}s (self) height. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{group___player_ga3b737a5f046411b3455a75c64614e307}{Player\+Get\+SpriteX}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self)
+\begin{DoxyCompactList}\small\item\em Returns the player\textquotesingle{}s (self) sprite x position. For drawing purposes. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{group___player_gad5241f2a6e09bcf7ff65ab06d6fb52a9}{Player\+Get\+SpriteY}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self)
+\begin{DoxyCompactList}\small\item\em Returns the player\textquotesingle{}s (self) sprite y position. For drawing purposes. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{group___player_gaf4cd2117a49f10cb188ae11ade18392b}{Player\+GetX}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self)
+\begin{DoxyCompactList}\small\item\em Returns the player\textquotesingle{}s (self) x position. For collision detection purposes. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{group___player_gad1f66bed95ac95cc4d2b3dd9ac25324e}{Player\+GetY}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self)
+\begin{DoxyCompactList}\small\item\em Returns the player\textquotesingle{}s (self) y position. For collision detenction purposes. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{group___player_gae55ff27b6ca1fcec8fa86bc29afa852a}{Player\+Get\+Collider\+Width}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self)
+\begin{DoxyCompactList}\small\item\em Returns the player\textquotesingle{}s (self) collider width. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{group___player_ga2eb2ee9c4b762db26d2f49025d471304}{Player\+Get\+Collider\+Height}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self)
+\begin{DoxyCompactList}\small\item\em Returns the player\textquotesingle{}s (self) height. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{group___player_ga179a625307babd3e29f6e41e7c39c6fd}{Player\+Get\+MomentumX}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self)
+\begin{DoxyCompactList}\small\item\em Returns the player\textquotesingle{}s (self) momentum x value. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{group___player_gafcc714a83c68c4bc5e13041fcbcb8ca4}{Player\+Get\+MomentumY}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self)
+\begin{DoxyCompactList}\small\item\em Returns the player\textquotesingle{}s (self) momentum y value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___player_gac6e6ca66072c473edd5d72b251787562}{Player\+Set\+MomentumX}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self, int16\+\_\+t new\+\_\+mom)
+\begin{DoxyCompactList}\small\item\em Sets the player\textquotesingle{}s (self) momentum x value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___player_gac11f1e7ecbba25aebd5ce76bb97dce50}{Player\+Set\+MomentumY}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self, int16\+\_\+t new\+\_\+mom)
+\begin{DoxyCompactList}\small\item\em Sets the player\textquotesingle{}s (self) momentum y value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___player_ga4ff7a44d1708927d1f9b336db185bbff}{Player\+Reset\+Momentum}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self)
+\begin{DoxyCompactList}\small\item\em Resets the player\textquotesingle{}s (self) momentum value. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{group___player_ga56a88df40d8068e8aa127a62712a20e8}{Player\+Get\+Movement}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self)
+\begin{DoxyCompactList}\small\item\em Returns the player\textquotesingle{}s (self) movement value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___player_gad218e0aabd866ddb687272bd6caa487d}{Player\+Set\+Movement}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self, int16\+\_\+t new\+\_\+move)
+\begin{DoxyCompactList}\small\item\em Sets the player\textquotesingle{}s (self) movement value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___player_ga0f4ec2e9f0a2f2b3ae668d8ab1a7a2a3}{Player\+Charge\+Jump}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self)
+\begin{DoxyCompactList}\small\item\em Calculates jump force and direction, jumping if maximum force is reached. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___player_ga80f160acf46ceb63f287e49ad164be33}{Player\+Jump}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self)
+\begin{DoxyCompactList}\small\item\em Adds the jump force to the player\textquotesingle{}s (self) momentum. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___player_gaf084c204ae3b8aa1abd59db1b2e2fd01}{Player\+Get\+Floored}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self)
+\begin{DoxyCompactList}\small\item\em Returns the player\textquotesingle{}s (self) floored value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___player_gabc17d57de15e74cb5d2a1d7ab67f9993}{Player\+Set\+Floored}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self, bool floored)
+\begin{DoxyCompactList}\small\item\em Sets the player\textquotesingle{}s (self) floored value. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___player_gaf4ea247c81550d57c6e507cb15e1249b}{Player\+Get\+Laid}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self)
+\begin{DoxyCompactList}\small\item\em Returns the player\textquotesingle{}s (self) laid value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___player_ga185dc1c70a2ca96a620adc3e790ef97d}{Player\+Set\+Laid}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self, bool \+\_\+laid)
+\begin{DoxyCompactList}\small\item\em Sets the player\textquotesingle{}s (self) laid value. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___player_ga324d2099cc961aad6b0e5b491d153aaa}{Player\+Get\+Jumping}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self)
+\begin{DoxyCompactList}\small\item\em Returns the player\textquotesingle{}s (self) jumping value. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___player_ga53598d64ae5213adcd462a4cc0da4e25}{Player\+Get\+Charge}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self)
+\begin{DoxyCompactList}\small\item\em Returns the player\textquotesingle{}s (self) jump charge value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___player_gae06995b792aeddebfb8b657a0b8a120f}{Player\+Set\+Bounce}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self, bool \+\_\+bounce)
+\begin{DoxyCompactList}\small\item\em Sets the player\textquotesingle{}s (self) bounce value. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___player_ga68f319c16028d2e5a60b296049469d7f}{Player\+Get\+Bounce}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self)
+\begin{DoxyCompactList}\small\item\em Returns the player\textquotesingle{}s (self) bounce value. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{group___player_gac8c9cf4591555dd5e13b865b9a05ac70}{Player\+Get\+Speed}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self)
+\begin{DoxyCompactList}\small\item\em Returns the player\textquotesingle{}s (self) speed value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___player_gab9b76dbdc19bc7e425bafa1e9ca76d76}{Player\+Set\+Animation}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self, int new\+Anim)
+\begin{DoxyCompactList}\small\item\em Sets the player\textquotesingle{}s (self) animation indicator value. \end{DoxyCompactList}\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{group___player_gada06e2e0751e17f5cb1087c13560f4ce}{Player\+Get\+Sprite}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$self)
+\begin{DoxyCompactList}\small\item\em As it is called every frame if processes the animations changing the player\textquotesingle{}s (self) frame and returning its xpm\+\_\+image\+\_\+t value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{player_8h_a03f1a6b4d75a447ea50b669045f6f35f}\label{player_8h_a03f1a6b4d75a447ea50b669045f6f35f}} 
+\index{player.h@{player.h}!MAX\_CHARGE@{MAX\_CHARGE}}
+\index{MAX\_CHARGE@{MAX\_CHARGE}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_CHARGE}{MAX\_CHARGE}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+CHARGE~40}
+

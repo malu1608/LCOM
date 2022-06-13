@@ -1,0 +1,74 @@
+\hypertarget{gamemanager_8c}{}\doxysection{gamemanager.\+c File Reference}
+\label{gamemanager_8c}\index{gamemanager.c@{gamemanager.c}}
+{\ttfamily \#include \char`\"{}gamemanager.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}graphics.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/level\+\_\+1tile\+\_\+1.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/level\+\_\+1\+\_\+tile\+\_\+2.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/level\+\_\+1\+\_\+tile\+\_\+3.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/level\+\_\+2\+\_\+tile\+\_\+1.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/level\+\_\+2\+\_\+tile\+\_\+2.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/level\+\_\+3\+\_\+tile\+\_\+1.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/level\+\_\+3\+\_\+tile\+\_\+2.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/level\+\_\+3\+\_\+tile\+\_\+3.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/level\+\_\+3\+\_\+tile\+\_\+4.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/level\+\_\+3\+\_\+tile\+\_\+5.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/level\+\_\+3\+\_\+tile\+\_\+6.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/level\+\_\+3\+\_\+tile\+\_\+7.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/level\+\_\+4\+\_\+tile\+\_\+1.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/level\+\_\+4\+\_\+tile\+\_\+2.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/level\+\_\+4\+\_\+tile\+\_\+3.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/level\+\_\+4\+\_\+tile\+\_\+4.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/level\+\_\+4\+\_\+tile\+\_\+5.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/level\+\_\+4\+\_\+tile\+\_\+6.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/level\+\_\+5\+\_\+tile\+\_\+1.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/level\+\_\+5\+\_\+tile\+\_\+2.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/level\+\_\+5\+\_\+tile\+\_\+3.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/level\+\_\+5\+\_\+tile\+\_\+4.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/level\+\_\+5\+\_\+tile\+\_\+5.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/level\+\_\+5\+\_\+tile\+\_\+6.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/level\+\_\+5\+\_\+tile\+\_\+7.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/level\+\_\+5\+\_\+tile\+\_\+8.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/level\+\_\+1\+\_\+background.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/level\+\_\+2\+\_\+background.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/level\+\_\+3\+\_\+background.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/level\+\_\+4\+\_\+background.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/level\+\_\+5\+\_\+background5.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}img/babe.\+xpm\char`\"{}}\newline
+Include dependency graph for gamemanager.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gamemanager_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_platform}{Platform}}
+\item 
+struct \mbox{\hyperlink{struct_level}{Level}}
+\item 
+struct \mbox{\hyperlink{struct_manager}{Manager}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_manager}{Manager}} $\ast$ \mbox{\hyperlink{group___game_manager_ga88b8817b2af5313c9e182582527d27cc}{Game\+Manager\+Create}} (struct \mbox{\hyperlink{struct_player}{Player}} $\ast$player, uint16\+\_\+t x\+\_\+res, uint16\+\_\+t y\+\_\+res)
+\begin{DoxyCompactList}\small\item\em Creates a \mbox{\hyperlink{struct_manager}{Manager}}, storing its player and screen dimensions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___game_manager_gaae38d75a13e06a4477028d5cf8b14ad2}{Manager\+Init}} (struct \mbox{\hyperlink{struct_manager}{Manager}} $\ast$self, struct \mbox{\hyperlink{struct_player}{Player}} $\ast$player, uint16\+\_\+t x\+\_\+res, uint16\+\_\+t y\+\_\+res)
+\begin{DoxyCompactList}\small\item\em Initializes the \mbox{\hyperlink{struct_manager}{Manager}}, giving itself the provided values. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___game_manager_ga9c472682ee9d3142f81b78f13516e02d}{Physics\+Loop}} (struct \mbox{\hyperlink{struct_manager}{Manager}} $\ast$self)
+\begin{DoxyCompactList}\small\item\em Processes collisions and some game logic. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___game_manager_ga0d17f3c19a423549420accc12a7e556e}{Draw\+Level}} (struct \mbox{\hyperlink{struct_manager}{Manager}} $\ast$self)
+\begin{DoxyCompactList}\small\item\em Draws the current level (background and the platforms). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___game_manager_ga676e0dd069cb91e7b0c337300c0f19f0}{load\+Level1}} (struct \mbox{\hyperlink{struct_level}{Level}} $\ast$level, struct \mbox{\hyperlink{struct_manager}{Manager}} $\ast$manager)
+\begin{DoxyCompactList}\small\item\em Loads the first level. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___game_manager_ga370c1cf1674f77a09b6531b002244f24}{load\+Level2}} (struct \mbox{\hyperlink{struct_level}{Level}} $\ast$level, struct \mbox{\hyperlink{struct_manager}{Manager}} $\ast$manager)
+\begin{DoxyCompactList}\small\item\em Loads the second level. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___game_manager_ga70fc8da839fb5e784302bcb0b5590a55}{load\+Level3}} (struct \mbox{\hyperlink{struct_level}{Level}} $\ast$level, struct \mbox{\hyperlink{struct_manager}{Manager}} $\ast$manager)
+\begin{DoxyCompactList}\small\item\em Loads the third level. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___game_manager_gaafcc55df4aaccd2830a698e9c748c25a}{load\+Level4}} (struct \mbox{\hyperlink{struct_level}{Level}} $\ast$level, struct \mbox{\hyperlink{struct_manager}{Manager}} $\ast$manager)
+\begin{DoxyCompactList}\small\item\em Loads the forth level. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___game_manager_gab77a2bd53a659745575b641f26e72eb0}{load\+Level5}} (struct \mbox{\hyperlink{struct_level}{Level}} $\ast$level, struct \mbox{\hyperlink{struct_manager}{Manager}} $\ast$manager)
+\begin{DoxyCompactList}\small\item\em Loads the fifth level. \end{DoxyCompactList}\end{DoxyCompactItemize}

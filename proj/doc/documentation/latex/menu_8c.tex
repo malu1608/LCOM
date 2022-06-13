@@ -1,0 +1,67 @@
+\hypertarget{menu_8c}{}\doxysection{menu.\+c File Reference}
+\label{menu_8c}\index{menu.c@{menu.c}}
+{\ttfamily \#include \char`\"{}menu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}graphics.\+h\char`\"{}}\newline
+Include dependency graph for menu.\+c\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group___menu_gae1e40066053f39b327fd5d8459b3586f}{load\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Loads every xpm needed to draw the main menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___menu_ga18005ab9b6cdc2e7e9abd024af4df1e8}{load\+Win\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Loads every xpm needed to draw the win condition menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___menu_ga3e7e52f3c6c64725ab16ba74bed8441d}{Menu}} (uint16\+\_\+t x\+\_\+res, uint16\+\_\+t y\+\_\+res)
+\begin{DoxyCompactList}\small\item\em Draws the main menu window. Uses the x\+\_\+res and y\+\_\+res to draw the whole window with the desired background color. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___menu_gaad60145aeae1f2ef75815f21fe67ff7b}{Win\+Menu}} (uint16\+\_\+t x\+\_\+res, uint16\+\_\+t y\+\_\+res)
+\begin{DoxyCompactList}\small\item\em Draws the win condition menu window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___menu_gae56e4c2c09e4e910f9763e59fc60bdcb}{check\+Options}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Checks if the mouse on position (x, y) is overlapping a menu option, underlining it if so. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___menu_gabf322d46b5fd9a36b969a8232752215f}{click\+Option}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Checks if the mouse on position (x, y) is overlapping a menu option when the left button pressed, returning an integer with the options selected, 4 if no valid option was pressed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{menu_8c_a8f0cc8329d87377dd59becfb7fb16daa}{title}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{menu_8c_a98fdda0de8a69829f9f332468666f30e}{options}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{menu_8c_a916458a8550632497a0a6fad66866ae4}{youwon}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{menu_8c_ae21b4a5dae0f81a867c8ca68e641ab5f}{winstance}}
+\item 
+int \mbox{\hyperlink{menu_8c_a96613d07df4205a377ad9cb38b3a9d27}{option}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{menu_8c_a96613d07df4205a377ad9cb38b3a9d27}\label{menu_8c_a96613d07df4205a377ad9cb38b3a9d27}} 
+\index{menu.c@{menu.c}!option@{option}}
+\index{option@{option}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{option}{option}}
+{\footnotesize\ttfamily int option}
+
+\mbox{\Hypertarget{menu_8c_a98fdda0de8a69829f9f332468666f30e}\label{menu_8c_a98fdda0de8a69829f9f332468666f30e}} 
+\index{menu.c@{menu.c}!options@{options}}
+\index{options@{options}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{options}{options}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t options}
+
+\mbox{\Hypertarget{menu_8c_a8f0cc8329d87377dd59becfb7fb16daa}\label{menu_8c_a8f0cc8329d87377dd59becfb7fb16daa}} 
+\index{menu.c@{menu.c}!title@{title}}
+\index{title@{title}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{title}{title}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t title}
+
+\mbox{\Hypertarget{menu_8c_ae21b4a5dae0f81a867c8ca68e641ab5f}\label{menu_8c_ae21b4a5dae0f81a867c8ca68e641ab5f}} 
+\index{menu.c@{menu.c}!winstance@{winstance}}
+\index{winstance@{winstance}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{winstance}{winstance}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t winstance}
+
+\mbox{\Hypertarget{menu_8c_a916458a8550632497a0a6fad66866ae4}\label{menu_8c_a916458a8550632497a0a6fad66866ae4}} 
+\index{menu.c@{menu.c}!youwon@{youwon}}
+\index{youwon@{youwon}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{youwon}{youwon}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t youwon}
+

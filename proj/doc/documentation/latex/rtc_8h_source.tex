@@ -1,0 +1,40 @@
+\hypertarget{rtc_8h_source}{}\doxysection{rtc.\+h}
+\mbox{\hyperlink{rtc_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <lcom/lcf.h>}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{16 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_date}{Date}}\{}
+\DoxyCodeLine{17   uint32\_t \mbox{\hyperlink{group___r_t_c_gab93e42ad6d3774e717d79c3f197817fa}{year}}; }
+\DoxyCodeLine{18   uint8\_t \mbox{\hyperlink{group___r_t_c_gabc86e25ad3cd6c62831f7e6c46902eb2}{month}};}
+\DoxyCodeLine{19   uint8\_t \mbox{\hyperlink{group___r_t_c_ga42b01fdc428ecea9462d205268d670ad}{day}};}
+\DoxyCodeLine{20   uint8\_t \mbox{\hyperlink{group___r_t_c_ga8dfee89f7697c98e54d3a12e4c71c601}{hour}};}
+\DoxyCodeLine{21   uint8\_t \mbox{\hyperlink{group___r_t_c_ga4514587b9dc93e1b283c9832cb132904}{minutes}};}
+\DoxyCodeLine{22   uint8\_t \mbox{\hyperlink{group___r_t_c_gada0d55e10f54ce6a031e4dd8ede0cb7e}{seconds}};}
+\DoxyCodeLine{23 \} \mbox{\hyperlink{group___r_t_c_ga3ea100ae85e835c1ff4e90b5c9a12f66}{Data}};}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define RTC\_ADDR\_REG 0x70}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define RTC\_DATA\_REG 0x71}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define SEC\_REG 0}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define MIN\_REG 2}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#define HOUR\_REG 4}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define DAY\_REG 7}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define MONTH\_REG 8}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#define YEAR\_REG 9}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#define REG\_A 0x0A}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define REG\_B 0X0B}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#define BINARY BIT(2)}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define UIP\_SET BIT(7)}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#define WAIT\_UPDATE 244 }}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 }
+\DoxyCodeLine{43 \textcolor{keywordtype}{bool} \mbox{\hyperlink{group___r_t_c_ga8a2dc651a01dabc7b70aa1e99eb0753a}{is\_binary}}();}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{48 \textcolor{keywordtype}{bool} \mbox{\hyperlink{group___r_t_c_gae4c2eccc59963cb4d3c54881c214abbd}{rtcIsUpdating}}();}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{53 \textcolor{keywordtype}{int} \mbox{\hyperlink{group___r_t_c_ga37479f897994ea41699d9d71e7f4e1eb}{bcd\_to\_bin}}(\textcolor{keywordtype}{int} num);}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{58 \mbox{\hyperlink{struct_date}{Data}} * \mbox{\hyperlink{group___r_t_c_ga9e8e92b264f902500d2bd96e713e2c0a}{get\_date}}();}
+
+\end{DoxyCode}

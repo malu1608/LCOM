@@ -1,0 +1,63 @@
+\hypertarget{graphics_8h}{}\doxysection{graphics.\+h File Reference}
+\label{graphics_8h}\index{graphics.h@{graphics.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}video\+\_\+macros.\+h\char`\"{}}\newline
+Include dependency graph for graphics.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=243pt]{graphics_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structvbe__mode__info__summary__t}{vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em A struct that holds informationg about the initialized graphics. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{graphics_8h_a08683ca900b5acecff46a990a22d7b7b}{TRANSPARENCY\+\_\+\+COLOR}}~254
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \mbox{\hyperlink{group___graphics_gacad532bd831f98761530579c268027a2}{initialize\+\_\+graphics}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the graphics in mode 0x14C. Returning the video memory address. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___graphics_ga5a4a85e95c113e0f9f6f5db7d1a08e8a}{draw\+\_\+hline}} (uint16\+\_\+t x, uint16\+\_\+t y, uint16\+\_\+t len, uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Draws an horizontal line starting at position (x, y) with \char`\"{}len\char`\"{} length and \char`\"{}color\char`\"{} color. Returns an 0 if sucessful. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___graphics_gad9afc559a75d9a80979b9feeb7187276}{draw\+\_\+rectangle}} (int16\+\_\+t x, int16\+\_\+t y, uint16\+\_\+t height, uint16\+\_\+t width, uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Draws a rectangle starting at position (x, y) with \char`\"{}height\char`\"{} height, \char`\"{}width\char`\"{} width and \char`\"{}color\char`\"{} color. Returns an 0 if sucessful. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___graphics_ga38b29c5cfa36c166f7d566f938571c4f}{draw\+\_\+xpm}} (xpm\+\_\+image\+\_\+t img, int16\+\_\+t x, int16\+\_\+t y, uint8\+\_\+t $\ast$map)
+\begin{DoxyCompactList}\small\item\em Draws a xpm on position (x, y) using the information stored in the img and map parameters. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___graphics_ga65e2491e8b03270a9b5d27a3b714b038}{draw\+\_\+loaded\+\_\+xpm}} (xpm\+\_\+image\+\_\+t img, int16\+\_\+t x, int16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Similar to the draw\+\_\+xpm method but draws using only the img information as the xpm has been previously loaded. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{group___graphics_ga8b2969363c73d2526906a0bcde14e45b}{destroy\+\_\+second\+\_\+buffer}} ()
+\begin{DoxyCompactList}\small\item\em Frees the memory allocated to the second buffer. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{group___graphics_gaa75d96618132cccec2c977ae043d31fe}{draw\+\_\+pixel}} (uint16\+\_\+t x, uint16\+\_\+t y, uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Draws a pixel with \char`\"{}color\char`\"{} color on position (x, y). \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{group___graphics_ga9cbce3a40233f0a503c1007134b74085}{refresh\+\_\+screen}} ()
+\begin{DoxyCompactList}\small\item\em Copies the second buffer memory and pastes it on the main video memory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structvbe__mode__info__summary__t}{vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t}} \mbox{\hyperlink{group___graphics_ga95bfd6204aec580f079790770fd9c338}{vg\+\_\+info}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{graphics_8h_a08683ca900b5acecff46a990a22d7b7b}\label{graphics_8h_a08683ca900b5acecff46a990a22d7b7b}} 
+\index{graphics.h@{graphics.h}!TRANSPARENCY\_COLOR@{TRANSPARENCY\_COLOR}}
+\index{TRANSPARENCY\_COLOR@{TRANSPARENCY\_COLOR}!graphics.h@{graphics.h}}
+\doxysubsubsection{\texorpdfstring{TRANSPARENCY\_COLOR}{TRANSPARENCY\_COLOR}}
+{\footnotesize\ttfamily \#define TRANSPARENCY\+\_\+\+COLOR~254}
+

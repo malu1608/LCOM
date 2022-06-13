@@ -1,0 +1,309 @@
+\hypertarget{group___graphics}{}\doxysection{Graphics}
+\label{group___graphics}\index{Graphics@{Graphics}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structvbe__mode__info__summary__t}{vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em A struct that holds informationg about the initialized graphics. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \mbox{\hyperlink{group___graphics_gacad532bd831f98761530579c268027a2}{initialize\+\_\+graphics}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the graphics in mode 0x14C. Returning the video memory address. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___graphics_ga5a4a85e95c113e0f9f6f5db7d1a08e8a}{draw\+\_\+hline}} (uint16\+\_\+t x, uint16\+\_\+t y, uint16\+\_\+t len, uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Draws an horizontal line starting at position (x, y) with \char`\"{}len\char`\"{} length and \char`\"{}color\char`\"{} color. Returns an 0 if sucessful. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___graphics_gad9afc559a75d9a80979b9feeb7187276}{draw\+\_\+rectangle}} (int16\+\_\+t x, int16\+\_\+t y, uint16\+\_\+t height, uint16\+\_\+t width, uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Draws a rectangle starting at position (x, y) with \char`\"{}height\char`\"{} height, \char`\"{}width\char`\"{} width and \char`\"{}color\char`\"{} color. Returns an 0 if sucessful. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___graphics_ga38b29c5cfa36c166f7d566f938571c4f}{draw\+\_\+xpm}} (xpm\+\_\+image\+\_\+t img, int16\+\_\+t x, int16\+\_\+t y, uint8\+\_\+t $\ast$map)
+\begin{DoxyCompactList}\small\item\em Draws a xpm on position (x, y) using the information stored in the img and map parameters. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___graphics_ga65e2491e8b03270a9b5d27a3b714b038}{draw\+\_\+loaded\+\_\+xpm}} (xpm\+\_\+image\+\_\+t img, int16\+\_\+t x, int16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Similar to the draw\+\_\+xpm method but draws using only the img information as the xpm has been previously loaded. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{group___graphics_ga8b2969363c73d2526906a0bcde14e45b}{destroy\+\_\+second\+\_\+buffer}} ()
+\begin{DoxyCompactList}\small\item\em Frees the memory allocated to the second buffer. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{group___graphics_gaa75d96618132cccec2c977ae043d31fe}{draw\+\_\+pixel}} (uint16\+\_\+t x, uint16\+\_\+t y, uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Draws a pixel with \char`\"{}color\char`\"{} color on position (x, y). \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{group___graphics_ga9cbce3a40233f0a503c1007134b74085}{refresh\+\_\+screen}} ()
+\begin{DoxyCompactList}\small\item\em Copies the second buffer memory and pastes it on the main video memory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{group___graphics_gafe7249f9c67fbe30faa9517b4a127773}{vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t\+::x\+\_\+res}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{group___graphics_ga8b1f54d10c6b5f7fe0f07b289b984236}{vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t\+::y\+\_\+res}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group___graphics_ga624fda923918425b0e4623fff4b58e20}{vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t\+::bits\+\_\+per\+\_\+pixel}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group___graphics_ga2f0edcbbd1e125e396446dc6872f57e1}{vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t\+::bytes\+\_\+per\+\_\+pixel}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group___graphics_ga94d557634528672d19d0d93f872b668b}{vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t\+::vg\+\_\+mode}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___graphics_ga7c59b4e6782fffdf363e830ba9d4bb18}{vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t\+::red\+\_\+mask}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___graphics_ga8ef731bc14bc4f7cd66d891ff7c0e377}{vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t\+::green\+\_\+mask}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group___graphics_ga6c5cbddd5d2392632a6aa71290ccc5e4}{vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t\+::blue\+\_\+mask}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group___graphics_ga246c3c274455690418036506819f6b26}{vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t\+::red\+\_\+field\+\_\+position}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group___graphics_gaa189a5b41eed9aeb083105ca9f528aa6}{vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t\+::green\+\_\+field\+\_\+position}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group___graphics_ga820b5d7557c969fa9339eeaa2a4884e8}{vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t\+::blue\+\_\+field\+\_\+position}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group___graphics_ga460cd76174d3eece72fe43b387bdd2ae}{vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t\+::red\+\_\+mask\+\_\+size}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group___graphics_ga6c02217d912a5aac323dc9f2cb02d26a}{vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t\+::green\+\_\+mask\+\_\+size}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group___graphics_gaf57d6c8472b7004b7fb5262d74bd08bb}{vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t\+::blue\+\_\+mask\+\_\+size}}
+\item 
+\mbox{\hyperlink{structvbe__mode__info__summary__t}{vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t}} \mbox{\hyperlink{group___graphics_ga95bfd6204aec580f079790770fd9c338}{vg\+\_\+info}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Functions for the using the graphics. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group___graphics_ga8b2969363c73d2526906a0bcde14e45b}\label{group___graphics_ga8b2969363c73d2526906a0bcde14e45b}} 
+\index{Graphics@{Graphics}!destroy\_second\_buffer@{destroy\_second\_buffer}}
+\index{destroy\_second\_buffer@{destroy\_second\_buffer}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{destroy\_second\_buffer()}{destroy\_second\_buffer()}}
+{\footnotesize\ttfamily void() destroy\+\_\+second\+\_\+buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Frees the memory allocated to the second buffer. 
+
+\mbox{\Hypertarget{group___graphics_ga5a4a85e95c113e0f9f6f5db7d1a08e8a}\label{group___graphics_ga5a4a85e95c113e0f9f6f5db7d1a08e8a}} 
+\index{Graphics@{Graphics}!draw\_hline@{draw\_hline}}
+\index{draw\_hline@{draw\_hline}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{draw\_hline()}{draw\_hline()}}
+{\footnotesize\ttfamily int draw\+\_\+hline (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint16\+\_\+t}]{len,  }\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Draws an horizontal line starting at position (x, y) with \char`\"{}len\char`\"{} length and \char`\"{}color\char`\"{} color. Returns an 0 if sucessful. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+{\em len} & \\
+\hline
+{\em color} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 0
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{group___graphics_ga65e2491e8b03270a9b5d27a3b714b038}\label{group___graphics_ga65e2491e8b03270a9b5d27a3b714b038}} 
+\index{Graphics@{Graphics}!draw\_loaded\_xpm@{draw\_loaded\_xpm}}
+\index{draw\_loaded\_xpm@{draw\_loaded\_xpm}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{draw\_loaded\_xpm()}{draw\_loaded\_xpm()}}
+{\footnotesize\ttfamily void draw\+\_\+loaded\+\_\+xpm (\begin{DoxyParamCaption}\item[{xpm\+\_\+image\+\_\+t}]{img,  }\item[{int16\+\_\+t}]{x,  }\item[{int16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Similar to the draw\+\_\+xpm method but draws using only the img information as the xpm has been previously loaded. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em img} & \\
+\hline
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{group___graphics_gaa75d96618132cccec2c977ae043d31fe}\label{group___graphics_gaa75d96618132cccec2c977ae043d31fe}} 
+\index{Graphics@{Graphics}!draw\_pixel@{draw\_pixel}}
+\index{draw\_pixel@{draw\_pixel}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{draw\_pixel()}{draw\_pixel()}}
+{\footnotesize\ttfamily int() draw\+\_\+pixel (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Draws a pixel with \char`\"{}color\char`\"{} color on position (x, y). 
+
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{group___graphics_gad9afc559a75d9a80979b9feeb7187276}\label{group___graphics_gad9afc559a75d9a80979b9feeb7187276}} 
+\index{Graphics@{Graphics}!draw\_rectangle@{draw\_rectangle}}
+\index{draw\_rectangle@{draw\_rectangle}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{draw\_rectangle()}{draw\_rectangle()}}
+{\footnotesize\ttfamily int draw\+\_\+rectangle (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{x,  }\item[{int16\+\_\+t}]{y,  }\item[{uint16\+\_\+t}]{height,  }\item[{uint16\+\_\+t}]{width,  }\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Draws a rectangle starting at position (x, y) with \char`\"{}height\char`\"{} height, \char`\"{}width\char`\"{} width and \char`\"{}color\char`\"{} color. Returns an 0 if sucessful. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+{\em height} & \\
+\hline
+{\em width} & \\
+\hline
+{\em color} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{group___graphics_ga38b29c5cfa36c166f7d566f938571c4f}\label{group___graphics_ga38b29c5cfa36c166f7d566f938571c4f}} 
+\index{Graphics@{Graphics}!draw\_xpm@{draw\_xpm}}
+\index{draw\_xpm@{draw\_xpm}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{draw\_xpm()}{draw\_xpm()}}
+{\footnotesize\ttfamily void draw\+\_\+xpm (\begin{DoxyParamCaption}\item[{xpm\+\_\+image\+\_\+t}]{img,  }\item[{int16\+\_\+t}]{x,  }\item[{int16\+\_\+t}]{y,  }\item[{uint8\+\_\+t $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Draws a xpm on position (x, y) using the information stored in the img and map parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em img} & \\
+\hline
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+{\em map} & \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{group___graphics_gacad532bd831f98761530579c268027a2}\label{group___graphics_gacad532bd831f98761530579c268027a2}} 
+\index{Graphics@{Graphics}!initialize\_graphics@{initialize\_graphics}}
+\index{initialize\_graphics@{initialize\_graphics}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{initialize\_graphics()}{initialize\_graphics()}}
+{\footnotesize\ttfamily void $\ast$ initialize\+\_\+graphics (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initializes the graphics in mode 0x14C. Returning the video memory address. 
+
+\begin{DoxyReturn}{Returns}
+void$\ast$ 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{group___graphics_ga9cbce3a40233f0a503c1007134b74085}\label{group___graphics_ga9cbce3a40233f0a503c1007134b74085}} 
+\index{Graphics@{Graphics}!refresh\_screen@{refresh\_screen}}
+\index{refresh\_screen@{refresh\_screen}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{refresh\_screen()}{refresh\_screen()}}
+{\footnotesize\ttfamily void() refresh\+\_\+screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Copies the second buffer memory and pastes it on the main video memory. 
+
+Here is the caller graph for this function\+:
+% FIG 8
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{group___graphics_ga624fda923918425b0e4623fff4b58e20}\label{group___graphics_ga624fda923918425b0e4623fff4b58e20}} 
+\index{Graphics@{Graphics}!bits\_per\_pixel@{bits\_per\_pixel}}
+\index{bits\_per\_pixel@{bits\_per\_pixel}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{bits\_per\_pixel}{bits\_per\_pixel}}
+{\footnotesize\ttfamily uint8\+\_\+t vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t\+::bits\+\_\+per\+\_\+pixel}
+
+\mbox{\Hypertarget{group___graphics_ga820b5d7557c969fa9339eeaa2a4884e8}\label{group___graphics_ga820b5d7557c969fa9339eeaa2a4884e8}} 
+\index{Graphics@{Graphics}!blue\_field\_position@{blue\_field\_position}}
+\index{blue\_field\_position@{blue\_field\_position}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{blue\_field\_position}{blue\_field\_position}}
+{\footnotesize\ttfamily uint8\+\_\+t vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t\+::blue\+\_\+field\+\_\+position}
+
+\mbox{\Hypertarget{group___graphics_ga6c5cbddd5d2392632a6aa71290ccc5e4}\label{group___graphics_ga6c5cbddd5d2392632a6aa71290ccc5e4}} 
+\index{Graphics@{Graphics}!blue\_mask@{blue\_mask}}
+\index{blue\_mask@{blue\_mask}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{blue\_mask}{blue\_mask}}
+{\footnotesize\ttfamily uint32\+\_\+t vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t\+::blue\+\_\+mask}
+
+\mbox{\Hypertarget{group___graphics_gaf57d6c8472b7004b7fb5262d74bd08bb}\label{group___graphics_gaf57d6c8472b7004b7fb5262d74bd08bb}} 
+\index{Graphics@{Graphics}!blue\_mask\_size@{blue\_mask\_size}}
+\index{blue\_mask\_size@{blue\_mask\_size}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{blue\_mask\_size}{blue\_mask\_size}}
+{\footnotesize\ttfamily uint8\+\_\+t vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t\+::blue\+\_\+mask\+\_\+size}
+
+\mbox{\Hypertarget{group___graphics_ga2f0edcbbd1e125e396446dc6872f57e1}\label{group___graphics_ga2f0edcbbd1e125e396446dc6872f57e1}} 
+\index{Graphics@{Graphics}!bytes\_per\_pixel@{bytes\_per\_pixel}}
+\index{bytes\_per\_pixel@{bytes\_per\_pixel}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{bytes\_per\_pixel}{bytes\_per\_pixel}}
+{\footnotesize\ttfamily uint8\+\_\+t vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t\+::bytes\+\_\+per\+\_\+pixel}
+
+\mbox{\Hypertarget{group___graphics_gaa189a5b41eed9aeb083105ca9f528aa6}\label{group___graphics_gaa189a5b41eed9aeb083105ca9f528aa6}} 
+\index{Graphics@{Graphics}!green\_field\_position@{green\_field\_position}}
+\index{green\_field\_position@{green\_field\_position}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{green\_field\_position}{green\_field\_position}}
+{\footnotesize\ttfamily uint8\+\_\+t vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t\+::green\+\_\+field\+\_\+position}
+
+\mbox{\Hypertarget{group___graphics_ga8ef731bc14bc4f7cd66d891ff7c0e377}\label{group___graphics_ga8ef731bc14bc4f7cd66d891ff7c0e377}} 
+\index{Graphics@{Graphics}!green\_mask@{green\_mask}}
+\index{green\_mask@{green\_mask}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{green\_mask}{green\_mask}}
+{\footnotesize\ttfamily uint32\+\_\+t vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t\+::green\+\_\+mask}
+
+\mbox{\Hypertarget{group___graphics_ga6c02217d912a5aac323dc9f2cb02d26a}\label{group___graphics_ga6c02217d912a5aac323dc9f2cb02d26a}} 
+\index{Graphics@{Graphics}!green\_mask\_size@{green\_mask\_size}}
+\index{green\_mask\_size@{green\_mask\_size}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{green\_mask\_size}{green\_mask\_size}}
+{\footnotesize\ttfamily uint8\+\_\+t vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t\+::green\+\_\+mask\+\_\+size}
+
+\mbox{\Hypertarget{group___graphics_ga246c3c274455690418036506819f6b26}\label{group___graphics_ga246c3c274455690418036506819f6b26}} 
+\index{Graphics@{Graphics}!red\_field\_position@{red\_field\_position}}
+\index{red\_field\_position@{red\_field\_position}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{red\_field\_position}{red\_field\_position}}
+{\footnotesize\ttfamily uint8\+\_\+t vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t\+::red\+\_\+field\+\_\+position}
+
+\mbox{\Hypertarget{group___graphics_ga7c59b4e6782fffdf363e830ba9d4bb18}\label{group___graphics_ga7c59b4e6782fffdf363e830ba9d4bb18}} 
+\index{Graphics@{Graphics}!red\_mask@{red\_mask}}
+\index{red\_mask@{red\_mask}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{red\_mask}{red\_mask}}
+{\footnotesize\ttfamily uint32\+\_\+t vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t\+::red\+\_\+mask}
+
+\mbox{\Hypertarget{group___graphics_ga460cd76174d3eece72fe43b387bdd2ae}\label{group___graphics_ga460cd76174d3eece72fe43b387bdd2ae}} 
+\index{Graphics@{Graphics}!red\_mask\_size@{red\_mask\_size}}
+\index{red\_mask\_size@{red\_mask\_size}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{red\_mask\_size}{red\_mask\_size}}
+{\footnotesize\ttfamily uint8\+\_\+t vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t\+::red\+\_\+mask\+\_\+size}
+
+\mbox{\Hypertarget{group___graphics_ga95bfd6204aec580f079790770fd9c338}\label{group___graphics_ga95bfd6204aec580f079790770fd9c338}} 
+\index{Graphics@{Graphics}!vg\_info@{vg\_info}}
+\index{vg\_info@{vg\_info}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{vg\_info}{vg\_info}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structvbe__mode__info__summary__t}{vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t}} vg\+\_\+info\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{group___graphics_ga94d557634528672d19d0d93f872b668b}\label{group___graphics_ga94d557634528672d19d0d93f872b668b}} 
+\index{Graphics@{Graphics}!vg\_mode@{vg\_mode}}
+\index{vg\_mode@{vg\_mode}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{vg\_mode}{vg\_mode}}
+{\footnotesize\ttfamily uint8\+\_\+t vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t\+::vg\+\_\+mode}
+
+\mbox{\Hypertarget{group___graphics_gafe7249f9c67fbe30faa9517b4a127773}\label{group___graphics_gafe7249f9c67fbe30faa9517b4a127773}} 
+\index{Graphics@{Graphics}!x\_res@{x\_res}}
+\index{x\_res@{x\_res}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{x\_res}{x\_res}}
+{\footnotesize\ttfamily uint16\+\_\+t vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t\+::x\+\_\+res}
+
+\mbox{\Hypertarget{group___graphics_ga8b1f54d10c6b5f7fe0f07b289b984236}\label{group___graphics_ga8b1f54d10c6b5f7fe0f07b289b984236}} 
+\index{Graphics@{Graphics}!y\_res@{y\_res}}
+\index{y\_res@{y\_res}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{y\_res}{y\_res}}
+{\footnotesize\ttfamily uint16\+\_\+t vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t\+::y\+\_\+res}
+

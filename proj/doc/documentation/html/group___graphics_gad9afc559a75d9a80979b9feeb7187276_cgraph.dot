@@ -1,0 +1,12 @@
+digraph "draw_rectangle"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="draw_rectangle",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Draws a rectangle starting at position (x, y) with \"height\" height, \"width\" width and \"color\" color...."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="draw_hline",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___graphics.html#ga5a4a85e95c113e0f9f6f5db7d1a08e8a",tooltip="Draws an horizontal line starting at position (x, y) with \"len\" length and \"color\" color...."];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="draw_pixel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___graphics.html#gaa75d96618132cccec2c977ae043d31fe",tooltip="Draws a pixel with \"color\" color on position (x, y)."];
+}

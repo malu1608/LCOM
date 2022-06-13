@@ -1,0 +1,35 @@
+var group___r_t_c =
+[
+    [ "Date", "struct_date.html", [
+      [ "day", "group___r_t_c.html#ga42b01fdc428ecea9462d205268d670ad", null ],
+      [ "hour", "group___r_t_c.html#ga8dfee89f7697c98e54d3a12e4c71c601", null ],
+      [ "minutes", "group___r_t_c.html#ga4514587b9dc93e1b283c9832cb132904", null ],
+      [ "month", "group___r_t_c.html#gabc86e25ad3cd6c62831f7e6c46902eb2", null ],
+      [ "seconds", "group___r_t_c.html#gada0d55e10f54ce6a031e4dd8ede0cb7e", null ],
+      [ "year", "group___r_t_c.html#gab93e42ad6d3774e717d79c3f197817fa", null ]
+    ] ],
+    [ "BINARY", "group___r_t_c.html#gacc166508d5cfbf4100f8622ce97f4985", null ],
+    [ "DAY_REG", "group___r_t_c.html#gaeffd8cec7eae259d17fdb3604269bcc5", null ],
+    [ "HOUR_REG", "group___r_t_c.html#ga000295dbd700b0b8657dc519fb34242c", null ],
+    [ "MIN_REG", "group___r_t_c.html#gaa925c97939f2fae2bab06b7932990ef5", null ],
+    [ "MONTH_REG", "group___r_t_c.html#gaf97fbfe83998eef17fb98285c7b366e3", null ],
+    [ "REG_A", "group___r_t_c.html#gaa0e40d1cb9fea79e800aa79b8ca291f7", null ],
+    [ "REG_B", "group___r_t_c.html#ga28ed75c6727784e56c2bb8d828c876c9", null ],
+    [ "RTC_ADDR_REG", "group___r_t_c.html#ga710b98232df2c563009e6f8a6cd18220", null ],
+    [ "RTC_DATA_REG", "group___r_t_c.html#ga2f258a00c59c3f347c8d2d4a75471ce0", null ],
+    [ "SEC_REG", "group___r_t_c.html#gada7a8e81c2cebb097422338feec2b7a7", null ],
+    [ "UIP_SET", "group___r_t_c.html#ga908fb8fa91820d81398ecbea38fb5dcd", null ],
+    [ "WAIT_UPDATE", "group___r_t_c.html#ga35de599e75b3aec7d68a59179ebf0080", null ],
+    [ "YEAR_REG", "group___r_t_c.html#gaf54119cc0b644ea37bd26ac9206264a8", null ],
+    [ "Data", "group___r_t_c.html#ga3ea100ae85e835c1ff4e90b5c9a12f66", null ],
+    [ "bcd_to_bin", "group___r_t_c.html#ga37479f897994ea41699d9d71e7f4e1eb", null ],
+    [ "get_date", "group___r_t_c.html#ga9e8e92b264f902500d2bd96e713e2c0a", null ],
+    [ "is_binary", "group___r_t_c.html#ga8a2dc651a01dabc7b70aa1e99eb0753a", null ],
+    [ "rtcIsUpdating", "group___r_t_c.html#gae4c2eccc59963cb4d3c54881c214abbd", null ],
+    [ "Date::day", "group___r_t_c.html#ga42b01fdc428ecea9462d205268d670ad", null ],
+    [ "Date::hour", "group___r_t_c.html#ga8dfee89f7697c98e54d3a12e4c71c601", null ],
+    [ "Date::minutes", "group___r_t_c.html#ga4514587b9dc93e1b283c9832cb132904", null ],
+    [ "Date::month", "group___r_t_c.html#gabc86e25ad3cd6c62831f7e6c46902eb2", null ],
+    [ "Date::seconds", "group___r_t_c.html#gada0d55e10f54ce6a031e4dd8ede0cb7e", null ],
+    [ "Date::year", "group___r_t_c.html#gab93e42ad6d3774e717d79c3f197817fa", null ]
+];

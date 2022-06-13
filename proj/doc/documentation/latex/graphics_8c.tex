@@ -1,0 +1,54 @@
+\hypertarget{graphics_8c}{}\doxysection{graphics.\+c File Reference}
+\label{graphics_8c}\index{graphics.c@{graphics.c}}
+{\ttfamily \#include \char`\"{}graphics.\+h\char`\"{}}\newline
+Include dependency graph for graphics.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=243pt]{graphics_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \mbox{\hyperlink{group___graphics_gacad532bd831f98761530579c268027a2}{initialize\+\_\+graphics}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the graphics in mode 0x14C. Returning the video memory address. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___graphics_gaa75d96618132cccec2c977ae043d31fe}{draw\+\_\+pixel}} (uint16\+\_\+t x, uint16\+\_\+t y, uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Draws a pixel with \char`\"{}color\char`\"{} color on position (x, y). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___graphics_ga5a4a85e95c113e0f9f6f5db7d1a08e8a}{draw\+\_\+hline}} (uint16\+\_\+t x, uint16\+\_\+t y, uint16\+\_\+t len, uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Draws an horizontal line starting at position (x, y) with \char`\"{}len\char`\"{} length and \char`\"{}color\char`\"{} color. Returns an 0 if sucessful. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___graphics_gad9afc559a75d9a80979b9feeb7187276}{draw\+\_\+rectangle}} (int16\+\_\+t x, int16\+\_\+t y, uint16\+\_\+t width, uint16\+\_\+t height, uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Draws a rectangle starting at position (x, y) with \char`\"{}height\char`\"{} height, \char`\"{}width\char`\"{} width and \char`\"{}color\char`\"{} color. Returns an 0 if sucessful. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___graphics_ga38b29c5cfa36c166f7d566f938571c4f}{draw\+\_\+xpm}} (xpm\+\_\+image\+\_\+t img, int16\+\_\+t x, int16\+\_\+t y, uint8\+\_\+t $\ast$map)
+\begin{DoxyCompactList}\small\item\em Draws a xpm on position (x, y) using the information stored in the img and map parameters. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___graphics_ga65e2491e8b03270a9b5d27a3b714b038}{draw\+\_\+loaded\+\_\+xpm}} (xpm\+\_\+image\+\_\+t img, int16\+\_\+t x, int16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Similar to the draw\+\_\+xpm method but draws using only the img information as the xpm has been previously loaded. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{group___graphics_ga8b2969363c73d2526906a0bcde14e45b}{destroy\+\_\+second\+\_\+buffer}} ()
+\begin{DoxyCompactList}\small\item\em Frees the memory allocated to the second buffer. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{group___graphics_ga9cbce3a40233f0a503c1007134b74085}{refresh\+\_\+screen}} ()
+\begin{DoxyCompactList}\small\item\em Copies the second buffer memory and pastes it on the main video memory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \mbox{\hyperlink{graphics_8c_ab5ad15bf98431a9a0c9b413e37faaa61}{buffer\+\_\+base}} = NULL
+\item 
+static uint8\+\_\+t $\ast$ \mbox{\hyperlink{graphics_8c_a34682117071d485946ec3a6636d4e26d}{second\+\_\+buffer}}
+\item 
+\mbox{\hyperlink{structvbe__mode__info__summary__t}{vbe\+\_\+mode\+\_\+info\+\_\+summary\+\_\+t}} \mbox{\hyperlink{group___graphics_ga95bfd6204aec580f079790770fd9c338}{vg\+\_\+info}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{graphics_8c_ab5ad15bf98431a9a0c9b413e37faaa61}\label{graphics_8c_ab5ad15bf98431a9a0c9b413e37faaa61}} 
+\index{graphics.c@{graphics.c}!buffer\_base@{buffer\_base}}
+\index{buffer\_base@{buffer\_base}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{buffer\_base}{buffer\_base}}
+{\footnotesize\ttfamily void$\ast$ buffer\+\_\+base = NULL}
+
+\mbox{\Hypertarget{graphics_8c_a34682117071d485946ec3a6636d4e26d}\label{graphics_8c_a34682117071d485946ec3a6636d4e26d}} 
+\index{graphics.c@{graphics.c}!second\_buffer@{second\_buffer}}
+\index{second\_buffer@{second\_buffer}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{second\_buffer}{second\_buffer}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ second\+\_\+buffer\hspace{0.3cm}{\ttfamily [static]}}
+

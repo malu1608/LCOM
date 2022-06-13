@@ -1,0 +1,90 @@
+\hypertarget{player_8h_source}{}\doxysection{player.\+h}
+\mbox{\hyperlink{player_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#include <lcom/lcf.h>}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#define MAX\_CHARGE 40}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{15 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_player}{Player}};}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{24 \textcolor{keywordtype}{void} \mbox{\hyperlink{group___player_gaadae0073378d48be1ddbffe22c16873c}{PlayerInit}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self}, int16\_t x, int16\_t y);}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{33 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_player}{Player}}* \mbox{\hyperlink{group___player_gafb5d8d6817e9b769632659023ccea643}{PlayerCreate}}(int16\_t x, int16\_t y);}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{40 \textcolor{keywordtype}{void} \mbox{\hyperlink{group___player_gac394e9208c51c0c77e56033ff6deffcd}{PlayerDestroy}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* player);}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{49 \textcolor{keywordtype}{void} \mbox{\hyperlink{group___player_gaffd6ecbcf41d18688d6dc26991da5527}{PlayerSetPosition}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self}, int16\_t x, int16\_t y);}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{58 \textcolor{keywordtype}{void} \mbox{\hyperlink{group___player_ga89e8c497bdee917a5a01fddbbe86ecd9}{PlayerMove}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self}, int16\_t diff\_x, int16\_t diff\_y);}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{65 \textcolor{keywordtype}{void} \mbox{\hyperlink{group___player_gafbe513ebf136d9b6e50e2002bcc93877}{PlayerLeftPressed}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{72 \textcolor{keywordtype}{void} \mbox{\hyperlink{group___player_ga49084c2efd9866f91f4784f70eb04d4f}{PlayerLeftReleased}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{79 \textcolor{keywordtype}{void} \mbox{\hyperlink{group___player_ga20f4558cd5f6262c61b113c15bbc6779}{PlayerRightPressed}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{86 \textcolor{keywordtype}{void} \mbox{\hyperlink{group___player_ga638956ce80664c96894b511860a9b522}{PlayerRightReleased}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{95 \textcolor{keywordtype}{bool} \mbox{\hyperlink{group___player_ga81d0b2b651958d9bab76b01d89191a63}{PlayerGetLeftKey}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{104 \textcolor{keywordtype}{bool} \mbox{\hyperlink{group___player_ga67d4c60e69a8152a13e280a6cbe311fa}{PlayerGetRightKey}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{112 int16\_t \mbox{\hyperlink{group___player_ga1af03673202f515a65c3299acbd260ab}{PlayerGetIntent}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{120 int16\_t \mbox{\hyperlink{group___player_ga61f8caff4fc4c5a37dba8c7693d1b6e5}{PlayerGetWidth}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{128 int16\_t \mbox{\hyperlink{group___player_gae282534f89673a32b418c4b5c845f2cb}{PlayerGetHeight}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{129 }
+\DoxyCodeLine{136 int16\_t \mbox{\hyperlink{group___player_ga3b737a5f046411b3455a75c64614e307}{PlayerGetSpriteX}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{144 int16\_t \mbox{\hyperlink{group___player_gad5241f2a6e09bcf7ff65ab06d6fb52a9}{PlayerGetSpriteY}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{152 int16\_t \mbox{\hyperlink{group___player_gaf4cd2117a49f10cb188ae11ade18392b}{PlayerGetX}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{153 }
+\DoxyCodeLine{160 int16\_t \mbox{\hyperlink{group___player_gad1f66bed95ac95cc4d2b3dd9ac25324e}{PlayerGetY}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{161 }
+\DoxyCodeLine{168 uint16\_t \mbox{\hyperlink{group___player_gae55ff27b6ca1fcec8fa86bc29afa852a}{PlayerGetColliderWidth}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{169 }
+\DoxyCodeLine{176 uint16\_t \mbox{\hyperlink{group___player_ga2eb2ee9c4b762db26d2f49025d471304}{PlayerGetColliderHeight}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{177 }
+\DoxyCodeLine{184 int16\_t \mbox{\hyperlink{group___player_ga179a625307babd3e29f6e41e7c39c6fd}{PlayerGetMomentumX}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{185 }
+\DoxyCodeLine{192 int16\_t \mbox{\hyperlink{group___player_gafcc714a83c68c4bc5e13041fcbcb8ca4}{PlayerGetMomentumY}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{193 }
+\DoxyCodeLine{200 \textcolor{keywordtype}{void} \mbox{\hyperlink{group___player_gac6e6ca66072c473edd5d72b251787562}{PlayerSetMomentumX}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self}, int16\_t new\_mom);}
+\DoxyCodeLine{201 }
+\DoxyCodeLine{208 \textcolor{keywordtype}{void} \mbox{\hyperlink{group___player_gac11f1e7ecbba25aebd5ce76bb97dce50}{PlayerSetMomentumY}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self}, int16\_t new\_mom);}
+\DoxyCodeLine{209 }
+\DoxyCodeLine{215 \textcolor{keywordtype}{void} \mbox{\hyperlink{group___player_ga4ff7a44d1708927d1f9b336db185bbff}{PlayerResetMomentum}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{216 }
+\DoxyCodeLine{223 int16\_t \mbox{\hyperlink{group___player_ga56a88df40d8068e8aa127a62712a20e8}{PlayerGetMovement}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{224 }
+\DoxyCodeLine{231 \textcolor{keywordtype}{void} \mbox{\hyperlink{group___player_gad218e0aabd866ddb687272bd6caa487d}{PlayerSetMovement}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self}, int16\_t new\_move);}
+\DoxyCodeLine{232 }
+\DoxyCodeLine{238 \textcolor{keywordtype}{void} \mbox{\hyperlink{group___player_ga0f4ec2e9f0a2f2b3ae668d8ab1a7a2a3}{PlayerChargeJump}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{239 }
+\DoxyCodeLine{245 \textcolor{keywordtype}{void} \mbox{\hyperlink{group___player_ga80f160acf46ceb63f287e49ad164be33}{PlayerJump}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{246 }
+\DoxyCodeLine{254 \textcolor{keywordtype}{bool} \mbox{\hyperlink{group___player_gaf084c204ae3b8aa1abd59db1b2e2fd01}{PlayerGetFloored}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{255 }
+\DoxyCodeLine{262 \textcolor{keywordtype}{void} \mbox{\hyperlink{group___player_gabc17d57de15e74cb5d2a1d7ab67f9993}{PlayerSetFloored}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self}, \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_player_ad809b8e37b454509be4ea18a042ac802}{floored}});}
+\DoxyCodeLine{263 }
+\DoxyCodeLine{271 \textcolor{keywordtype}{bool} \mbox{\hyperlink{group___player_gaf4ea247c81550d57c6e507cb15e1249b}{PlayerGetLaid}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{272 }
+\DoxyCodeLine{279 \textcolor{keywordtype}{void} \mbox{\hyperlink{group___player_ga185dc1c70a2ca96a620adc3e790ef97d}{PlayerSetLaid}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self}, \textcolor{keywordtype}{bool} \_laid);}
+\DoxyCodeLine{280 }
+\DoxyCodeLine{288 \textcolor{keywordtype}{bool} \mbox{\hyperlink{group___player_ga324d2099cc961aad6b0e5b491d153aaa}{PlayerGetJumping}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{289 }
+\DoxyCodeLine{296 \textcolor{keywordtype}{int} \mbox{\hyperlink{group___player_ga53598d64ae5213adcd462a4cc0da4e25}{PlayerGetCharge}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{297 }
+\DoxyCodeLine{304 \textcolor{keywordtype}{void} \mbox{\hyperlink{group___player_gae06995b792aeddebfb8b657a0b8a120f}{PlayerSetBounce}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self}, \textcolor{keywordtype}{bool} \_bounce);}
+\DoxyCodeLine{305 }
+\DoxyCodeLine{313 \textcolor{keywordtype}{bool} \mbox{\hyperlink{group___player_ga68f319c16028d2e5a60b296049469d7f}{PlayerGetBounce}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{314 }
+\DoxyCodeLine{321 uint16\_t \mbox{\hyperlink{group___player_gac8c9cf4591555dd5e13b865b9a05ac70}{PlayerGetSpeed}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+\DoxyCodeLine{322 }
+\DoxyCodeLine{329 \textcolor{keywordtype}{void} \mbox{\hyperlink{group___player_gab9b76dbdc19bc7e425bafa1e9ca76d76}{PlayerSetAnimation}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self}, \textcolor{keywordtype}{int} newAnim);}
+\DoxyCodeLine{330 }
+\DoxyCodeLine{337 xpm\_image\_t \mbox{\hyperlink{group___player_gada06e2e0751e17f5cb1087c13560f4ce}{PlayerGetSprite}}(\textcolor{keyword}{struct} \mbox{\hyperlink{struct_player}{Player}}* \textcolor{keyword}{self});}
+
+\end{DoxyCode}

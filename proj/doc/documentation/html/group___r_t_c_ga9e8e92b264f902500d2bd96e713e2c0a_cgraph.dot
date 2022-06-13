@@ -1,0 +1,18 @@
+digraph "get_date"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="get_date",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Gets a pointer to the desired Data object."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="bcd_to_bin",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___r_t_c.html#ga37479f897994ea41699d9d71e7f4e1eb",tooltip="Converts a number from bcd to binary."];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="is_binary",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___r_t_c.html#ga8a2dc651a01dabc7b70aa1e99eb0753a",tooltip="Checks if rtc's input is written in bcd or in binary."];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="util_sys_inb",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___utils.html#ga79a031a8611f5b2d6afa4158e92b0fb4",tooltip="Gives the \"value\" variable the value obtained through the sys_inb call to the \"port\" in uint8_t."];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="rtcIsUpdating",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___r_t_c.html#gae4c2eccc59963cb4d3c54881c214abbd",tooltip="Checks if rtc is updating."];
+  Node5 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}
