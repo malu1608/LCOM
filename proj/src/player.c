@@ -53,8 +53,8 @@ struct Player {
 
 // Constructor (without allocation)
 void PlayerInit(struct Player *self, int16_t x, int16_t y) {
-    self->position.x = 200;
-    self->position.y = 100;
+    self->position.x = x;
+    self->position.y = y;
     self->width = 96;
     self->height = 96;
     self->charge = 10;

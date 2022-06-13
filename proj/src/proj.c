@@ -11,7 +11,7 @@
 #include "img/mouse.xpm"
 #include "img/pause.xpm"
 
-enum GAME_STATE {MAIN_MENU, PLAYING, PAUSE};
+enum GAME_STATE {MAIN_MENU, PLAYING, PAUSE, WON};
 
 enum GAME_STATE game_state = MAIN_MENU;
 
@@ -66,6 +66,7 @@ int(proj_main_loop)(int argc, char* argv[])
     }
     
     loadMenu();
+    loadWinMenu();
 
     int kbd_hook = KBD_IRQ;
 
@@ -85,7 +86,7 @@ int(proj_main_loop)(int argc, char* argv[])
     int mouse_mask = BIT(mouse_hook);
 
     mouse_x = 600;
-    mouse_y = 320;
+    mouse_y = 420;
     mouse_pressed = false;
 
 
@@ -117,7 +118,7 @@ int(proj_main_loop)(int argc, char* argv[])
     int ipc;
     message msg;
 
-    struct Player* player = PlayerCreate(200, 50);
+    struct Player* player = PlayerCreate(600, 400);
     bool pressed_space = false;
 
     struct Manager* manager = GameManagerCreate(player, vg_info.x_res, vg_info.y_res);
@@ -149,14 +150,23 @@ int(proj_main_loop)(int argc, char* argv[])
                             }
                             mouse_pressed = false;
                         }
-                    } else {
+                    } else if (game_state == WON) {
+                        WinMenu(vg_info.x_res, vg_info.y_res);
+                    } 
+                    else {
 
                         if (pressed_space)
                             if (game_state != PAUSE) 
                                 PlayerChargeJump(player);
 
                         DrawLevel(manager);
-                        if (game_state != PAUSE) PhysicsLoop(manager);
+                        if (game_state != PAUSE) {
+                            if (PhysicsLoop(manager)) {
+                                game_state = WON;
+                                player = PlayerCreate(600, 400);
+                                manager = GameManagerCreate(player, vg_info.x_res, vg_info.y_res);
+                            }
+                        }
 
                         if (game_state == PAUSE) draw_loaded_xpm(pause_loaded_xpm, 112, 94);
                         //draw_xpm(img, PlayerGetSpriteX(player), PlayerGetSpriteY(player), map);
@@ -215,6 +225,9 @@ int(proj_main_loop)(int argc, char* argv[])
                                 game_state = MAIN_MENU;
                             else if (game_state == PLAYING)
                                 game_state = MAIN_MENU;
+                            else if (game_state == WON) {
+                                game_state = MAIN_MENU;
+                            }
                         }
 
                         if (scancode == P_BREAKCODE) {

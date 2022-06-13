@@ -31,6 +31,7 @@
 #include "img/level_3_background.xpm"
 #include "img/level_4_background.xpm"
 #include "img/level_5_background5.xpm"
+#include "img/babe.xpm"
 
 struct Platform {
     int16_t x;
@@ -60,6 +61,8 @@ struct Manager {
     uint16_t x_limit;
     uint16_t y_limit;
     int16_t level;
+
+    xpm_image_t babe;
 };
 
 
@@ -86,6 +89,8 @@ void ManagerInit(struct Manager *self, struct Player *player, uint16_t x_res, ui
     loadLevel3(self->levels[2], self);
     loadLevel4(self->levels[3], self);
     loadLevel5(self->levels[4], self);
+
+    xpm_load((xpm_map_t) babe_xpm, XPM_8_8_8_8, &self->babe);
 }
 
 
@@ -93,7 +98,7 @@ bool checkCollisions(struct Player *player) {
     return false;
 }
 
-void PhysicsLoop(struct Manager *self) {
+int PhysicsLoop(struct Manager *self) {
 
 
     int16_t p_x = PlayerGetX(self->player);
@@ -288,6 +293,14 @@ void PhysicsLoop(struct Manager *self) {
         self->level++;
     }
 
+    if (self->level == 4) {
+        //return 1;
+        draw_loaded_xpm(self->babe, 1040, 54);
+        return (PlayerGetY(self->player) < 80 && PlayerGetX(self->player) > 1000);
+    }
+
+
+    return 0;
 }
 
 void DrawLevel(struct Manager *self) {
@@ -562,7 +575,7 @@ void loadLevel4(struct Level *level, struct Manager *manager) {
 }
 
 void loadLevel5(struct Level *level, struct Manager *manager) {
-    level->size = 19;
+    level->size = 20;
 
     level->map_background = xpm_load((xpm_map_t)level_5_background5_xpm, XPM_8_8_8_8, &level->img_background);
 
@@ -704,9 +717,9 @@ void loadLevel5(struct Level *level, struct Manager *manager) {
 
     //LIMITS
     level->platforms[19]->x = 0;
-    level->platforms[19]->y = 0;
-    level->platforms[19]->width = 10;
-    level->platforms[19]->height = manager->y_limit;
+    level->platforms[19]->y = -20;
+    level->platforms[19]->width = manager->x_limit;
+    level->platforms[19]->height = 20;
 
     level->platforms[20]->x = manager->x_limit - 10;
     level->platforms[20]->y = 0;

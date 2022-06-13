@@ -19,7 +19,7 @@ void ManagerInit(struct Manager *self, struct Player *player, uint16_t x_res, ui
 
 bool checkCollisions(struct Player *player);
 
-void PhysicsLoop(struct Manager *self);
+int PhysicsLoop(struct Manager *self);
 
 void loadLevel1(struct Level *level, struct Manager *manager);
 
