@@ -109,20 +109,20 @@ void PhysicsLoop(struct Manager *self) {
     int16_t diff_x = p_momentum_x + p_movement;
     PlayerSetFloored(self->player, false);
 
-    draw_rectangle(30, 30, 10, 10, 0xff0000); //DEBUG:
-    draw_rectangle(10, 30, 10, 10, 0xff0000); //DEBUG:
-    draw_rectangle(20, 40, 10, 10, 0xff0000); //DEBUG:
-    draw_rectangle(20, 20, 10, 10, 0xff0000); //DEBUG:
-    if (diff_x > 0) {
-        draw_rectangle(30, 30, 10, 10, 0x00ff00); //DEBUG:
-    } else if (diff_x < 0) {
-        draw_rectangle(10, 30, 10, 10, 0x00ff00); //DEBUG:
-    }
-    if (diff_y > 0) {
-        draw_rectangle(20, 40, 10, 10, 0x00ff00); //DEBUG:
-    } else if(diff_y < 0){
-        draw_rectangle(20, 20, 10, 10, 0x00ff00); //DEBUG:
-    }
+    // draw_rectangle(30, 30, 10, 10, 0xff0000); //DEBUG:
+    // draw_rectangle(10, 30, 10, 10, 0xff0000); //DEBUG:
+    // draw_rectangle(20, 40, 10, 10, 0xff0000); //DEBUG:
+    // draw_rectangle(20, 20, 10, 10, 0xff0000); //DEBUG:
+    // if (diff_x > 0) {
+    //     draw_rectangle(30, 30, 10, 10, 0x00ff00); //DEBUG:
+    // } else if (diff_x < 0) {
+    //     draw_rectangle(10, 30, 10, 10, 0x00ff00); //DEBUG:
+    // }
+    // if (diff_y > 0) {
+    //     draw_rectangle(20, 40, 10, 10, 0x00ff00); //DEBUG:
+    // } else if(diff_y < 0){
+    //     draw_rectangle(20, 20, 10, 10, 0x00ff00); //DEBUG:
+    // }
 
     if (diff_y > 0) { //going down
         for (int i = 0; i < self->levels[self->level]->size; i++) {
@@ -145,7 +145,7 @@ void PhysicsLoop(struct Manager *self) {
                 PlayerSetMomentumY(self->player, -PlayerGetMomentumY(self->player) / 2); // PROBLEM: THIS IS NOT RESETTING!
                 if (!PlayerGetFloored(self->player))
                     PlayerSetBounce(self->player, true);
-                draw_rectangle(50, 40, 10, 10, 0xff00ff);
+                //draw_rectangle(50, 40, 10, 10, 0xff00ff);
                 diff_y = 0;
                 break;
             }
@@ -205,8 +205,6 @@ void PhysicsLoop(struct Manager *self) {
         }
     }
 
-    // PlayerMove(self->player, PlayerGetMovement(self->player), 0);
-    // PlayerMove(self->player, PlayerGetMomentumX(self->player), 0);
     PlayerMove(self->player, diff_x, 0);
 
     //if not floored move down
@@ -220,7 +218,7 @@ void PhysicsLoop(struct Manager *self) {
             PlayerSetMomentumY(self->player, p_momentum_y + 1);
         }
         PlayerMove(self->player, 0, diff_y);
-        draw_rectangle(10, 10, 10, 10, 0xff0000); // A little signal to tell if its floored (GREEN is floored, RED isnt) DEBUG
+        //draw_rectangle(10, 10, 10, 10, 0xff0000); // A little signal to tell if its floored (GREEN is floored, RED isnt) DEBUG
 
         if (PlayerGetBounce(self->player)) {
             PlayerSetAnimation(self->player, 5);
@@ -233,15 +231,14 @@ void PhysicsLoop(struct Manager *self) {
         }
     }
     else{
-        draw_rectangle(10, 10, 10, 10, 0x00ff00); // A little signal to tell if its floored (GREEN is floored, RED isnt) //DEBUG
+        //draw_rectangle(10, 10, 10, 10, 0x00ff00); // A little signal to tell if its floored (GREEN is floored, RED isnt) //DEBUG
         //PlayerMove(self->player, PlayerGetIntent(self->player) * 5, 0);
         //When floored the player shall not move;
         PlayerResetMomentum(self->player);
         //turn intent into movement
-        //TODO: only if not jumping
-        draw_rectangle(20, 10, 10, 10, 0xff0000); //DEBUG
+        //draw_rectangle(20, 10, 10, 10, 0xff0000); //DEBUG
         if (!PlayerGetJumping(self->player)) {
-            draw_rectangle(20, 10, 10, 10, 0x00ff00); //DEBUG
+            //draw_rectangle(20, 10, 10, 10, 0x00ff00); //DEBUG
             PlayerSetMovement(self->player, PlayerGetIntent(self->player) * PlayerGetSpeed(self->player));
         }
         else {

@@ -1,5 +1,5 @@
 #include "player.h"
-#include "sprites.h"
+#include "img/sprites.h"
 
 
 struct Vector {

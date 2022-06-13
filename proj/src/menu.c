@@ -23,11 +23,8 @@ void checkOptions(uint16_t x, uint16_t y) {
   if (x > 445 && x < 758 && y > 500 && y < 540) {
     draw_rectangle(445, 544, 313, 4, 0xECECEC);
   }
-  if (x > 420 && x < 783 && y > 581 && y < 621) {
-    draw_rectangle(420, 625, 363, 4, 0xECECEC);
-  }
-  if (x > 420 && x < 783 && y > 660 && y < 713) {
-    draw_rectangle(542, 710, 119, 4, 0xECECEC);
+  if (x > 445 && x < 758 && y > 581 && y < 621) {
+    draw_rectangle(445, 625, 313, 4, 0xECECEC);
   }
 }
 
@@ -38,13 +35,9 @@ int clickOption(uint16_t x, uint16_t y) {
     draw_rectangle(445, 544, 313, 4, 0xECECEC);
     return 0;
   }
-  if (x > 420 && x < 783 && y > 581 && y < 621) {
+  if (x > 445 && x < 758 && y > 581 && y < 621) {
     draw_rectangle(420, 585, 363, 4, 0xECECEC);
     return 1;
-  }
-  if (x > 420 && x < 783 && y > 660 && y < 713) {
-    draw_rectangle(542, 717, 119, 4, 0xECECEC);
-    return 2;
   }
   return 4;
 }

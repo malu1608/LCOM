@@ -1,7 +1,7 @@
 #include <lcom/lcf.h>
 #include <stdio.h>
 #include "timer.h"
-#include "sprites.h"
+#include "img/sprites.h"
 #include "keyboard.h"
 #include "gameManager.h"
 #include "graphics.h"
@@ -9,12 +9,16 @@
 #include "i8254.h"
 #include "menu.h"
 #include "img/mouse.xpm"
+#include "img/pause.xpm"
 
-enum GAME_STATE {MAIN_MENU, LEADERBOARD, PLAYING, PAUSE};
+enum GAME_STATE {MAIN_MENU, PLAYING, PAUSE};
 
 enum GAME_STATE game_state = MAIN_MENU;
 
 xpm_image_t mouse_loaded_xpm;
+
+xpm_image_t pause_loaded_xpm;
+
 
 int main(int argc, char *argv[]) {
     lcf_set_language("EN-US");
@@ -75,6 +79,7 @@ int(proj_main_loop)(int argc, char* argv[])
     /* MOUSE */
 
     xpm_load((xpm_map_t) mouse_xpm, XPM_8_8_8_8, &mouse_loaded_xpm);
+    xpm_load((xpm_map_t) paused_xpm, XPM_8_8_8_8, &pause_loaded_xpm);
 
     int mouse_hook = MOUSE_IRQ;
     int mouse_mask = BIT(mouse_hook);
@@ -138,57 +143,54 @@ int(proj_main_loop)(int argc, char* argv[])
                                 case 0: 
                                     game_state = PLAYING;
                                     break;
-                                case 1: 
-                                    game_state = LEADERBOARD;
-                                    break;
-                                case 2:
+                                case 1:
                                     looping = false;
                                     break;
                             }
                             mouse_pressed = false;
                         }
-                    } else if (game_state == LEADERBOARD) {
-                        //Menu(); Mete aqui a chamada para desenhar a leaderboard como fiz no menu
                     } else {
-                        //draw_rectangle(0, 0, vg_info.x_res, vg_info.y_res, 0x000000);
 
                         if (pressed_space)
-                            PlayerChargeJump(player);
+                            if (game_state != PAUSE) 
+                                PlayerChargeJump(player);
 
                         DrawLevel(manager);
-                        PhysicsLoop(manager);
+                        if (game_state != PAUSE) PhysicsLoop(manager);
+
+                        if (game_state == PAUSE) draw_loaded_xpm(pause_loaded_xpm, 112, 94);
                         //draw_xpm(img, PlayerGetSpriteX(player), PlayerGetSpriteY(player), map);
 
                         draw_loaded_xpm(PlayerGetSprite(player), PlayerGetSpriteX(player), PlayerGetSpriteY(player));
 
-                        draw_rectangle(100, 25, 10, 10, 0xff0000); //DEBUG:
+                        // draw_rectangle(100, 25, 10, 10, 0xff0000); //DEBUG:
 
-                        draw_rectangle(115, 25, 10, 10, 0xff0000); //DEBUG:
+                        // draw_rectangle(115, 25, 10, 10, 0xff0000); //DEBUG:
 
-                        draw_rectangle(115, 10, 10, 10, 0xff0000); //DEBUG:
+                        // draw_rectangle(115, 10, 10, 10, 0xff0000); //DEBUG:
 
-                        draw_rectangle(130, 25, 10, 10, 0xff0000); //DEBUG:
+                        // draw_rectangle(130, 25, 10, 10, 0xff0000); //DEBUG:
 
-                        draw_rectangle(160, 25, 40, 10, 0xff0000); //DEBUG:
+                        // draw_rectangle(160, 25, 40, 10, 0xff0000); //DEBUG:
 
-                        if (PlayerGetLeftKey(player)) {
-                            draw_rectangle(100, 25, 10, 10, 0x00ff00); //DEBUG:
-                        }
+                        // if (PlayerGetLeftKey(player)) {
+                        //     draw_rectangle(100, 25, 10, 10, 0x00ff00); //DEBUG:
+                        // }
 
-                        if (PlayerGetRightKey(player)) {
-                            draw_rectangle(130, 25, 10, 10, 0x00ff00); //DEBUG:
-                        }
+                        // if (PlayerGetRightKey(player)) {
+                        //     draw_rectangle(130, 25, 10, 10, 0x00ff00); //DEBUG:
+                        // }
 
-                        if (pressed_space) {
-                            draw_rectangle(160, 25, 40, 10, 0x00ff00); //DEBUG:
-                        }
+                        // if (pressed_space) {
+                        //     draw_rectangle(160, 25, 40, 10, 0x00ff00); //DEBUG:
+                        // }
                     }
                         
                     refresh_screen();
                 }
                 if (msg.m_notify.interrupts & kbd_mask) {
                     get_scancode();
-                        // Handle Input
+                    // Handle Input
                     analyse_scancode();
                     if (is_scancode_complete) {
 
@@ -209,15 +211,23 @@ int(proj_main_loop)(int argc, char* argv[])
                         if (scancode == ESC_BREAKCODE) {
                             if (game_state == MAIN_MENU)
                                 looping = false;
-                            else if (game_state == LEADERBOARD)
+                            else if (game_state == PAUSE)
                                 game_state = MAIN_MENU;
                             else if (game_state == PLAYING)
                                 game_state = MAIN_MENU;
                         }
+
+                        if (scancode == P_BREAKCODE) {
+                            if (game_state == PLAYING) {
+                                game_state = PAUSE;
+                            } else if (game_state == PAUSE) {
+                                game_state = PLAYING;
+                            }
+                        }
                         
-                        if (scancode == SPACE_BREAKCODE && pressed_space) {
+                        if (scancode == SPACE_BREAKCODE && pressed_space && game_state != PAUSE) {
                             PlayerJump(player);
-                            draw_rectangle(40, 30, 10, 10, 0x0000ff); //DEBUG:
+                            //draw_rectangle(40, 30, 10, 10, 0x0000ff); //DEBUG:
                             pressed_space = false;
                         }
                     }
