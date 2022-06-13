@@ -1,7 +1,6 @@
 #pragma once
 #include <stdbool.h>
 #include <stdint.h>
-#include "kbc.h"
 #include "i8042.h"
 
 #include <stdbool.h>

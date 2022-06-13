@@ -146,6 +146,5 @@ int kbc_print_scancode_wrapper() {
     if (kbd_print_scancode(scancode < MAKE_TO_BREAK, scancode_no_bytes, scancode_bytes))
         return 1;
 
-
     return 0;
 }

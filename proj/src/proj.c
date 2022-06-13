@@ -171,7 +171,7 @@ int(proj_main_loop)(int argc, char* argv[])
                         if (game_state == PAUSE) draw_loaded_xpm(pause_loaded_xpm, 112, 94);
                         //draw_xpm(img, PlayerGetSpriteX(player), PlayerGetSpriteY(player), map);
 
-                        draw_loaded_xpm(PlayerGetSprite(player), PlayerGetSpriteX(player), PlayerGetSpriteY(player));
+                        if (game_state != WON) draw_loaded_xpm(PlayerGetSprite(player), PlayerGetSpriteX(player), PlayerGetSpriteY(player));
 
                         // draw_rectangle(100, 25, 10, 10, 0xff0000); //DEBUG:
 
