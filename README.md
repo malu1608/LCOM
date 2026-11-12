@@ -24,9 +24,6 @@ The player climbs a level made of three stages of increasing difficulty, using t
 
 The `lab0`–`lab5` folders contain the course labs where each driver was first built and tested.
 
-## My contribution
-The **video card driver** (lab 5: VBE graphics modes, drawing rectangles, patterns and sprites) and keyboard handling, which became the base of the game's graphics layer, plus early work on the project's video module.
-
 ## Team
 Group of 4 · André Ávila · **Maria Luísa Salvador** · Mariana Teixeira · Nuno Silva
 
